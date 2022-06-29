@@ -9,6 +9,8 @@ import UserPage from "./pages/UserPage";
 import SeriesPage from "./pages/SeriesPage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
+import IsAnon from "./components/IsAnon";
+import IsPrivate from "./components/IsPrivate";
 
 function App() {
   return (
@@ -17,11 +19,39 @@ function App() {
         <Route path="" element={<Layout />}>
           {/* All other inside */}
           <Route path="/" element={<HomePage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/signup"
+            element={
+              <IsAnon>
+                <SignupPage />
+              </IsAnon>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <IsAnon>
+                <LoginPage />
+              </IsAnon>
+            }
+          />
           <Route path="/series" element={<SeriesPage />} />
-          <Route path="/user/:id" element={<UserPage />} />
-          <Route path="/calendar" element={<CalendarPage />} />
+          <Route
+            path="/user/:id"
+            element={
+              <IsPrivate>
+                <UserPage />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path="/calendar"
+            element={
+              <IsPrivate>
+                <CalendarPage />
+              </IsPrivate>
+            }
+          />
         </Route>
       </Routes>
     </div>
