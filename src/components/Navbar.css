@@ -1,0 +1,13 @@
+nav {
+  background-color: #ffc300;
+  font-size: 1.5rem;
+  color: black;
+  padding: 1rem;
+  /* transform: skew(); */
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  /* transform: skew(-15deg); */
+}
