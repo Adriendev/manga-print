@@ -9,6 +9,7 @@ import UserPage from "./pages/UserPage";
 import SeriesPage from "./pages/SeriesPage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
+import SeriesDetailsPage from "./pages/SeriesDetailsPage";
 import IsAnon from "./components/IsAnon";
 import IsPrivate from "./components/IsPrivate";
 
@@ -36,6 +37,7 @@ function App() {
             }
           />
           <Route path="/series" element={<SeriesPage />} />
+          <Route path="/series/:id" element={<SeriesDetailsPage />} />
           <Route
             path="/user/:id"
             element={

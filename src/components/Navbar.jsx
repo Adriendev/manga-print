@@ -1,20 +1,26 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import React from "react";
+import { Link } from "react-router-dom";
+import { SearchIcon } from "./Icon";
+
+
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+
 import { AuthContext } from "../context/auth.context";
 
-import "./Navbar.css";
 
-library.add(faMagnifyingGlass);
+import "./Navbar.css";
 
 const Navbar = () => {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   return (
     <nav>
-      <Link to="/">Home</Link> |
-      <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />|
+
+      <Link to="/">Home</Link>
+      <SearchIcon />
+
+      
       {isLoggedIn ? (
         <>
           <span>{user}</span> |<button onClick={logOutUser}>Logout</button>|
@@ -26,6 +32,7 @@ const Navbar = () => {
           <Link to="/login">Login</Link> | <Link to="/signup">Sign Up</Link>
         </>
       )}
+
     </nav>
   );
 };
