@@ -1,9 +1,10 @@
 import axios from "axios";
 import { createContext, useCallback, useEffect, useState } from "react";
+import { API_URL } from "../utils/constants";
 
 const AuthContext = createContext();
 
-const baseURL = process.env.API_URL;
+const baseURL = API_URL;
 
 const AuthContextWrapper = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
