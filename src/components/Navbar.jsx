@@ -17,8 +17,7 @@ const Navbar = () => {
       <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />|
       {isLoggedIn ? (
         <>
-          <span>{user && user.name}</span> |
-          <button onClick={logOutUser}>Logout</button>|
+          <span>{user}</span> |<button onClick={logOutUser}>Logout</button>|
           <Link to="/calendar">Calendar</Link> |
           <Link to="/user/:id">Profile</Link>
         </>
