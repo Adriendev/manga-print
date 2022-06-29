@@ -49,7 +49,7 @@ const AuthContextWrapper = ({ children }) => {
       },
     })
       .then((response) => {
-        const { username } = response.data;
+        const { username } = response.data.payload;
         setUser(username);
         setIsLoggedIn(true);
         setIsLoading(false);
