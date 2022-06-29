@@ -2,8 +2,9 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import { API_URL } from "../utils/constants";
 
-const baseURL = process.env.local.API_URL;
+const baseURL = API_URL;
 
 function LoginPage(props) {
   const [email, setEmail] = useState("");
