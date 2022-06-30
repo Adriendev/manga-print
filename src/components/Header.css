@@ -1,6 +1,6 @@
 header {
-  background-color: var(--header-colour);
-  color: var(--header-text);
+  background-color: black;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;

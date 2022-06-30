@@ -1,11 +1,11 @@
 :root {
-  --header-colour: black;
-  --header-text: white;
+  --background-colour: white;
+  --text-colour: black;
 }
 
 [mode='dark'] {
-  --header-colour: white;
-  --header-text: black;
+  --background-colour: rgb(41, 40, 40);
+  --text-colour: white;
 }
 
 body {
