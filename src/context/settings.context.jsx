@@ -17,7 +17,7 @@ const SettingsContextWrapper = ({ children }) => {
   const { isLoggedIn, user, isLoading, getToken } = useContext(AuthContext);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [lang, setLang] = useState("en");
-  const [nsfw, setNsfw] = useState(false);
+  const [isNsfw, setIsNsfw] = useState(false);
 
   useEffect(() => {
     const getSettings = async () => {
@@ -26,14 +26,14 @@ const SettingsContextWrapper = ({ children }) => {
       if (!isLoggedIn) {
         setIsDarkMode(false);
         setLang("en");
-        setNsfw(false);
+        setIsNsfw(false);
         return;
       }
 
       const settings = await axios({
         method: "get",
         baseURL: baseURL,
-        url: `/user/settings/${user}`,
+        url: `/user/settings`,
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -41,7 +41,7 @@ const SettingsContextWrapper = ({ children }) => {
 
       setIsDarkMode(settings.data.mode === "light" ? false : true);
       setLang(settings.data.lang);
-      setNsfw(settings.data.nsfw);
+      setIsNsfw(settings.data.nsfw);
     };
     getSettings();
   }, [isLoggedIn, user]);
@@ -102,7 +102,37 @@ const SettingsContextWrapper = ({ children }) => {
     [isLoggedIn, user]
   );
 
-  console.log(lang);
+  const toggleNsfw = useCallback(
+    (currentState) => {
+      setIsNsfw((prev) => !prev);
+      if (isLoggedIn) {
+        const token = getToken();
+        axios({
+          url: "user",
+          baseURL: baseURL,
+          method: "patch",
+          data: {
+            settings: { nsfw: !currentState },
+          },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            const errorDescription = error.response.data.message;
+            console.log(errorDescription);
+          });
+      }
+    },
+    [isLoggedIn, user]
+  );
+
+  console.log("lang", lang);
+  console.log("isDarkMode", isDarkMode);
+  console.log("isNsfw", isNsfw);
 
   return (
     <SettingsContext.Provider
@@ -111,8 +141,8 @@ const SettingsContextWrapper = ({ children }) => {
         toggleDarkMode,
         lang,
         changeLang,
-        nsfw,
-        setNsfw,
+        isNsfw,
+        toggleNsfw,
       }}
     >
       {children}

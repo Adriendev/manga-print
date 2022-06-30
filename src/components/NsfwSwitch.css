@@ -1,4 +1,4 @@
-.switch {
+.nsfwSwitch {
     position: relative;
     display: inline-block;
     width: 55px;
@@ -6,34 +6,34 @@
 }
 
 /* Hide default HTML checkbox */
-.switch input {
+.nsfwSwitch input {
     opacity: 0;
     width: 0;
     height: 0;
 }
 
 /* The slider */
-.slider {
+.nsfwSlider {
     position: absolute;
     cursor: pointer;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: white;
+    background-color: rgb(187, 180, 180);
     -webkit-transition: .4s;
     transition: .4s;
 }
 
-.slider:before {
+.nsfwSlider:before {
     position: absolute;
     content: "";
     height: 25px;
     width: 25px;
     left: 1.75px;
-    bottom: 1.75px;
-    background-color:  black;
-    background-image: url("../assets/images/sun-solid.png");
+    bottom: 1.50px;
+    background-color: #fff;
+    /* background-image: url("../assets/images/sun-solid.svg"); */
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: center;
@@ -41,27 +41,26 @@
     transition: .4s;
 }
 
-input:checked+.slider {
-    background-color: #2c2b2e;
+input:checked+.nsfwSlider {
+    background-color: #447fee;
 }
 
-input:focus+.slider {
-    box-shadow: 0 0 1px #2c2b2e;
+input:focus+.nsfwSlider {
+    box-shadow: 0 0 1px #447fee;
 }
 
-input:checked+.slider:before {
+input:checked+.nsfwSlider:before {
     -webkit-transform: translateX(26.25px);
     -ms-transform: translateX(26.25px);
     transform: translateX(26.25px);
-    background-color: white;
-    background-image: url("../assets/images/moon-solid.svg");
+    /* background-image: url("../assets/images/moon-solid.svg"); */
 }
 
-/* Rounded sliders */
-.slider.round {
+/* Rounded nsfwSliders */
+.nsfwSlider.round {
     border-radius: 20px;
 }
 
-.slider.round:before {
+.nsfwSlider.round:before {
     border-radius: 50%;
 }

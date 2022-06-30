@@ -10,6 +10,7 @@ import ThemeSwitch from "./ThemeSwitch";
 import LangButton from "./LangButton";
 
 import i18n from "../utils/dictionnary";
+import NsfwSwitch from "./NsfwSwitch";
 
 const Navbar = () => {
   const { lang } = useContext(SettingsContext);
@@ -22,6 +23,7 @@ const Navbar = () => {
 
   return (
     <nav>
+      <NsfwSwitch /> |
       <LangButton /> |
       <ThemeSwitch /> | <Link to="/">{i18n[lang].home}</Link> |
       <SearchIcon /> |
