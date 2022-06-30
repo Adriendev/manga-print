@@ -39,20 +39,70 @@ const SettingsContextWrapper = ({ children }) => {
         },
       });
 
-      setIsDarkMode(settings.mode === "ligth" ? false : true);
-      setLang(settings.lang);
-      setNsfw(settings.nsfw);
+      setIsDarkMode(settings.data.mode === "light" ? false : true);
+      setLang(settings.data.lang);
+      setNsfw(settings.data.nsfw);
     };
     getSettings();
   }, [isLoggedIn, user]);
 
-  const toggleDarkMode = useCallback(() => {
-    setIsDarkMode((prev) => !prev);
-    if (isLoggedIn) {
-      //TO DO:
-      //change the user settings in the DB
-    }
-  }, [isLoggedIn, user]);
+  const toggleDarkMode = useCallback(
+    (currentState) => {
+      setIsDarkMode((prev) => !prev);
+      if (isLoggedIn) {
+        const token = getToken();
+        axios({
+          url: "user",
+          baseURL: baseURL,
+          method: "patch",
+          data: {
+            settings: { mode: currentState ? "light" : "dark" },
+          },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            const errorDescription = error.response.data.message;
+            console.log(errorDescription);
+          });
+      }
+    },
+    [isLoggedIn, user]
+  );
+
+  const changeLang = useCallback(
+    (language) => {
+      setLang(language);
+      if (isLoggedIn) {
+        const token = getToken();
+        axios({
+          url: "user",
+          baseURL: baseURL,
+          method: "patch",
+          data: {
+            settings: { lang: language },
+          },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            const errorDescription = error.response.data.message;
+            console.log(errorDescription);
+          });
+      }
+    },
+    [isLoggedIn, user]
+  );
+
+  console.log(lang);
 
   return (
     <SettingsContext.Provider
@@ -60,7 +110,7 @@ const SettingsContextWrapper = ({ children }) => {
         isDarkMode,
         toggleDarkMode,
         lang,
-        setLang,
+        changeLang,
         nsfw,
         setNsfw,
       }}

@@ -1,10 +1,10 @@
 :root {
-  --background-colour: #ccc;
+  --background-colour: white;
   --text-colour: black;
 }
 
 [mode='dark'] {
-  --background-colour: #444352;
+  --background-colour: #2c2b2e;
   --text-colour: white;
 }
 

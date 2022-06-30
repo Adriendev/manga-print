@@ -3,15 +3,20 @@ import "./ThemeSwitch.css";
 import { SettingsContext } from "../context/settings.context";
 
 const ThemeSwitch = () => {
-  const { toggleDarkMode } = useContext(SettingsContext);
+  const { toggleDarkMode, isDarkMode } = useContext(SettingsContext);
   const handleClick = () => {
-    toggleDarkMode();
+    toggleDarkMode(isDarkMode);
   };
 
   return (
     <div>
       <label className="switch">
-        <input id="toggler" type="checkbox" onClick={handleClick} />
+        <input
+          id="toggler"
+          type="checkbox"
+          onClick={handleClick}
+          checked={isDarkMode}
+        />
         <span className="slider round"></span>
       </label>
     </div>
