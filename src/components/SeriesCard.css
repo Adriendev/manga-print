@@ -1,0 +1,15 @@
+.series-card {
+  padding: 1rem;
+  width: 20%;
+}
+
+.series-card > h4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* white-space: nowrap;  */
+}
+
+.series-card img {
+  max-width: 100%;
+  height: auto;
+}
