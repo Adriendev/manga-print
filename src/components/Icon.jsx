@@ -8,9 +8,8 @@ import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { faSun } from "@fortawesome/free-solid-svg-icons";
 
 const SearchIcon = () => <FontAwesomeIcon icon={faMagnifyingGlass} />;
-const arrowDown = () => <FontAwesomeIcon icon={faAngleDown} />;
-const arrowRight = () => <FontAwesomeIcon icon={faAngleRight} />;
-const arrowLeft = () => <FontAwesomeIcon icon={faAngleLeft} />;
-const Sun = () => <FontAwesomeIcon icon={faSun} />;
+const ArrowDown = () => <FontAwesomeIcon icon={faAngleDown} />;
+const ArrowRight = () => <FontAwesomeIcon icon={faAngleRight} />;
+const ArrowLeft = () => <FontAwesomeIcon icon={faAngleLeft} />;
 
-export { SearchIcon, arrowDown, arrowRight, arrowLeft, Sun };
+export { SearchIcon, ArrowDown, ArrowRight, ArrowLeft };
