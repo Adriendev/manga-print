@@ -44,12 +44,15 @@ const SettingsContextWrapper = ({ children }) => {
       setNsfw(settings.nsfw);
     };
     getSettings();
-    console.log(isDarkMode);
   }, [isLoggedIn, user]);
 
   const toggleDarkMode = useCallback(() => {
     setIsDarkMode((prev) => !prev);
-  }, []);
+    if (isLoggedIn) {
+      //TO DO:
+      //change the user settings in the DB
+    }
+  }, [isLoggedIn, user]);
 
   return (
     <SettingsContext.Provider

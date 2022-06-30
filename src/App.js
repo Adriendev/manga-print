@@ -13,9 +13,13 @@ import SeriesDetailsPage from "./pages/SeriesDetailsPage";
 import IsAnon from "./components/IsAnon";
 import IsPrivate from "./components/IsPrivate";
 
+import { SettingsContext } from "./context/settings.context";
+import { useContext } from "react";
+
 function App() {
+  const { isDarkMode } = useContext(SettingsContext);
   return (
-    <div className="App">
+    <div className="App" mode={isDarkMode ? "dark" : "light"}>
       <Routes>
         <Route path="" element={<Layout />}>
           {/* All other inside */}

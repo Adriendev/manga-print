@@ -1,3 +1,13 @@
+:root {
+  --header-colour: black;
+  --header-text: white;
+}
+
+[mode='dark'] {
+  --header-colour: white;
+  --header-text: black;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
