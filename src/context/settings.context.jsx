@@ -30,7 +30,7 @@ const SettingsContextWrapper = ({ children }) => {
         return;
       }
 
-      const settings = await axios({
+      const response = await axios({
         method: "get",
         baseURL: baseURL,
         url: `/user/settings`,
@@ -39,9 +39,9 @@ const SettingsContextWrapper = ({ children }) => {
         },
       });
 
-      setIsDarkMode(settings.data.mode === "light" ? false : true);
-      setLang(settings.data.lang);
-      setIsNsfw(settings.data.nsfw);
+      setIsDarkMode(response.data.settings.mode === "light" ? false : true);
+      setLang(response.data.settings.lang);
+      setIsNsfw(response.data.settings.nsfw);
     };
     getSettings();
   }, [isLoggedIn, user]);
