@@ -9,3 +9,20 @@
   width: 100%;
   flex-wrap: nowrap;
 }
+
+.carrousel button {
+  border: none;
+  background-color: transparent;
+}
+
+.carrousel button:hover {
+  background-color: rgba(128, 128, 128, 0.322);
+}
+
+.fa-angle-right {
+  height: 3rem;
+}
+
+.fa-angle-left {
+  height: 3rem;
+}
