@@ -27,16 +27,10 @@ const LangButton = () => {
         <label>
           <img src={flag(lang)} alt="uk flag" />
         </label>
-        <select id="lang" name="lang" onChange={handleChange}>
-          <option value="en" selected={lang === "en"}>
-            English
-          </option>
-          <option value="fr" selected={lang === "fr"}>
-            French
-          </option>
-          <option value="es" selected={lang === "es"}>
-            Spanish
-          </option>
+        <select id="lang" name="lang" onChange={handleChange} value={lang}>
+          <option value="en">English</option>
+          <option value="fr">French</option>
+          <option value="es">Spanish</option>
         </select>
       </form>
     </div>

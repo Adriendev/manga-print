@@ -13,7 +13,7 @@ const i18n = {
     login: "Se Connecter",
     logout: "Se déconnecter",
     calendar: "Calendrier",
-    profile: "Profile",
+    profile: "Profil",
   },
   es: {
     home: "Casa",
