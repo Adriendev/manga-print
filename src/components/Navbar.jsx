@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
 import "./Navbar.css";
+import ThemeSwitch from "./ThemeSwitch";
 
 const Navbar = () => {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   return (
     <nav>
-      <Link to="/">Home</Link>
-      <SearchIcon />
-
+      <ThemeSwitch /> | <Link to="/">Home</Link> |
+      <SearchIcon /> |
       {isLoggedIn ? (
         <>
           <span>{user}</span> |<button onClick={logOutUser}>Logout</button>|

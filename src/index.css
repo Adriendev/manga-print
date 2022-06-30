@@ -1,3 +1,13 @@
+:root {
+  --background-colour: #ccc;
+  --text-colour: black;
+}
+
+[mode='dark'] {
+  --background-colour: #444352;
+  --text-colour: white;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
