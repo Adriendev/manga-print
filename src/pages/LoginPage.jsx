@@ -6,6 +6,8 @@ import { API_URL } from "../utils/constants";
 
 const baseURL = API_URL;
 
+console.log(API_URL);
+
 function LoginPage(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
