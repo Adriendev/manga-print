@@ -1,13 +1,13 @@
 import React from "react";
 
-const SeriesCard = ({ name }) => {
+import "./SeriesCard.css";
+
+const SeriesCard = ({ name, image }) => {
   return (
-    <article>
+    <article className="series-card">
+      {/* <pre>{JSON.stringify({ name, image }, null, 2)}</pre> */}
       <picture>
-        <img
-          src="https://static.wikia.nocookie.net/onepiece/images/b/b1/Volumen_99.png"
-          alt="cover"
-        />
+        <img src={image} alt="cover" />
       </picture>
       <h4>{name}</h4>
     </article>
