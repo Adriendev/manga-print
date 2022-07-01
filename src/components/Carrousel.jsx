@@ -17,19 +17,21 @@ const Carrousel = ({ title, series, seriesCovers, type }) => {
     setActive(!isActive);
   };
 
-  const slicedSeries = series.slice(800, 820);
+  const slicedSeries = series;
   // console.log(slicedSeries);
-  const slicedCovers = seriesCovers.slice(800, 820);
+  // const slicedCovers = seriesCovers.slice(800, 820);
   // console.log(slicedCovers);
 
-  const listAllSeries = slicedSeries.map((elem, i) => {
-    let image = slicedCovers[i];
+  const listAllSeries = slicedSeries.map((elem) => {
+    let image = elem.cover;
 
     image.includes("sevenseas")
       ? (image =
           "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg")
-      : (image = slicedCovers[i]);
-    return <SeriesCard key={elem.id} name={elem.name} image={image} />;
+      : (image = elem.cover);
+    return (
+      <SeriesCard key={elem.series._id} name={elem.series.name} image={image} />
+    );
   });
 
   /////if type === discovery
