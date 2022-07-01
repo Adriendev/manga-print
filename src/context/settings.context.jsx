@@ -14,7 +14,8 @@ const baseURL = API_URL;
 const SettingsContext = createContext();
 
 const SettingsContextWrapper = ({ children }) => {
-  const { isLoggedIn, user, isLoading, getToken } = useContext(AuthContext);
+  const { isLoggedIn, user, isLoading, setIsLoading, getToken } =
+    useContext(AuthContext);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [lang, setLang] = useState("en");
   const [isNsfw, setIsNsfw] = useState(false);
@@ -30,6 +31,8 @@ const SettingsContextWrapper = ({ children }) => {
         return;
       }
 
+      setIsLoading(true);
+
       const response = await axios({
         method: "get",
         baseURL: baseURL,
@@ -39,9 +42,12 @@ const SettingsContextWrapper = ({ children }) => {
         },
       });
 
+      console.log(response);
+
       setIsDarkMode(response.data.settings.mode === "light" ? false : true);
       setLang(response.data.settings.lang);
       setIsNsfw(response.data.settings.nsfw);
+      setIsLoading(false);
     };
     getSettings();
   }, [isLoggedIn, user]);
@@ -52,11 +58,13 @@ const SettingsContextWrapper = ({ children }) => {
       if (isLoggedIn) {
         const token = getToken();
         axios({
-          url: "user",
+          url: "user/me",
           baseURL: baseURL,
           method: "patch",
           data: {
-            settings: { mode: currentState ? "light" : "dark" },
+            settings: {
+              mode: currentState ? "dark" : "light",
+            },
           },
           headers: {
             Authorization: `Bearer ${token}`,
@@ -80,11 +88,13 @@ const SettingsContextWrapper = ({ children }) => {
       if (isLoggedIn) {
         const token = getToken();
         axios({
-          url: "user",
+          url: "user/me",
           baseURL: baseURL,
           method: "patch",
           data: {
-            settings: { lang: language },
+            settings: {
+              lang: language,
+            },
           },
           headers: {
             Authorization: `Bearer ${token}`,
@@ -108,11 +118,13 @@ const SettingsContextWrapper = ({ children }) => {
       if (isLoggedIn) {
         const token = getToken();
         axios({
-          url: "user",
+          url: "user/me",
           baseURL: baseURL,
           method: "patch",
           data: {
-            settings: { nsfw: !currentState },
+            settings: {
+              nsfw: currentState,
+            },
           },
           headers: {
             Authorization: `Bearer ${token}`,

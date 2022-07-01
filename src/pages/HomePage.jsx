@@ -8,18 +8,26 @@ import { API_URL } from "../utils/constants";
 const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [series, setSeries] = useState([]);
-  const [seriesCovers, setSeriesCovers] = useState([]);
+  // const [seriesCovers, setSeriesCovers] = useState([]);
 
   console.log(API_URL);
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth();
+
+  console.log(year, month);
 
   useEffect(() => {
     const getSeries = async () => {
+
       setIsLoading(true);
-      const { data } = await axios(`${API_URL}/mangaSeries`);
+      const { data } = await axios(
+        `${API_URL}/mangaVolume/${year}/${month + 1}`
+      );
       console.log(data);
-      setSeries(data.mangaSeriesFilter);
-      setSeriesCovers(data.allPromises);
+      setSeries(data);
       setIsLoading(false);
+
     };
 
     getSeries();
@@ -35,16 +43,8 @@ const HomePage = () => {
 
   return (
     <main id="home">
-      <Carrousel
-        title={"All Series"}
-        series={series}
-        seriesCovers={seriesCovers}
-      />
-      <Carrousel
-        title={"Discovery"}
-        series={series}
-        seriesCovers={seriesCovers}
-      />
+      <Carrousel title={"All Series"} series={series} />
+      <Carrousel title={"Discovery"} series={series} />
     </main>
   );
 };

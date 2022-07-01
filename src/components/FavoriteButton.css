@@ -1,0 +1,54 @@
+/* The container */
+/* .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-image: url("../assets/images/star-regular.svg");
+    background-repeat: no-repeat;
+}
+
+
+
+.checkmark:checked {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-image: url("../assets/images/star-regular-filled.png");
+    box-shadow: 0 0 0 3px yellow;
+    background-repeat: no-repeat;
+} */
+
+input {
+    height: 25px;
+    width: 25px;
+}
+
+input:checked {
+    box-shadow: 0 0 0 3px yellow;
+}
