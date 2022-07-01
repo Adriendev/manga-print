@@ -1,21 +1,20 @@
 .userProfile {
-   display: flex;
-   margin: 5rem;
-   padding-left: 8rem;
-
+  display: flex;
+  margin: 5rem;
+  padding-left: 8rem;
 }
 
-img {
-    border-radius: 50%;
-    width: 25%;
+.userProfile img {
+  border-radius: 50%;
+  width: 25%;
 }
 
 .userInfo {
-    display: flex;
-    flex-direction: column;
-    padding-left: 6rem;
+  display: flex;
+  flex-direction: column;
+  padding-left: 6rem;
 }
 
 h2 {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }

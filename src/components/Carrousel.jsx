@@ -2,12 +2,20 @@ import "./Carrousel.css";
 
 import SeriesCard from "./SeriesCard";
 import { ArrowLeft, ArrowRight } from "./Icon";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { SettingsContext } from "../context/settings.context";
 
 const Carrousel = ({ title, series, seriesCovers, type }) => {
-  //if type === latest
   const { isDarkMode } = useContext(SettingsContext);
+  const [isActive, setActive] = useState(false);
+
+  console.log(isActive);
+
+  //if type === latest
+  const handleToggle = () => {
+    console.log("click");
+    setActive(!isActive);
+  };
 
   const slicedSeries = series.slice(800, 810);
   // console.log(slicedSeries);
@@ -26,18 +34,24 @@ const Carrousel = ({ title, series, seriesCovers, type }) => {
 
   /////if type === discovery
   //shuffle 10
-
+  // + isActive ? `moving` : null} key={title}
   return (
-    <section className="carrousel" key={title}>
+    <section className="carrousel">
       <h2>{title}</h2>
       <hr className="divider" />
       <div className="container">
-        <button>
+        <button
+          onClick={() => {
+            console.log(`clicked!`);
+          }}
+        >
           <ArrowLeft className="arrow" mode={isDarkMode ? "dark" : "light"} />
         </button>
 
-        <div className="cards">{listAllSeries}</div>
-        <button>
+        <div className={`cards ` + (isActive ? "moving-left" : null)}>
+          {listAllSeries}
+        </div>
+        <button onClick={handleToggle}>
           <ArrowRight className="arrow" />
         </button>
       </div>
