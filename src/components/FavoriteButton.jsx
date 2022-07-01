@@ -17,13 +17,16 @@ const FavoriteButton = ({ name, seriesId }) => {
 
   return (
     <div>
-      <input
-        id="toggler"
-        type="checkbox"
-        onChange={handleChangeFavorite}
-        checked={favorites.some((elem) => elem.series === seriesId)}
-        className="star"
-      />
+      <label className="container">
+        <input
+          id="toggler"
+          type="checkbox"
+          onChange={handleChangeFavorite}
+          checked={favorites.some((elem) => elem.series === seriesId)}
+          className="checkbox"
+        />
+        <span className="checkmark"></span>
+      </label>
     </div>
   );
 };
