@@ -1,13 +1,20 @@
+* {
+  box-sizing: border-box;
+}
 .carrousel {
   max-width: 80%;
-  /* white-space: nowrap; */
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.carrousel > div {
+.container {
   display: flex;
+}
+
+.cards {
+  display: flex;
+  overflow: hidden;
   width: 100%;
-  flex-wrap: nowrap;
 }
 
 .carrousel button {
@@ -21,8 +28,15 @@
 
 .fa-angle-right {
   height: 3rem;
+  color: var(--text-colour);
 }
 
 .fa-angle-left {
   height: 3rem;
+  color: var(--text-colour);
+}
+
+.divider {
+  flex-grow: 1;
+  width: 100%;
 }

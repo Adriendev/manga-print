@@ -2,8 +2,8 @@ const i18n = {
   en: {
     home: "Home",
     signUp: "Sign Up",
-    login: "Login",
-    logout: "Logout",
+    login: "Log In",
+    logout: "Log Out",
     calendar: "Calendar",
     profile: "Profile",
   },
@@ -16,12 +16,12 @@ const i18n = {
     profile: "Profil",
   },
   es: {
-    home: "Casa",
-    signUp: "",
-    login: "",
-    logout: "",
-    calendar: "",
-    profile: "",
+    home: "Inicio",
+    signUp: "Registrarse",
+    login: "Iniciar sesión",
+    logout: "Cerrar sesión ",
+    calendar: "Calendario",
+    profile: "Perfil",
   },
 };
 
