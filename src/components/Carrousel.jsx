@@ -17,9 +17,9 @@ const Carrousel = ({ title, series, seriesCovers, type }) => {
     setActive(!isActive);
   };
 
-  const slicedSeries = series.slice(800, 810);
+  const slicedSeries = series.slice(800, 820);
   // console.log(slicedSeries);
-  const slicedCovers = seriesCovers.slice(800, 810);
+  const slicedCovers = seriesCovers.slice(800, 820);
   // console.log(slicedCovers);
 
   const listAllSeries = slicedSeries.map((elem, i) => {
