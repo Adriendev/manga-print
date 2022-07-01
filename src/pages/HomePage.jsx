@@ -14,12 +14,16 @@ const HomePage = () => {
 
   useEffect(() => {
     const getSeries = async () => {
-      setIsLoading(true);
-      const { data } = await axios(`${API_URL}/mangaSeries`);
-      console.log(data);
-      setSeries(data.mangaSeriesFilter);
-      setSeriesCovers(data.allPromises);
-      setIsLoading(false);
+      try {
+        setIsLoading(true);
+        const { data } = await axios(`${API_URL}/mangaSeries`);
+        console.log(data);
+        setSeries(data.mangaSeriesFilter);
+        setSeriesCovers(data.allPromises);
+        setIsLoading(false);
+      } catch (err) {
+        console.error(err);
+      }
     };
 
     getSeries();

@@ -29,7 +29,7 @@ const AuthContextWrapper = ({ children }) => {
   };
 
   const authenticateUser = useCallback(() => {
-    const token = localStorage.getItem("authToken");
+    const token = getToken();
 
     if (!token) {
       setIsLoading(false);
@@ -68,6 +68,7 @@ const AuthContextWrapper = ({ children }) => {
       value={{
         isLoggedIn,
         isLoading,
+        setIsLoading,
         user,
         storeToken,
         authenticateUser,

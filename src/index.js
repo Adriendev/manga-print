@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import { AuthContextWrapper } from "./context/auth.context";
 import { SettingsContextWrapper } from "./context/settings.context";
+import { FavoritesContextWrapper } from "./context/favorites.context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,7 +15,9 @@ root.render(
   <BrowserRouter>
     <AuthContextWrapper>
       <SettingsContextWrapper>
-        <App />
+        <FavoritesContextWrapper>
+          <App />
+        </FavoritesContextWrapper>
       </SettingsContextWrapper>
     </AuthContextWrapper>
   </BrowserRouter>
