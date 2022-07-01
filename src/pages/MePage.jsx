@@ -3,7 +3,7 @@ import axios from "axios";
 import { API_URL } from "../utils/constants";
 import { AuthContext } from "../context/auth.context";
 import { useContext, useEffect, useState } from "react";
-import UserProfile from "../components/UserProfile";
+import UserProfile from "../components/MeProfile";
 import LoadingDisplay from "../components/LoadingDisplay";
 
 const baseUrl = API_URL;
@@ -17,7 +17,7 @@ const UserPage = () => {
     const token = getToken();
     let config = {
       method: "get",
-      url: `${baseUrl}/user`,
+      url: `${baseUrl}/user/me`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -41,11 +41,9 @@ const UserPage = () => {
 
   return (
     <main>
-    <h1>Profile page:</h1>
+      <h1>Profile page:</h1>
       <UserProfile userInfo={userInfo} />
-      <button>Edit Profile</button>
-      </main>
- 
+    </main>
   );
 };
 

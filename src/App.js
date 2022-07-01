@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import Layout from "./pages/Layout";
 import CalendarPage from "./pages/CalendarPage";
-import UserPage from "./pages/UserPage";
+import MePage from "./pages/MePage";
 import SeriesPage from "./pages/SeriesPage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
@@ -42,10 +42,10 @@ function App() {
           <Route path="/series" element={<SeriesPage />} />
           <Route path="/series/:id" element={<SeriesDetailsPage />} />
           <Route
-            path="/user"
+            path="/user/me"
             element={
               <IsPrivate>
-                <UserPage />
+                <MePage />
               </IsPrivate>
             }
           />
