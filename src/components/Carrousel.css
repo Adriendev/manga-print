@@ -1,4 +1,28 @@
+.carrousel {
+  max-width: 80%;
+  /* white-space: nowrap; */
+  overflow: hidden;
+}
+
 .carrousel > div {
   display: flex;
-  max-width: 200px;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.carrousel button {
+  border: none;
+  background-color: transparent;
+}
+
+.carrousel button:hover {
+  background-color: rgba(128, 128, 128, 0.322);
+}
+
+.fa-angle-right {
+  height: 3rem;
+}
+
+.fa-angle-left {
+  height: 3rem;
 }

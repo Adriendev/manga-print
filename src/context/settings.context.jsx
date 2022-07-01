@@ -17,7 +17,7 @@ const SettingsContextWrapper = ({ children }) => {
   const { isLoggedIn, user, isLoading, getToken } = useContext(AuthContext);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [lang, setLang] = useState("en");
-  const [nsfw, setNsfw] = useState(false);
+  const [isNsfw, setIsNsfw] = useState(false);
 
   useEffect(() => {
     const getSettings = async () => {
@@ -26,30 +26,113 @@ const SettingsContextWrapper = ({ children }) => {
       if (!isLoggedIn) {
         setIsDarkMode(false);
         setLang("en");
-        setNsfw(false);
+        setIsNsfw(false);
         return;
       }
 
-      const settings = await axios({
+      const response = await axios({
         method: "get",
         baseURL: baseURL,
-        url: `/user/settings/${user}`,
+        url: `/user/settings`,
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-      setIsDarkMode(settings.mode === "ligth" ? false : true);
-      setLang(settings.lang);
-      setNsfw(settings.nsfw);
+      setIsDarkMode(response.data.settings.mode === "light" ? false : true);
+      setLang(response.data.settings.lang);
+      setIsNsfw(response.data.settings.nsfw);
     };
     getSettings();
-    console.log(isDarkMode);
   }, [isLoggedIn, user]);
 
-  const toggleDarkMode = useCallback(() => {
-    setIsDarkMode((prev) => !prev);
-  }, []);
+  const toggleDarkMode = useCallback(
+    (currentState) => {
+      setIsDarkMode((prev) => !prev);
+      if (isLoggedIn) {
+        const token = getToken();
+        axios({
+          url: "user",
+          baseURL: baseURL,
+          method: "patch",
+          data: {
+            settings: { mode: currentState ? "light" : "dark" },
+          },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            const errorDescription = error.response.data.message;
+            console.log(errorDescription);
+          });
+      }
+    },
+    [isLoggedIn, user]
+  );
+
+  const changeLang = useCallback(
+    (language) => {
+      setLang(language);
+      if (isLoggedIn) {
+        const token = getToken();
+        axios({
+          url: "user",
+          baseURL: baseURL,
+          method: "patch",
+          data: {
+            settings: { lang: language },
+          },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            const errorDescription = error.response.data.message;
+            console.log(errorDescription);
+          });
+      }
+    },
+    [isLoggedIn, user]
+  );
+
+  const toggleNsfw = useCallback(
+    (currentState) => {
+      setIsNsfw((prev) => !prev);
+      if (isLoggedIn) {
+        const token = getToken();
+        axios({
+          url: "user",
+          baseURL: baseURL,
+          method: "patch",
+          data: {
+            settings: { nsfw: !currentState },
+          },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            const errorDescription = error.response.data.message;
+            console.log(errorDescription);
+          });
+      }
+    },
+    [isLoggedIn, user]
+  );
+
+  console.log("lang", lang);
+  console.log("isDarkMode", isDarkMode);
+  console.log("isNsfw", isNsfw);
 
   return (
     <SettingsContext.Provider
@@ -57,9 +140,9 @@ const SettingsContextWrapper = ({ children }) => {
         isDarkMode,
         toggleDarkMode,
         lang,
-        setLang,
-        nsfw,
-        setNsfw,
+        changeLang,
+        isNsfw,
+        toggleNsfw,
       }}
     >
       {children}

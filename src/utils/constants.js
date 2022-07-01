@@ -1,5 +1,3 @@
-const API_URL = "https://manga-release-api.herokuapp.com/api";
-
+const API_URL = process.env.REACT_APP_API_URL;
 
 export { API_URL };
-

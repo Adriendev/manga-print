@@ -5,6 +5,9 @@ import { AuthContext } from "../context/auth.context";
 import { API_URL } from "../utils/constants";
 
 const baseURL = API_URL;
+console.log(API_URL);
+
+console.log(API_URL);
 
 function LoginPage(props) {
   const [username, setUsername] = useState("");

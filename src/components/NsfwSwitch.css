@@ -1,0 +1,66 @@
+.nsfwSwitch {
+    position: relative;
+    display: inline-block;
+    width: 55px;
+    height: 28px;
+}
+
+/* Hide default HTML checkbox */
+.nsfwSwitch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.nsfwSlider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(187, 180, 180);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.nsfwSlider:before {
+    position: absolute;
+    content: "";
+    height: 25px;
+    width: 25px;
+    left: 1.75px;
+    bottom: 1.50px;
+    background-color: #fff;
+    /* background-image: url("../assets/images/sun-solid.svg"); */
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.nsfwSlider {
+    background-color: #447fee;
+}
+
+input:focus+.nsfwSlider {
+    box-shadow: 0 0 1px #447fee;
+}
+
+input:checked+.nsfwSlider:before {
+    -webkit-transform: translateX(26.25px);
+    -ms-transform: translateX(26.25px);
+    transform: translateX(26.25px);
+    /* background-image: url("../assets/images/moon-solid.svg"); */
+}
+
+/* Rounded nsfwSliders */
+.nsfwSlider.round {
+    border-radius: 20px;
+}
+
+.nsfwSlider.round:before {
+    border-radius: 50%;
+}
