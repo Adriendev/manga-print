@@ -36,7 +36,7 @@ const FavoritesContextWrapper = ({ children }) => {
       },
     });
 
-    console.log(response);
+    console.log("yes, doing getFavorites", response);
 
     setFavorites(response.data.favorites);
     setIsLoading(false);
@@ -46,7 +46,7 @@ const FavoritesContextWrapper = ({ children }) => {
     getFavorites();
   }, [isLoggedIn, user]);
 
-  const toggleFavorite = (state, seriesId, favoriteId) => {
+  const toggleFavorite = useCallback((state, seriesId, favoriteId) => {
     const token = getToken();
     if (state) {
       axios({
@@ -62,6 +62,7 @@ const FavoritesContextWrapper = ({ children }) => {
       })
         .then((response) => {
           console.log(response.data);
+          getFavorites();
         })
         .catch((error) => {
           const errorDescription = error.response.data.message;
@@ -78,14 +79,14 @@ const FavoritesContextWrapper = ({ children }) => {
       })
         .then((response) => {
           console.log(response.data);
+          getFavorites();
         })
         .catch((error) => {
           const errorDescription = error.response.data.message;
           console.log(errorDescription);
         });
     }
-    getFavorites();
-  };
+  });
 
   return (
     <FavoritesContext.Provider

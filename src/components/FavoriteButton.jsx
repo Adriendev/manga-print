@@ -10,9 +10,11 @@ const FavoriteButton = ({ name, seriesId }) => {
   };
 
   useEffect(() => {
-    if (favorites.find((elem) => elem.series === seriesId)) {
-      setFavoriteId(favorites.find((elem) => elem.series === seriesId)._id);
+    const fav = favorites.find((elem) => elem.series === seriesId);
+    if (fav) {
+      setFavoriteId(fav._id);
     }
+    console.log("hey useeffeeeect");
   }, [favorites]);
 
   return (
