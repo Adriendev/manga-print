@@ -4,8 +4,8 @@ import { SettingsContext } from "../context/settings.context";
 
 const NsfwSwitch = () => {
   const { toggleNsfw, isNsfw } = useContext(SettingsContext);
-  const handleChange = () => {
-    toggleNsfw(isNsfw);
+  const handleChangeNsfw = (e) => {
+    toggleNsfw(e.target.checked);
   };
 
   return (
@@ -14,7 +14,7 @@ const NsfwSwitch = () => {
         <input
           id="toggler"
           type="checkbox"
-          onChange={handleChange}
+          onChange={handleChangeNsfw}
           checked={isNsfw}
         />
         <span className="nsfwSlider round"></span>

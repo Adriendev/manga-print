@@ -15,9 +15,9 @@ import NsfwSwitch from "./NsfwSwitch";
 const Navbar = () => {
   const { lang } = useContext(SettingsContext);
 
-  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn, user, logOutUser, isLoading } = useContext(AuthContext);
 
-  if (!lang) {
+  if (isLoading) {
     return;
   }
 
@@ -29,7 +29,7 @@ const Navbar = () => {
       <SearchIcon /> |
       {isLoggedIn ? (
         <>
-          <span>{user.username}</span> |
+          <span>{user}</span> |
           <button onClick={logOutUser}>{i18n[lang].logout}</button>|
           <Link to="/calendar">{i18n[lang].calendar}</Link> |
           <Link to="/user/:id">{i18n[lang].profile}</Link>

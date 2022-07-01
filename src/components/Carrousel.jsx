@@ -22,7 +22,9 @@ const Carrousel = ({ title, series, seriesCovers, type }) => {
       ? (image =
           "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg")
       : (image = slicedCovers[i]);
-    return <SeriesCard key={elem.id} name={elem.name} image={image} />;
+    return (
+      <SeriesCard key={elem.id} name={elem.name} image={image} id={elem._id} />
+    );
   });
 
   /////if type === discovery
