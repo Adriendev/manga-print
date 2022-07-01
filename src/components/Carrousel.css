@@ -1,13 +1,21 @@
+* {
+  box-sizing: border-box;
+}
 .carrousel {
   max-width: 80%;
-  /* white-space: nowrap; */
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.carrousel > div {
+.container {
   display: flex;
+}
+
+.cards {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
   width: 100%;
-  flex-wrap: nowrap;
 }
 
 .carrousel button {
@@ -16,13 +24,36 @@
 }
 
 .carrousel button:hover {
-  background-color: rgba(128, 128, 128, 0.322);
+  background-color: rgba(128, 128, 128, 0.096);
 }
 
 .fa-angle-right {
   height: 3rem;
+  color: var(--text-colour);
 }
 
 .fa-angle-left {
   height: 3rem;
+  color: var(--text-colour);
+}
+
+.divider {
+  flex-grow: 1;
+  width: 100%;
+}
+
+.moving-left {
+  animation: 3s infinite 1 slidein;
+}
+
+@keyframes slidein {
+  from {
+    overflow-x: hidden;
+  }
+
+  to {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    overflow-x: scroll;
+  }
 }

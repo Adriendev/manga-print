@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import "./HomePage.css";
 import Carrousel from "../components/Carrousel";
 import LoadingDisplay from "../components/LoadingDisplay";
 import { API_URL } from "../utils/constants";
@@ -30,16 +31,14 @@ const HomePage = () => {
 
   if (isLoading) {
     return (
-      <main>
-        <h2>Home</h2>
+      <main id="home">
         <LoadingDisplay />
       </main>
     );
   }
 
   return (
-    <main>
-      <h2>Home</h2>
+    <main id="home">
       <Carrousel
         title={"All Series"}
         series={series}

@@ -1,15 +1,28 @@
 .series-card {
   padding: 1rem;
-  width: 20%;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
 }
 
-.series-card > h4 {
+.series-name {
   overflow: hidden;
   text-overflow: ellipsis;
-  /* white-space: nowrap;  */
+  white-space: nowrap;
+  width: inherit;
+}
+
+.series-name:hover {
+  overflow: unset;
+  text-overflow: unset;
+  background-color: #ffc300;
+  /* border-radius: 0.3rem; */
+  z-index: 1;
+  white-space: normal;
 }
 
 .series-card img {
   max-width: 100%;
-  height: auto;
 }
