@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import "./ThemeSwitch.css";
 import { SettingsContext } from "../context/settings.context";
-import { Sun } from "./Icon";
 
 const ThemeSwitch = () => {
   const { toggleDarkMode, isDarkMode } = useContext(SettingsContext);
-  const handleChange = () => {
-    toggleDarkMode(isDarkMode);
+  const handleChangeDarkMode = (e) => {
+    toggleDarkMode(e.target.checked);
   };
 
   return (
@@ -15,7 +14,7 @@ const ThemeSwitch = () => {
         <input
           id="toggler"
           type="checkbox"
-          onChange={handleChange}
+          onChange={handleChangeDarkMode}
           checked={isDarkMode}
         />
         <span className="slider round"></span>

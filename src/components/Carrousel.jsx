@@ -28,9 +28,11 @@ const Carrousel = ({ title, series, seriesCovers, type }) => {
     image.includes("sevenseas")
       ? (image =
           "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg")
+
       : (image = elem.cover);
     return (
       <SeriesCard key={elem.series._id} name={elem.series.name} image={image} />
+
     );
   });
 

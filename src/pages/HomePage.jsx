@@ -19,6 +19,7 @@ const HomePage = () => {
 
   useEffect(() => {
     const getSeries = async () => {
+
       setIsLoading(true);
       const { data } = await axios(
         `${API_URL}/mangaVolume/${year}/${month + 1}`
@@ -26,6 +27,7 @@ const HomePage = () => {
       console.log(data);
       setSeries(data);
       setIsLoading(false);
+
     };
 
     getSeries();
