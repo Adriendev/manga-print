@@ -39,7 +39,7 @@ function App() {
           <Route path="/series" element={<SeriesPage />} />
           <Route path="/series/:id" element={<SeriesDetailsPage />} />
           <Route
-            path="/user/:id"
+            path="/user"
             element={
               <IsPrivate>
                 <UserPage />

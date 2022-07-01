@@ -17,7 +17,7 @@ const Navbar = () => {
         <>
           <span>{user}</span> |<button onClick={logOutUser}>Logout</button>|
           <Link to="/calendar">Calendar</Link> |
-          <Link to="/user/:id">Profile</Link>
+          <Link to="/user">Profile</Link>
         </>
       ) : (
         <>

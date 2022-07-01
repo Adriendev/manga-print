@@ -15,6 +15,7 @@ function LoginPage(props) {
 
   const { storeToken, authenticateUser } = useContext(AuthContext);
 
+
   const handleUsername = (e) => setUsername(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
 
