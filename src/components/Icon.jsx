@@ -5,7 +5,6 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
-import { faSun } from "@fortawesome/free-solid-svg-icons";
 
 const SearchIcon = () => <FontAwesomeIcon icon={faMagnifyingGlass} />;
 const ArrowDown = () => <FontAwesomeIcon icon={faAngleDown} />;

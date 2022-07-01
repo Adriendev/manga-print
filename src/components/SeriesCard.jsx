@@ -9,7 +9,8 @@ const SeriesCard = ({ name, image }) => {
       <picture>
         <img src={image} alt="cover" />
       </picture>
-      <h4>{name}</h4>
+
+      <h4 className="series-name">{name}</h4>
     </article>
   );
 };

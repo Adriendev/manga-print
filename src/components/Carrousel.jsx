@@ -1,14 +1,13 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { API_URL } from "../utils/constants";
-
 import "./Carrousel.css";
 
 import SeriesCard from "./SeriesCard";
 import { ArrowLeft, ArrowRight } from "./Icon";
+import { useContext } from "react";
+import { SettingsContext } from "../context/settings.context";
 
 const Carrousel = ({ title, series, seriesCovers, type }) => {
   //if type === latest
+  const { isDarkMode } = useContext(SettingsContext);
 
   const slicedSeries = series.slice(800, 810);
   // console.log(slicedSeries);
@@ -32,11 +31,12 @@ const Carrousel = ({ title, series, seriesCovers, type }) => {
     <section className="carrousel" key={title}>
       <h2>{title}</h2>
       <hr className="divider" />
-      <div>
+      <div className="container">
         <button>
-          <ArrowLeft className="arrow" />
+          <ArrowLeft className="arrow" mode={isDarkMode ? "dark" : "light"} />
         </button>
-        {listAllSeries}
+
+        <div className="cards">{listAllSeries}</div>
         <button>
           <ArrowRight className="arrow" />
         </button>

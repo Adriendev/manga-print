@@ -1,11 +1,16 @@
 :root {
   --background-colour: white;
   --text-colour: black;
+  --shape: black;
 }
 
-[mode='dark'] {
+[mode="dark"] {
   --background-colour: #2c2b2e;
   --text-colour: white;
+  --shape: ;
+}
+* {
+  margin: 0;
 }
 
 body {
