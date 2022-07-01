@@ -30,11 +30,9 @@ const Navbar = () => {
       {isLoggedIn ? (
         <>
           <span>{user}</span> |
-
           <button onClick={logOutUser}>{i18n[lang].logout}</button>|
           <Link to="/calendar">{i18n[lang].calendar}</Link> |
-          <Link to="/user/:id">{i18n[lang].profile}</Link>
-
+          <Link to="/user/me">{i18n[lang].profile}</Link>
         </>
       ) : (
         <>
