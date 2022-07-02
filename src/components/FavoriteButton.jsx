@@ -1,12 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./FavoriteButton.css";
 import { FavoritesContext } from "../context/favorites.context";
+import { EmptyStar, FullStar } from "./Icon";
 
 const FavoriteButton = ({ name, seriesId }) => {
   const { favorites, toggleFavorite } = useContext(FavoritesContext);
   const [favoriteId, setFavoriteId] = useState(null);
+  const [isChecked, setIsChecked] = useState(false);
+
   const handleChangeFavorite = (e) => {
     toggleFavorite(e.target.checked, seriesId, favoriteId);
+    setIsChecked(!isChecked);
   };
 
   useEffect(() => {
@@ -20,6 +24,7 @@ const FavoriteButton = ({ name, seriesId }) => {
   return (
     <div>
       <label className="container">
+        {isChecked ? <FullStar></FullStar> : <EmptyStar></EmptyStar>}
         <input
           id="toggler"
           type="checkbox"

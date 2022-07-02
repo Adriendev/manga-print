@@ -44,11 +44,32 @@
     background-repeat: no-repeat;
 } */
 
-input {
-    height: 25px;
-    width: 25px;
-}
+/* input {
+  height: 25px;
+  width: 25px;
+} */
 
 input:checked {
-    box-shadow: 0 0 0 3px yellow;
+  box-shadow: 0 0 0 3px yellow;
+}
+
+input[type="checkbox"] {
+  height: 25px;
+  width: 25px;
+  z-index: 1;
+  visibility: hidden;
+}
+.fa-star {
+  color: #ffc300;
+  font-size: 1.5rem !important;
+  background-color: var(--text-colour);
+  border-radius: 1rem;
+  padding: 0.3rem;
+}
+
+.fa-star,
+input[type="checkbox"] {
+  position: absolute;
+  right: 0.4rem;
+  top: 0.4rem;
 }

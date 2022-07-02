@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const SeriesCard = ({ name, image, id }) => {
   const { isLoggedIn } = useContext(AuthContext);
   return (
-    <>
+    <div className="card-container">
       <Link to={`/series/${id}`} className="series-link">
         <article className="series-card">
           {/* <pre>{JSON.stringify({ name, image }, null, 2)}</pre> */}
@@ -19,7 +19,7 @@ const SeriesCard = ({ name, image, id }) => {
         </article>
       </Link>
       {isLoggedIn && <FavoriteButton name={name} seriesId={id} />}
-    </>
+    </div>
   );
 };
 
