@@ -19,7 +19,6 @@ const HomePage = () => {
 
   useEffect(() => {
     const getSeries = async () => {
-
       setIsLoading(true);
       const { data } = await axios(
         `${API_URL}/mangaVolume/${year}/${month + 1}`
@@ -27,7 +26,6 @@ const HomePage = () => {
       console.log(data);
       setSeries(data);
       setIsLoading(false);
-
     };
 
     getSeries();
@@ -43,8 +41,8 @@ const HomePage = () => {
 
   return (
     <main id="home">
-      <Carrousel title={"All Series"} series={series} />
-      <Carrousel title={"Discovery"} series={series} />
+      <Carrousel title={"This month"} series={series} />
+      <Carrousel title={"Discover new Series"} series={series} />
     </main>
   );
 };

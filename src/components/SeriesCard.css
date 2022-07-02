@@ -11,7 +11,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: inherit;
 }
 
 .series-name:hover {
@@ -21,8 +20,18 @@
   /* border-radius: 0.3rem; */
   z-index: 1;
   white-space: normal;
+  color: black;
 }
 
 .series-card img {
   max-width: 100%;
+}
+
+a {
+  color: var(--text-colour);
+  text-decoration: none;
+}
+
+.series-link {
+  display: flex;
 }
