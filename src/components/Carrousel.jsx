@@ -5,39 +5,60 @@ import { ArrowLeft, ArrowRight } from "./Icon";
 import { useContext, useState } from "react";
 import { SettingsContext } from "../context/settings.context";
 
-const Carrousel = ({ title, series, seriesCovers, type }) => {
+const Carrousel = ({
+  title,
+  series,
+  covers,
+
+  type,
+}) => {
   const { isDarkMode } = useContext(SettingsContext);
   const [isActive, setActive] = useState(false);
 
-  console.log(isActive);
+  // console.log(isActive);
+  let listAllSeries = [];
 
   //if type === latest
+  if (type === "latest") {
+    listAllSeries = series.map((elem) => {
+      let image = elem.cover;
+
+      image.includes("sevenseas")
+        ? (image =
+            "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg")
+        : (image = elem.cover);
+      return (
+        <SeriesCard
+          key={elem.series._id}
+          name={elem.series.name}
+          image={image}
+          id={elem.series._id}
+        />
+      );
+    });
+  } else {
+    listAllSeries = series.map((elem, i) => {
+      let image = covers[i];
+
+      image.includes("sevenseas")
+        ? (image =
+            "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg")
+        : (image = covers[i]);
+      return (
+        <SeriesCard
+          key={elem._id}
+          name={elem.name}
+          image={image}
+          id={elem._id}
+        />
+      );
+    });
+  }
+
   const handleToggle = () => {
     console.log("click");
     setActive(!isActive);
   };
-
-  const slicedSeries = series;
-  // console.log(slicedSeries);
-  // const slicedCovers = seriesCovers.slice(800, 820);
-  // console.log(slicedCovers);
-
-  const listAllSeries = slicedSeries.map((elem) => {
-    let image = elem.cover;
-
-    image.includes("sevenseas")
-      ? (image =
-          "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg")
-      : (image = elem.cover);
-    return (
-      <SeriesCard
-        key={elem.series._id}
-        name={elem.series.name}
-        image={image}
-        id={elem.series._id}
-      />
-    );
-  });
 
   /////if type === discovery
   //shuffle 10
