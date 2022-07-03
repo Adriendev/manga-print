@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage";
 import Layout from "./pages/Layout";
 import CalendarPage from "./pages/CalendarPage";
 import MePage from "./pages/MePage";
-import SeriesPage from "./pages/SeriesPage";
+import AllSeriesPage from "./pages/SeriesPage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import SeriesDetailsPage from "./pages/SeriesDetailsPage";
@@ -39,7 +39,7 @@ function App() {
               </IsAnon>
             }
           />
-          <Route path="/series" element={<SeriesPage />} />
+          <Route path="/series" element={<AllSeriesPage />} />
           <Route path="/series/:id" element={<SeriesDetailsPage />} />
           <Route
             path="/user/me"

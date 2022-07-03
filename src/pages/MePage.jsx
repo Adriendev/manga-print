@@ -5,13 +5,14 @@ import { AuthContext } from "../context/auth.context";
 import { useContext, useEffect, useState } from "react";
 import UserProfile from "../components/MeProfile";
 import LoadingDisplay from "../components/LoadingDisplay";
+import { Navigate } from "react-router-dom";
 
 const baseUrl = API_URL;
 
 const UserPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [userInfo, setUserInfo] = useState("");
-  const { getToken, isLoggedIn, user } = useContext(AuthContext);
+  const { getToken, isLoggedIn, user, authenticateUser } = useContext(AuthContext);
 
   useEffect(() => {
     const token = getToken();
@@ -22,6 +23,10 @@ const UserPage = () => {
         Authorization: `Bearer ${token}`,
       },
     };
+
+    if (!isLoggedIn){
+      return setIsLoading(true)
+    }
 
     axios(config).then((response) => {
       setIsLoading(true);
@@ -42,7 +47,7 @@ const UserPage = () => {
   return (
     <main>
       <h1>Profile page:</h1>
-      <UserProfile userInfo={userInfo} />
+      <UserProfile userInfo={userInfo}  />
     </main>
   );
 };

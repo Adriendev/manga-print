@@ -12,21 +12,17 @@ const UserProfile = ({ userInfo }) => {
   console.log(email);
   console.log(picture);
 
-  const changeEditStateToFalse = () => {
-    setEditProfile(false);
-    console.log(`work`);
-  };
 
   return (
     <section className="userContainer">
       {editProfile ? (
         <div>
-          <EditMe editProfile={editProfile} setEditProfile={setEditProfile}/>
+          <EditMe editProfile={editProfile} setEditProfile={setEditProfile}  />
         </div>
       ) : (
         <>
           <article className="userProfile">
-            <img src={picture} alt="user profile photo"></img>
+            <img src={picture} alt="user profile"></img>
             <div className="userInfo">
               <h2>{username}</h2>
               <h3>{email}</h3>
