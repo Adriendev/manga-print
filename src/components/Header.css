@@ -1,8 +1,15 @@
 header {
   background-color: black;
-  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+}
+
+header a {
+  text-decoration: none;
+}
+
+header h1 {
+  color: white;
 }

@@ -17,23 +17,23 @@ const Navbar = () => {
 
   const { isLoggedIn, user, logOutUser, isLoading } = useContext(AuthContext);
 
-
   return (
     <nav>
-      <NsfwSwitch /> |
-      <LangButton /> |
-      <ThemeSwitch /> | <Link to="/">{i18n[lang].home}</Link> |
-      <SearchIcon /> |
+      <NsfwSwitch />
+      <LangButton />
+      <ThemeSwitch />
+      {/* <Link to="/">{i18n[lang].home}</Link> */}
+      <SearchIcon />
       {isLoggedIn ? (
         <>
-          <span>{user}</span> |
-          <button onClick={logOutUser}>{i18n[lang].logout}</button>|
-          <Link to="/calendar">{i18n[lang].calendar}</Link> |
+          <span>{user}</span>
+          <button onClick={logOutUser}>{i18n[lang].logout}</button>
+          <Link to="/calendar">{i18n[lang].calendar}</Link>
           <Link to="/user/me">{i18n[lang].profile}</Link>
         </>
       ) : (
         <>
-          <Link to="/login">{i18n[lang].login}</Link> |{" "}
+          <Link to="/login">{i18n[lang].login}</Link>{" "}
           <Link to="/signup">{i18n[lang].signUp}</Link>
         </>
       )}

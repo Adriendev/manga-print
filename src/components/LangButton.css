@@ -1,0 +1,10 @@
+#lang {
+  border: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+}
+
+#lang option {
+  background-color: #ffc300;
+  border: none;
+}

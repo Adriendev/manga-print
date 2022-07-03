@@ -1,5 +1,4 @@
 nav {
-  background-color: #ffc300;
   font-size: 1.5rem;
   color: black;
   padding: 1rem;
@@ -13,4 +12,18 @@ nav a {
   text-decoration: none;
   color: black;
   /* transform: skew(-15deg); */
+}
+
+nav button {
+  border: none;
+}
+
+nav > * {
+  background-color: #ffc300;
+  padding: 1rem;
+  margin-right: 1rem;
+}
+
+nav > :last-child {
+  margin-right: 0;
 }
