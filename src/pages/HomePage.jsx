@@ -30,7 +30,7 @@ const HomePage = () => {
         `${API_URL}/mangaVolume/${YEAR}/${MONTH + 1}`
       );
       const discoverySeries = await axios(
-        `http://localhost:3001/api/mangaSeries/?page=${random}&limit=20&random=1`
+        `${API_URL}/mangaSeries/?page=${random}&limit=20&random=1`
       );
       const allPromises = await Promise.all([latestSeries, discoverySeries]);
 
