@@ -11,17 +11,18 @@ import { API_URL } from "../utils/constants";
 
 const baseURL = API_URL;
 
-const CommentsContext = createContext();
+const ReviewsContext = createContext();
 
-const CommentsContextWrapper = ({ children }) => {
+const ReviewsContextWrapper = ({ children }) => {
   const { isLoggedIn, user, isLoading, setIsLoading, getToken } =
     useContext(AuthContext);
-  const [comments, setComments] = useState([]);
-  const getComments = async () => {
+  const [reviews, setReviews] = useState([]);
+
+  const getReviews = async () => {
     const token = getToken();
 
     if (!isLoggedIn) {
-      setComments([]);
+      setReviews([]);
       return;
     }
 
@@ -36,31 +37,31 @@ const CommentsContextWrapper = ({ children }) => {
       },
     });
 
-    console.log("yes, doing getComments", response);
+    console.log("yes, doing getReviews", response);
 
-    setComments(response.data.comments);
+    setReviewss(response.data.reviews);
     setIsLoading(false);
   };
 
   useEffect(() => {
-    getComments();
+    getReviews();
   }, [isLoggedIn, user]);
 
-  const postComment = useCallback(() => {
+  const postReview = useCallback(() => {
     const token = getToken();
   });
 
   return (
-    <CommentsContext.Provider
+    <ReviewsContext.Provider
       value={{
-        comments,
-        setComments,
-        postComment,
+        reviews,
+        setReviews,
+        postReview,
       }}
     >
       {children}
-    </CommentsContext.Provider>
+    </ReviewsContext.Provider>
   );
 };
 
-export { CommentsContext, CommentsContextWrapper };
+export { ReviewsContext, ReviewsContextWrapper };
