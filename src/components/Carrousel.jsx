@@ -5,13 +5,7 @@ import { ArrowLeft, ArrowRight } from "./Icon";
 import { useContext, useState } from "react";
 import { SettingsContext } from "../context/settings.context";
 
-const Carrousel = ({
-  title,
-  series,
-  covers,
-
-  type,
-}) => {
+const Carrousel = ({ title, series, covers, week, type }) => {
   const { isDarkMode } = useContext(SettingsContext);
   const [isActive, setActive] = useState(false);
 
@@ -20,7 +14,9 @@ const Carrousel = ({
 
   //if type === latest
   if (type === "latest") {
-    listAllSeries = series.map((elem) => {
+    const filterWeek = series.filter((elem) => elem.releaseDate < week);
+
+    listAllSeries = filterWeek.map((elem) => {
       let image = elem.cover;
 
       image.includes("sevenseas")
