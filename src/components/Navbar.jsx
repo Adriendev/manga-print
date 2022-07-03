@@ -17,10 +17,6 @@ const Navbar = () => {
 
   const { isLoggedIn, user, logOutUser, isLoading } = useContext(AuthContext);
 
-  if (isLoading) {
-    return;
-  }
-
   return (
     <nav>
       <NsfwSwitch /> |

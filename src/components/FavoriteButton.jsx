@@ -6,11 +6,13 @@ import { EmptyStar, FullStar } from "./Icon";
 const FavoriteButton = ({ name, seriesId }) => {
   const { favorites, toggleFavorite } = useContext(FavoritesContext);
   const [favoriteId, setFavoriteId] = useState(null);
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(
+    favorites.some((elem) => elem.series === seriesId)
+  );
 
   const handleChangeFavorite = (e) => {
     toggleFavorite(e.target.checked, seriesId, favoriteId);
-    setIsChecked(!isChecked);
+    setIsChecked((prev) => !prev);
   };
 
   useEffect(() => {
@@ -18,7 +20,6 @@ const FavoriteButton = ({ name, seriesId }) => {
     if (fav) {
       setFavoriteId(fav._id);
     }
-    console.log("hey useeffeeeect");
   }, [favorites]);
 
   return (
