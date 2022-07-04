@@ -1,13 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight } from "./Icon";
 import { DATE, MONTH, YEAR, DAY } from "../utils/constants";
 import "./Calendar.css";
+import SeriesCard from "./SeriesCard";
+import { API_URL } from "../utils/constants";
+import axios from "axios";
+import { AuthContext } from "../context/auth.context";
+import { FavoritesContext } from "../context/favorites.context";
 
 const Calendar = () => {
-  const daysInMonth = new Date(YEAR, MONTH + 1, 0).getDate();
   //   console.log(daysInMonth);
   const options = { month: "long" };
   const [days, setDays] = useState([]);
+  const [month, setMonth] = useState(MONTH);
+  const [date, setDate] = useState(DATE);
+  const [releases, setReleases] = useState([]);
+  const { getToken } = useContext(AuthContext);
+  const { favorites } = useContext(FavoritesContext);
+  const daysInMonth = new Date(YEAR, month + 1, 0).getDate();
 
   useEffect(() => {
     const getDaysArray = () => {
@@ -16,35 +26,197 @@ const Calendar = () => {
         newArr.push(i);
       }
 
-      setDays(newArr);
+      setDays([...newArr]);
     };
     getDaysArray();
   }, [daysInMonth]);
+
+  useMemo(() => {
+    const getLatestSeries = async () => {
+      const token = getToken();
+      let config = {
+        method: "get",
+        url: `${API_URL}/calendar/${YEAR}/${month + 1}`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const { data } = await axios(config);
+      setReleases(data);
+    };
+
+    getLatestSeries();
+  }, [favorites, month]);
+
+  const handleClick = (e) => {
+    // console.log(e.target.className.baseVal);
+    e.target.className.baseVal.includes("left")
+      ? setMonth(month - 1)
+      : setMonth(month + 1);
+    // console.log(month);
+    setDate(new Date(YEAR, month, DAY));
+  };
+
+  const getVolumeForDay = (day, month) => {
+    const foundRel = releases.filter((x) =>
+      x.releaseDate.includes(`0${month + 1}-0${day}`)
+    );
+
+    return foundRel;
+  };
+
+  const firstRow = days.map((day) => {
+    let volume;
+    if (day < 8) {
+      volume = getVolumeForDay(day, month);
+    }
+
+    return day < 8 ? (
+      <div key={`Day ${day}`} className="day">
+        {volume.length !== 0 ? (
+          <SeriesCard
+            key={volume[0]._id}
+            name={volume[0].title}
+            image={volume[0].cover}
+            id={volume[0].series}
+          />
+        ) : (
+          <div className="empty"></div>
+        )}
+
+        {day}
+      </div>
+    ) : null;
+  });
+
+  const secondRow = days.map((day) => {
+    let volume;
+    if (day >= 8 && day < 15) {
+      volume = getVolumeForDay(day, month);
+    }
+
+    return day >= 8 && day < 15 ? (
+      <div key={`Day ${day}`} className="day">
+        {volume.length !== 0 ? (
+          <SeriesCard
+            key={volume[0]._id}
+            name={volume[0].title}
+            image={volume[0].cover}
+            id={volume[0].series}
+          />
+        ) : (
+          <div className="empty"></div>
+        )}
+        {day}
+      </div>
+    ) : null;
+  });
+
+  const thirdRow = days.map((day) => {
+    let volume;
+    if (day >= 15 && day < 22) {
+      volume = getVolumeForDay(day, month);
+    }
+    return day >= 15 && day < 22 ? (
+      <div key={`Day ${day}`} className="day">
+        {volume.length !== 0 ? (
+          <SeriesCard
+            key={volume[0]._id}
+            name={volume[0].title}
+            image={volume[0].cover}
+            id={volume[0].series}
+          />
+        ) : (
+          <div className="empty"></div>
+        )}
+        {day}
+      </div>
+    ) : null;
+  });
+
+  const fourthRow = days.map((day) => {
+    let volume;
+    if (day >= 22 && day < 29) {
+      volume = getVolumeForDay(day, month);
+    }
+    return day >= 22 && day < 29 ? (
+      <div key={`Day ${day}`} className="day">
+        {volume.length !== 0 ? (
+          <SeriesCard
+            key={volume[0]._id}
+            name={volume[0].title}
+            image={volume[0].cover}
+            id={volume[0].series}
+          />
+        ) : (
+          <div className="empty"></div>
+        )}
+        {day}
+      </div>
+    ) : null;
+  });
+
+  const fifthRow = days.map((day) => {
+    let volume;
+    if (day >= 29) {
+      volume = getVolumeForDay(day, month);
+    }
+    return day >= 29 ? (
+      <div key={`Day ${day}`} className="day">
+        {volume.length !== 0 ? (
+          <SeriesCard
+            key={volume[0]._id}
+            name={volume[0].title}
+            image={volume[0].cover}
+            id={volume[0].series}
+          />
+        ) : (
+          <div className="empty"></div>
+        )}
+        <span className={day}>{day}</span>
+      </div>
+    ) : null;
+  });
 
   return (
     <>
       <section className="calendar">
         <div className="display">
-          <button>
+          <button className="btn left" onClick={handleClick}>
             <ArrowLeft />
           </button>
-          <h4>{new Intl.DateTimeFormat("en-US", options).format(DATE)}</h4>
-          <button>
+          <h3>{new Intl.DateTimeFormat("en-US", options).format(date)}</h3>
+          <button className="btn right" onClick={handleClick}>
             <ArrowRight />
           </button>
         </div>
-
-        <table className="table">
-          <thead>
-            <tr>
-              {days.map((day) => (
-                <td key={`Day ${day}`} className="day">
-                  {day}
-                </td>
-              ))}
-            </tr>
-          </thead>
-        </table>
+        <div className="body">
+          <div className="week">
+            <h4>Week 01-07</h4>
+            <hr />
+            <div className="days">{firstRow}</div>
+          </div>
+          <div className="week">
+            <h4>Week 08-14</h4>
+            <hr />
+            <div className="days">{secondRow}</div>
+          </div>
+          <div className="week">
+            <h4>Week 15-22</h4>
+            <hr />
+            <div className="days">{thirdRow}</div>
+          </div>
+          <div className="week">
+            <h4>Week 22-29</h4>
+            <hr />
+            <div className="days">{fourthRow}</div>
+          </div>
+          <div className="week">
+            <h4>Week 22-29</h4>
+            <hr />
+            <div className="days">{fifthRow}</div>
+          </div>
+        </div>
       </section>
     </>
   );

@@ -1,10 +1,9 @@
 import React from "react";
 import Calendar from "../components/Calendar";
-import { ArrowLeft, ArrowRight } from "../components/Icon";
 
 const CalendarPage = () => {
   return (
-    <section className="calendar">
+    <section id="calendar">
       <Calendar />
     </section>
   );

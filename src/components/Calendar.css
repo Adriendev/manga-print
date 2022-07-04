@@ -1,12 +1,37 @@
 .calendar {
   display: flex;
   flex-direction: column;
-}
+  justify-content: center;
 
-.table {
-  display: inherit;
+  align-items: center;
 }
 
 .display {
   display: flex;
+  justify-content: center;
+}
+
+.day {
+  border: 1px solid black;
+}
+
+.days {
+  display: flex;
+}
+
+.body {
+  width: 80vw;
+}
+
+#calendar {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
+  padding: 8rem;
+}
+
+.empty {
+  width: 13rem;
+  height: 18rem;
 }
