@@ -8,28 +8,30 @@ const UserProfile = ({ userInfo }) => {
   // console.log(userInfo);
   // console.log(userInfo.username);
   const { username, email, picture } = userInfo;
-  console.log(username);
-  console.log(email);
-  console.log(picture);
-
+  // console.log(username);
+  // console.log(email);
+  // console.log(picture);
 
   return (
     <section className="userContainer">
       {editProfile ? (
         <div>
-          <EditMe editProfile={editProfile} setEditProfile={setEditProfile}  />
+          <EditMe editProfile={editProfile} setEditProfile={setEditProfile} />
         </div>
       ) : (
-        <>
-          <article className="userProfile">
-            <img src={picture} alt="user profile"></img>
-            <div className="userInfo">
-              <h2>{username}</h2>
-              <h3>{email}</h3>
-            </div>
-          </article>
-          <button onClick={() => setEditProfile(true)}>Edit Profil</button>
-        </>
+        <article className="user-profile-container">
+          <img src={picture} alt="user profile"></img>
+          <div className="userInfo">
+            <h2>{username}</h2>
+            <h3>{email}</h3>
+            <button
+              className="user-button"
+              onClick={() => setEditProfile(true)}
+            >
+              Edit Profile
+            </button>
+          </div>
+        </article>
       )}
     </section>
   );
