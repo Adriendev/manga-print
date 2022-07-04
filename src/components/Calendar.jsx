@@ -49,12 +49,13 @@ const Calendar = () => {
   }, [favorites, month]);
 
   const handleClick = (e) => {
-    // console.log(e.target.className.baseVal);
+    console.log(e.target.className.baseVal);
     e.target.className.baseVal.includes("left")
       ? setMonth(month - 1)
       : setMonth(month + 1);
-    // console.log(month);
-    setDate(new Date(YEAR, month, DAY));
+    console.log(month);
+    setDate(new Date(YEAR, month - 1, DAY));
+    console.log(date);
   };
 
   const getVolumeForDay = (day, month) => {
@@ -74,17 +75,19 @@ const Calendar = () => {
     return day < 8 ? (
       <div key={`Day ${day}`} className="day">
         {volume.length !== 0 ? (
-          <SeriesCard
-            key={volume[0]._id}
-            name={volume[0].title}
-            image={volume[0].cover}
-            id={volume[0].series}
-          />
+          volume.map((x) => (
+            <SeriesCard
+              key={x._id}
+              name={x.title}
+              image={x.cover}
+              id={x.series}
+              size="calendar-s"
+            />
+          ))
         ) : (
-          <div className="empty"></div>
+          <article className="empty"></article>
         )}
-
-        {day}
+        <span className="number">{day}</span>
       </div>
     ) : null;
   });
@@ -98,16 +101,19 @@ const Calendar = () => {
     return day >= 8 && day < 15 ? (
       <div key={`Day ${day}`} className="day">
         {volume.length !== 0 ? (
-          <SeriesCard
-            key={volume[0]._id}
-            name={volume[0].title}
-            image={volume[0].cover}
-            id={volume[0].series}
-          />
+          volume.map((x) => (
+            <SeriesCard
+              key={x._id}
+              name={x.title}
+              image={x.cover}
+              id={x.series}
+              size="calendar-s"
+            />
+          ))
         ) : (
-          <div className="empty"></div>
+          <article className="empty"></article>
         )}
-        {day}
+        <span className="number">{day}</span>
       </div>
     ) : null;
   });
@@ -120,16 +126,19 @@ const Calendar = () => {
     return day >= 15 && day < 22 ? (
       <div key={`Day ${day}`} className="day">
         {volume.length !== 0 ? (
-          <SeriesCard
-            key={volume[0]._id}
-            name={volume[0].title}
-            image={volume[0].cover}
-            id={volume[0].series}
-          />
+          volume.map((x) => (
+            <SeriesCard
+              key={x._id}
+              name={x.title}
+              image={x.cover}
+              id={x.series}
+              size="calendar-s"
+            />
+          ))
         ) : (
-          <div className="empty"></div>
+          <article className="empty"></article>
         )}
-        {day}
+        <span className="number">{day}</span>
       </div>
     ) : null;
   });
@@ -142,16 +151,19 @@ const Calendar = () => {
     return day >= 22 && day < 29 ? (
       <div key={`Day ${day}`} className="day">
         {volume.length !== 0 ? (
-          <SeriesCard
-            key={volume[0]._id}
-            name={volume[0].title}
-            image={volume[0].cover}
-            id={volume[0].series}
-          />
+          volume.map((x) => (
+            <SeriesCard
+              key={x._id}
+              name={x.title}
+              image={x.cover}
+              id={x.series}
+              size="calendar-s"
+            />
+          ))
         ) : (
-          <div className="empty"></div>
+          <article className="empty"></article>
         )}
-        {day}
+        <span className="number">{day}</span>
       </div>
     ) : null;
   });
@@ -164,16 +176,19 @@ const Calendar = () => {
     return day >= 29 ? (
       <div key={`Day ${day}`} className="day">
         {volume.length !== 0 ? (
-          <SeriesCard
-            key={volume[0]._id}
-            name={volume[0].title}
-            image={volume[0].cover}
-            id={volume[0].series}
-          />
+          volume.map((x) => (
+            <SeriesCard
+              key={x._id}
+              name={x.title}
+              image={x.cover}
+              id={x.series}
+              size="calendar-s"
+            />
+          ))
         ) : (
-          <div className="empty"></div>
+          <article className="empty"></article>
         )}
-        <span className={day}>{day}</span>
+        <span className="number">{day}</span>
       </div>
     ) : null;
   });

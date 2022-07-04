@@ -5,10 +5,10 @@ import "./SeriesCard.css";
 import { AuthContext } from "../context/auth.context";
 import { Link } from "react-router-dom";
 
-const SeriesCard = ({ name, image, id }) => {
+const SeriesCard = ({ name, image, id, size }) => {
   const { isLoggedIn } = useContext(AuthContext);
   return (
-    <div className="card-container">
+    <article className={"card-container " + size}>
       <Link to={`/series/${id}`} className="series-link">
         <article className="series-card">
           {/* <pre>{JSON.stringify({ name, image }, null, 2)}</pre> */}
@@ -19,7 +19,7 @@ const SeriesCard = ({ name, image, id }) => {
         </article>
       </Link>
       {isLoggedIn && <FavoriteButton name={name} seriesId={id} />}
-    </div>
+    </article>
   );
 };
 
