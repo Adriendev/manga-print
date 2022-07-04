@@ -1,20 +1,51 @@
-.userProfile {
+.user-profile-container {
+  border: solid 2px black;
   display: flex;
-  margin: 5rem;
-  padding-left: 8rem;
+  flex-direction: row;
+  justify-content: flex-start;
+  /* align-items: center; */
+  width: 35vw;
+  margin: 0 auto;
+  padding: 2rem;
+  margin-top: 3rem;
+  background-color: #ffc300;
+  box-shadow: 7px 5px 5px black;
+  margin-bottom: 3rem;
 }
 
-.userProfile img {
+.user-profile-container img {
   border-radius: 50%;
   width: 25%;
+  box-shadow: 6px 3px 3px black;
+  border: 2px solid black;
 }
 
 .userInfo {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: baseline;
   padding-left: 6rem;
 }
 
 h2 {
   text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-weight: 800;
+}
+
+.user-button {
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.6rem;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+}
+
+.user-button:hover {
+  background-color: #ffc300;
+  color: black;
+  box-shadow: 3px 3px 1px black;
 }

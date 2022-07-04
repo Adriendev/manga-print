@@ -5,6 +5,7 @@ import { useState } from "react";
 
 const SeriesList = ({ seriesInfo, seriesCover }) => {
   const [search, setSearch] = useState("");
+  const [checked, setChecked] = useState([]);
 
   let allSeries = [];
 
@@ -24,10 +25,29 @@ const SeriesList = ({ seriesInfo, seriesCover }) => {
 
   console.log("allTest: ", allSeries);
 
-  //   const [display, setDisplay] = useState(allSeries);
+  const [display, setDisplay] = useState(allSeries);
 
   const seriesToDisplay = allSeries.filter((series) => {
     return series.name.toLowerCase().includes(search.toLowerCase());
+  });
+
+  const handleCheck = (e) => {
+    let updatedList = [...checked];
+    if (e.target.checked) {
+      updatedList = [...checked, e.target.value];
+    } else {
+      updatedList.splice(checked.indexOf(e.targetValue));
+    }
+    setChecked(updatedList);
+  };
+
+  const checkList = seriesInfo.map((elem) => {
+    return (
+      <div>
+        <input value={elem.genre} type="checkbox" onChange={handleCheck} />
+        <span>{elem.genre}</span>
+      </div>
+    );
   });
 
   return (
@@ -36,9 +56,10 @@ const SeriesList = ({ seriesInfo, seriesCover }) => {
       <div className="search-bar">
         <SearchBar search={search} setSearch={setSearch} />
       </div>
+      <div className="checkList">{checkList}</div>
       {seriesToDisplay.map((elem) => {
         return (
-          <li>
+          <li key={elem._id}>
             <SeriesCard
               key={elem._id}
               name={elem.name}

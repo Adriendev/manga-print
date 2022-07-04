@@ -71,6 +71,7 @@ const AuthContextWrapper = ({ children }) => {
         setIsLoading,
         user,
         storeToken,
+        removeToken,
         authenticateUser,
         logOutUser,
         getToken,

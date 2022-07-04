@@ -31,7 +31,7 @@ const UserPage = () => {
     axios(config).then((response) => {
       setIsLoading(true);
       setUserInfo(response.data);
-      console.log(setUserInfo);
+      // console.log(setUserInfo);
       setIsLoading(false);
     });
   }, [isLoggedIn, user]);
