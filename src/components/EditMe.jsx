@@ -12,7 +12,7 @@ const EditMe = ({ editProfile, setEditProfile }) => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
-  const { getToken } = useContext(AuthContext);
+  const { getToken, authenticateUser } = useContext(AuthContext);
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
@@ -38,7 +38,6 @@ const EditMe = ({ editProfile, setEditProfile }) => {
       console.log(response.data);
     });
   };
-
   return (
     <div>
       EditMe
