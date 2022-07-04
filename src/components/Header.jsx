@@ -1,11 +1,16 @@
 import React from "react";
-import Navbar from "./Navbar";
+import { Link } from "react-router-dom";
+
 import "./Header.css";
+
+import Navbar from "./Navbar";
 
 const Header = () => {
   return (
     <header>
-      <h1>MANGAPRINT</h1>
+      <Link to="/">
+        <h1>MANGAPRINT</h1>
+      </Link>
       <Navbar />
     </header>
   );

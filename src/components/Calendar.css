@@ -1,0 +1,12 @@
+.calendar {
+  display: flex;
+  flex-direction: column;
+}
+
+.table {
+  display: inherit;
+}
+
+.display {
+  display: flex;
+}
