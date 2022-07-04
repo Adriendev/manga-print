@@ -40,3 +40,7 @@ a {
   position: relative;
   display: flex;
 }
+
+picture {
+  width: fit-content;
+}

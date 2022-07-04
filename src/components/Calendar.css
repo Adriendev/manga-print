@@ -5,14 +5,20 @@
 
   align-items: center;
 }
-
+.calendar h3 {
+  padding: 1rem;
+  font-size: 3.5rem;
+  letter-spacing: 0.2rem;
+}
 .display {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.day {
-  border: 1px solid black;
+.day .series-card {
+  /* border: 1px solid black; */
+  background-color: #ffc300;
 }
 
 .days {
@@ -34,4 +40,37 @@
 .empty {
   width: 13rem;
   height: 18rem;
+}
+
+/* .calendar-s {
+  width: fit-content;
+  height: fit-content;
+}
+
+.calendar-s > * > * > * :not(.fa-star),
+.calendar-s > h4 {
+  width: 5rem;
+  height: auto;
+}
+
+.calendar-s > .series-card {
+  width: fit-content;
+}
+
+.calendar-s > .fa-star {
+  font-size: 1rem;
+} */
+
+.number {
+  font-family: Helvetica;
+  font-size: 2.5rem;
+  font-weight: 900;
+  opacity: calc(50%);
+  z-index: 1;
+  color: var(--text-colour);
+}
+
+.calendar button {
+  background-color: transparent;
+  border: none;
 }
