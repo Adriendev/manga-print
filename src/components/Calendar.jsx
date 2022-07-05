@@ -1,15 +1,16 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight } from "./Icon";
-import { DATE, MONTH, YEAR, DAY } from "../utils/constants";
+
 import "./Calendar.css";
 import SeriesCard from "./SeriesCard";
-import { API_URL } from "../utils/constants";
+import { API_URL, getDate } from "../utils/constants";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { FavoritesContext } from "../context/favorites.context";
 
 const Calendar = () => {
   //   console.log(daysInMonth);
+  const { DAY, DATE, YEAR, MONTH } = getDate();
   const options = { month: "long" };
   const [days, setDays] = useState([]);
   const [month, setMonth] = useState(MONTH);
@@ -48,16 +49,18 @@ const Calendar = () => {
     getLatestSeries();
   }, [favorites, month]);
 
+  useEffect(() => {
+    setDate(new Date(YEAR, month, DAY));
+  }, [month]);
+
   const handleClick = (e) => {
-    console.log(e.target.className.baseVal);
-    e.target.className.baseVal.includes("left")
+    console.log(e.target.className);
+
+    e.target.className.includes("left")
       ? setMonth(month - 1)
       : setMonth(month + 1);
-    console.log(month);
-    setDate(new Date(YEAR, month - 1, DAY));
-    console.log(date);
   };
-
+  console.log(month);
   const getVolumeForDay = (day, month) => {
     const foundRel = releases.filter((x) =>
       x.releaseDate.includes(`0${month + 1}-0${day}`)
