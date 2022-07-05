@@ -1,0 +1,21 @@
+.review-info {
+    display: flex;
+    width: 20vw;
+    justify-content: space-between;
+}
+
+.user-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-profile-pic {
+    border-radius: 50%;
+    height: 3rem;
+}
+
+.rating {
+    color: #ffc300;
+}
+

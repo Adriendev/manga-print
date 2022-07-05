@@ -39,7 +39,7 @@ const ReviewsContextWrapper = ({ children }) => {
 
     console.log("yes, doing getReviews", response);
 
-    setReviewss(response.data.reviews);
+    setReviews(response.data.reviews);
     setIsLoading(false);
   };
 

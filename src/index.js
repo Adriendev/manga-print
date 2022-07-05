@@ -8,6 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthContextWrapper } from "./context/auth.context";
 import { SettingsContextWrapper } from "./context/settings.context";
 import { FavoritesContextWrapper } from "./context/favorites.context";
+import { ReviewsContextWrapper } from "./context/reviews.context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,7 +17,9 @@ root.render(
     <AuthContextWrapper>
       <SettingsContextWrapper>
         <FavoritesContextWrapper>
-          <App />
+          <ReviewsContextWrapper>
+            <App />
+          </ReviewsContextWrapper>
         </FavoritesContextWrapper>
       </SettingsContextWrapper>
     </AuthContextWrapper>
