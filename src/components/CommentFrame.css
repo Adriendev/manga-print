@@ -1,0 +1,14 @@
+.review-info {
+    display: flex;
+}
+
+.user-profile-pic {
+    border-radius: 50%;
+    height: 5rem;
+}
+
+.rating {
+    justify-self: flex-end;
+    color: #ffc300;
+}
+
