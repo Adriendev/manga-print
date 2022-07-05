@@ -1,0 +1,17 @@
+.grid {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    /* align-items: center; */
+    margin: 0 auto;
+}
+
+.search-bar{
+    margin: 3rem;
+}
+
+.search-bar input {
+
+    width: 40vw;
+}
