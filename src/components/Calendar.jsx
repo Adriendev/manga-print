@@ -15,6 +15,7 @@ const Calendar = () => {
   const [days, setDays] = useState([]);
   const [month, setMonth] = useState(MONTH);
   const [date, setDate] = useState(DATE);
+  const [year, setYear] = useState(YEAR);
   const [releases, setReleases] = useState([]);
   const { getToken } = useContext(AuthContext);
   const { favorites } = useContext(FavoritesContext);
@@ -37,7 +38,7 @@ const Calendar = () => {
       const token = getToken();
       let config = {
         method: "get",
-        url: `${API_URL}/calendar/${YEAR}/${month + 1}`,
+        url: `${API_URL}/calendar/${year}/${month + 1}`,
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -50,15 +51,55 @@ const Calendar = () => {
   }, [favorites, month]);
 
   useEffect(() => {
-    setDate(new Date(YEAR, month, DAY));
+    setDate(new Date(year, month, DAY));
   }, [month]);
 
   const handleClick = (e) => {
-    console.log(e.target.className);
+    // console.log(e.target.className);
 
-    e.target.className.includes("left")
-      ? setMonth(month - 1)
-      : setMonth(month + 1);
+    switch (true) {
+      case e.target.className === "btn left":
+        console.log(month);
+        switch (true) {
+          case month > 0:
+            console.log(`month -1`);
+            setMonth(month - 1);
+            break;
+          case month <= 0:
+            setYear(year - 1);
+            setMonth(11);
+            break;
+          default:
+            break;
+        }
+
+        break;
+      case e.target.className === "btn right":
+        switch (true) {
+          case month < 11:
+            console.log(`month 1`);
+            setMonth(month + 1);
+            break;
+          case month >= 11:
+            setYear(year + 1);
+            setMonth(0);
+            break;
+          default:
+            break;
+        }
+        break;
+      default:
+        break;
+    }
+
+    // e.target.className.includes("left") ? month > 0
+    //   ? setMonth(month - 1)
+    //   : (setYear(year - 1),
+    //   setMonth(12));
+
+    // ? setMonth(month - 1)
+    // : setMonth(month + 1);
+    // e.target.className.includes("right") && setMonth(month + 1);
   };
   console.log(month);
   const getVolumeForDay = (day, month) => {
