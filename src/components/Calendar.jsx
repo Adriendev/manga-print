@@ -33,7 +33,7 @@ const Calendar = () => {
     getDaysArray();
   }, [daysInMonth]);
 
-  useMemo(() => {
+  useEffect(() => {
     const getLatestSeries = async () => {
       const token = getToken();
       let config = {
@@ -44,7 +44,9 @@ const Calendar = () => {
         },
       };
       const { data } = await axios(config);
-      setReleases(data);
+      if (data) {
+        setReleases(data);
+      }
     };
 
     getLatestSeries();
@@ -52,7 +54,7 @@ const Calendar = () => {
 
   useEffect(() => {
     setDate(new Date(year, month, DAY));
-  }, [month]);
+  }, [month, year]);
 
   const handleClick = (e) => {
     // console.log(e.target.className);
@@ -77,10 +79,10 @@ const Calendar = () => {
       case e.target.className === "btn right":
         switch (true) {
           case month < 11:
-            console.log(`month 1`);
             setMonth(month + 1);
             break;
           case month >= 11:
+            console.log(year);
             setYear(year + 1);
             setMonth(0);
             break;
@@ -91,20 +93,17 @@ const Calendar = () => {
       default:
         break;
     }
-
-    // e.target.className.includes("left") ? month > 0
-    //   ? setMonth(month - 1)
-    //   : (setYear(year - 1),
-    //   setMonth(12));
-
-    // ? setMonth(month - 1)
-    // : setMonth(month + 1);
-    // e.target.className.includes("right") && setMonth(month + 1);
   };
-  console.log(month);
+
   const getVolumeForDay = (day, month) => {
+    const newMonth = month + 1;
+
     const foundRel = releases.filter((x) =>
-      x.releaseDate.includes(`0${month + 1}-0${day}`)
+      x.releaseDate.includes(
+        `${year}-${newMonth < 10 ? "0" + newMonth : "" + newMonth}-${
+          day < 10 ? "0" + day : "" + day
+        }`
+      )
     );
 
     return foundRel;
@@ -123,7 +122,11 @@ const Calendar = () => {
             <SeriesCard
               key={x._id}
               name={x.title}
-              image={x.cover}
+              image={
+                x.cover.includes("seven")
+                  ? "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg"
+                  : x.cover
+              }
               id={x.series}
               size="calendar-s"
             />
@@ -149,7 +152,11 @@ const Calendar = () => {
             <SeriesCard
               key={x._id}
               name={x.title}
-              image={x.cover}
+              image={
+                x.cover.includes("seven")
+                  ? "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg"
+                  : x.cover
+              }
               id={x.series}
               size="calendar-s"
             />
@@ -174,7 +181,11 @@ const Calendar = () => {
             <SeriesCard
               key={x._id}
               name={x.title}
-              image={x.cover}
+              image={
+                x.cover.includes("seven")
+                  ? "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg"
+                  : x.cover
+              }
               id={x.series}
               size="calendar-s"
             />
@@ -199,7 +210,11 @@ const Calendar = () => {
             <SeriesCard
               key={x._id}
               name={x.title}
-              image={x.cover}
+              image={
+                x.cover.includes("seven")
+                  ? "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg"
+                  : x.cover
+              }
               id={x.series}
               size="calendar-s"
             />
@@ -224,7 +239,11 @@ const Calendar = () => {
             <SeriesCard
               key={x._id}
               name={x.title}
-              image={x.cover}
+              image={
+                x.cover.includes("seven")
+                  ? "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg"
+                  : x.cover
+              }
               id={x.series}
               size="calendar-s"
             />
