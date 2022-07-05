@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import SeriesReviewsContainer from "../components/SeriesReviewsContainer";
 
 const SeriesDetailsPage = () => {
-  const seriesId = useParams();
+  const seriesId = useParams().id;
   return (
     <div>
       <h2>SeriesDetailsPage</h2>

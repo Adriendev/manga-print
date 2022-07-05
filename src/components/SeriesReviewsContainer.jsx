@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/auth.context";
+import { ReviewsContext } from "../context/reviews.context";
 import CommentFrame from "./CommentFrame";
 import AddReviewForm from "./AddReviewForm";
 import { API_URL } from "../utils/constants";
@@ -9,7 +10,8 @@ const baseURL = API_URL;
 
 const SeriesReviewsContainer = ({ seriesId }) => {
   const { isLoggedIn } = useContext(AuthContext);
-  const [reviews, setReviews] = useState([]);
+  const { reviews } = useContext(ReviewsContext);
+  const [seriesReviews, setSeriesReviews] = useState([]);
 
   const getSeriesReview = async () => {
     const response = await axios({
@@ -21,18 +23,19 @@ const SeriesReviewsContainer = ({ seriesId }) => {
 
     console.log("Getting series reviews...", response);
 
-    setReviews(response.data);
+    setSeriesReviews(response.data);
   };
 
   useEffect(() => {
     getSeriesReview();
-  }, []);
+  }, [reviews]);
 
   return (
     <div>
       {isLoggedIn && <AddReviewForm seriesId={seriesId} />}
       <ul>
         {reviews.map((review) => {
+          console.log(review);
           return (
             <CommentFrame
               key={review._id}

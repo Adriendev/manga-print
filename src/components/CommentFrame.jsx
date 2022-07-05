@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
 import "./CommentFrame.css";
+import DeleteReviewButton from "./DeleteReviewButton";
+import { AuthContext } from "../context/auth.context";
+import EditReviewButton from "./EditReviewButton";
 
 const CommentFrame = ({
   id,
@@ -12,8 +15,9 @@ const CommentFrame = ({
   username,
   userPicture,
 }) => {
+  const { user } = useContext(AuthContext);
   return (
-    <div>
+    <div className="review-frame">
       <div className="review-info">
         <Link to={`/user/${userId}`} className="user-link">
           <img
@@ -25,7 +29,13 @@ const CommentFrame = ({
         </Link>
         <Rating className="rating">{rating}</Rating>
       </div>
-      <p>{textContent}</p>
+      <p className="review-text">{textContent}</p>
+      {user === username || (
+        <div className="buttons-container">
+          <DeleteReviewButton id={id} />
+          <EditReviewButton />
+        </div>
+      )}
     </div>
   );
 };
