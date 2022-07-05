@@ -44,3 +44,7 @@ a {
 picture {
   width: fit-content;
 }
+
+.series-card img:hover {
+  opacity: 0.8;
+}

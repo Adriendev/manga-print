@@ -3,9 +3,11 @@ import React, { useEffect, useState } from "react";
 import "./HomePage.css";
 import Carrousel from "../components/Carrousel";
 import LoadingDisplay from "../components/LoadingDisplay";
-import { API_URL, YEAR, MONTH, DAY, DATE } from "../utils/constants";
+import { API_URL, getDate } from "../utils/constants";
 
 const HomePage = () => {
+  const { DAY, DATE, YEAR, MONTH } = getDate();
+
   const [isLoading, setIsLoading] = useState(true);
   const [latestSeries, setLatestSeries] = useState([]);
   const [discoverySeries, setDiscoverySeries] = useState([]);

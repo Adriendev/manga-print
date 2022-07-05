@@ -1,19 +1,21 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight } from "./Icon";
-import { DATE, MONTH, YEAR, DAY } from "../utils/constants";
+
 import "./Calendar.css";
 import SeriesCard from "./SeriesCard";
-import { API_URL } from "../utils/constants";
+import { API_URL, getDate } from "../utils/constants";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { FavoritesContext } from "../context/favorites.context";
 
 const Calendar = () => {
   //   console.log(daysInMonth);
+  const { DAY, DATE, YEAR, MONTH } = getDate();
   const options = { month: "long" };
   const [days, setDays] = useState([]);
   const [month, setMonth] = useState(MONTH);
   const [date, setDate] = useState(DATE);
+  const [year, setYear] = useState(YEAR);
   const [releases, setReleases] = useState([]);
   const { getToken } = useContext(AuthContext);
   const { favorites } = useContext(FavoritesContext);
@@ -36,7 +38,7 @@ const Calendar = () => {
       const token = getToken();
       let config = {
         method: "get",
-        url: `${API_URL}/calendar/${YEAR}/${month + 1}`,
+        url: `${API_URL}/calendar/${year}/${month + 1}`,
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -48,16 +50,58 @@ const Calendar = () => {
     getLatestSeries();
   }, [favorites, month]);
 
-  const handleClick = (e) => {
-    console.log(e.target.className.baseVal);
-    e.target.className.baseVal.includes("left")
-      ? setMonth(month - 1)
-      : setMonth(month + 1);
-    console.log(month);
-    setDate(new Date(YEAR, month - 1, DAY));
-    console.log(date);
-  };
+  useEffect(() => {
+    setDate(new Date(year, month, DAY));
+  }, [month]);
 
+  const handleClick = (e) => {
+    // console.log(e.target.className);
+
+    switch (true) {
+      case e.target.className === "btn left":
+        console.log(month);
+        switch (true) {
+          case month > 0:
+            console.log(`month -1`);
+            setMonth(month - 1);
+            break;
+          case month <= 0:
+            setYear(year - 1);
+            setMonth(11);
+            break;
+          default:
+            break;
+        }
+
+        break;
+      case e.target.className === "btn right":
+        switch (true) {
+          case month < 11:
+            console.log(`month 1`);
+            setMonth(month + 1);
+            break;
+          case month >= 11:
+            setYear(year + 1);
+            setMonth(0);
+            break;
+          default:
+            break;
+        }
+        break;
+      default:
+        break;
+    }
+
+    // e.target.className.includes("left") ? month > 0
+    //   ? setMonth(month - 1)
+    //   : (setYear(year - 1),
+    //   setMonth(12));
+
+    // ? setMonth(month - 1)
+    // : setMonth(month + 1);
+    // e.target.className.includes("right") && setMonth(month + 1);
+  };
+  console.log(month);
   const getVolumeForDay = (day, month) => {
     const foundRel = releases.filter((x) =>
       x.releaseDate.includes(`0${month + 1}-0${day}`)

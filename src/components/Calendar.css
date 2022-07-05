@@ -74,3 +74,8 @@
   background-color: transparent;
   border: none;
 }
+
+.fa-angle-right,
+.fa-angle-left {
+  pointer-events: none;
+}
