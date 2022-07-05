@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
+import "./CommentFrame.css";
 
 const CommentFrame = ({
   id,

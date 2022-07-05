@@ -19,7 +19,8 @@ const AddReviewForm = ({ seriesId }) => {
     e.preventDefault();
     const token = getToken();
     axios({
-      url: `${baseURL}/review`,
+      baseURL: baseURL,
+      url: "review",
       method: "post",
       data: {
         series: seriesId,
