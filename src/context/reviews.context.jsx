@@ -47,16 +47,11 @@ const ReviewsContextWrapper = ({ children }) => {
     getReviews();
   }, [isLoggedIn, user]);
 
-  const postReview = useCallback(() => {
-    const token = getToken();
-  });
-
   return (
     <ReviewsContext.Provider
       value={{
         reviews,
-        setReviews,
-        postReview,
+        getReviews,
       }}
     >
       {children}

@@ -1,3 +1,9 @@
+.review-frame {
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+}
+
 .review-info {
     display: flex;
     width: 20vw;
@@ -19,3 +25,11 @@
     color: #ffc300;
 }
 
+.review-text {
+    margin-left: 4rem;
+}
+
+.buttons-container {
+    display: flex;
+    align-self: flex-end;
+}

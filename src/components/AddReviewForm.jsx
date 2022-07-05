@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useState } from "react";
 import { AuthContext } from "../context/auth.context";
+import { ReviewsContext } from "../context/reviews.context";
 import { API_URL } from "../utils/constants";
 import axios from "axios";
 
@@ -11,6 +12,7 @@ const AddReviewForm = ({ seriesId }) => {
   const [textContent, setTextContent] = useState("");
 
   const { getToken } = useContext(AuthContext);
+  const { getReviews } = useContext(ReviewsContext);
 
   const handleRating = (e) => setRating(e.target.value);
   const handleTextContent = (e) => setTextContent(e.target.value);
@@ -32,6 +34,9 @@ const AddReviewForm = ({ seriesId }) => {
       },
     }).then((response) => {
       console.log(response.data);
+      getReviews();
+      setRating(0);
+      setTextContent("");
     });
   };
 
