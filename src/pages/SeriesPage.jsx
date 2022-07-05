@@ -8,13 +8,13 @@ import { AuthContext } from "../context/auth.context";
 import SeriesCard from "../components/SeriesCard";
 import SeriesList from "../components/SeriesList";
 
+import "./SeriesPage.css";
 
 const SeriesPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [allSeriesList, setAllSeriesList] = useState([]);
-  const [allSeriesListCovers, setAllSeriesListCovers] = useState([]);
   const [random, setRandom] = useState(1);
-
+  const [checked, setChecked] = useState([]);
 
   useEffect(() => {
     setRandom(Math.floor(Math.random() * 50) + 1);
@@ -23,22 +23,42 @@ const SeriesPage = () => {
       setIsLoading(true);
       let config = {
         method: "get",
-        url: `${API_URL}/mangaSeries/?limit=20&random=1`,
+        url: `${API_URL}/mangaSeries/?limit=25`,
       };
-      const allSeriesList = await axios(config);
+      const { data } = await axios(config);
       setIsLoading(false);
-      console.log(allSeriesList.data);
-      const allPromises = await Promise.all([allSeriesList]);
 
-      console.log(`promises`, allPromises);
-      console.log("allseriescover", allPromises[0].data.allPromises);
+      const series = data.mangaSeriesFilter.map((serie, i) => {
+        serie.cover = data.allPromises[i];
+        return serie;
+      });
 
-      setAllSeriesList(allPromises[0].data.mangaSeriesFilter);
-      setAllSeriesListCovers(allPromises[0].data.allPromises);
+      setAllSeriesList(series);
+
+      const checkbox = series.map((elem) => {
+        return elem.genres;
+      });
+      // console.log("checkbox", checkbox);
+      let allGenres = [];
+      for (let i = 0; i < checkbox.length; i++) {
+        for (let j = 0; j < checkbox[i].length; j++) {
+          // console.log(checkbox[i][j])
+          allGenres.push(checkbox[i][j]);
+        }
+      }
+      // console.log("allGenres: ", allGenres);
+      const genresWithoutDuplicate = [...new Set(allGenres)];
+      const checkboxes = genresWithoutDuplicate.map((elem) => {
+        return { checked: false, name: elem };
+      });
+      setChecked(checkboxes);
+      // console.log('setAllSeriesList: ',setAllSeriesList)
+      // setAllSeriesListCovers(allPromises[0].data.allPromises);
     };
     getAllSeries();
   }, []);
 
+  console.log("checkboxes", checked);
   if (isLoading) {
     return (
       <main id="home">
@@ -46,27 +66,17 @@ const SeriesPage = () => {
       </main>
     );
   }
-  const test = allSeriesList.map((elem) => {
-    return elem._id, elem.name;
-  });
-  console.log(`this is a test:`, test);
-
-  const coverTest = allSeriesListCovers.map((elem) => {
-    return elem;
-  });
-
-  console.log("tis is a cover test", coverTest);
 
   return (
     <div>
       <h1>Series Page</h1>
 
-      <ul className="grid">
-        <SeriesList
-          seriesInfo={allSeriesList}
-          seriesCover={allSeriesListCovers}
-        />
-      </ul>
+      <SeriesList
+        seriesInfo={allSeriesList}
+        handleSeries={setAllSeriesList}
+        genres={checked}
+        setGenres={setChecked}
+      />
     </div>
   );
 };
