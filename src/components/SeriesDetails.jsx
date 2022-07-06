@@ -1,7 +1,8 @@
 import React from "react";
+import Rating from "./Rating";
 import "./SeriesDetails.css";
 
-const SeriesDetails = ({ series, volumes }) => {
+const SeriesDetails = ({ series, volumes, seriesRating }) => {
   return (
     <article className="series-details-card">
       <picture className="img-frame">
@@ -19,6 +20,14 @@ const SeriesDetails = ({ series, volumes }) => {
         <h4 className="authors">By {series.authors}</h4>
         <p className="synopsis">{series.synopsis}</p>
         <span className="genres">Genres: {series.genres}</span>
+        {seriesRating ? (
+          <span>
+            {`Rating: ${Math.round(seriesRating * 10) / 10}/5`}
+            <Rating>{seriesRating}</Rating>
+          </span>
+        ) : (
+          <></>
+        )}
       </div>
     </article>
   );

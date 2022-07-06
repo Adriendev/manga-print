@@ -1,10 +1,10 @@
 import * as React from "react";
-import TextField from "@mui/material/TextField";
-import Stack from "@mui/material/Stack";
-import Autocomplete from "@mui/material/Autocomplete";
+// import TextField from "@mui/material/TextField";
+// import Stack from "@mui/material/Stack";
+// import Autocomplete from "@mui/material/Autocomplete";
 
 const SearchBar = ({ search, setSearch, seriesInfo }) => {
-  console.log('seriesInfo :', seriesInfo);
+  console.log("seriesInfo :", seriesInfo);
   return (
     <div>
       {/* <Stack spacing={2} sx={{ width: 300 }}>
