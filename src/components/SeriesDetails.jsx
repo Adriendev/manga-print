@@ -1,8 +1,14 @@
-import React from "react";
 import Rating from "./Rating";
+import React, { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
+import { FavoritesContext } from "../context/favorites.context";
+import FavoriteButton from "./FavoriteButton";
 import "./SeriesDetails.css";
 
-const SeriesDetails = ({ series, volumes, seriesRating }) => {
+const SeriesDetails = ({ series, volumes, seriesRating}) => {
+  const { isLoggedIn } = useContext(AuthContext);
+  const { favorites } = useContext(FavoritesContext);
+
   return (
     <article className="series-details-card">
       <picture className="img-frame">
@@ -17,16 +23,30 @@ const SeriesDetails = ({ series, volumes, seriesRating }) => {
       </picture>
       <div className="main-info">
         <h2 className="title">{series.name}</h2>
-        <h4 className="authors">By {series.authors}</h4>
+        <div className="authors">
+          {series.authors.map((author) => (
+            <h4>{author} </h4>
+          ))}
+        </div>
+        {/* <h4 className="authors">By {series.authors}</h4> */}
+
+        <hr className="bar"></hr>
         <p className="synopsis">{series.synopsis}</p>
-        <span className="genres">Genres: {series.genres}</span>
+        <div className="genres">
+          Genres:
+          {series.genres.map((genre) => (
+            <span>{genre}</span>
+          ))}
+        </div>
         {seriesRating ? (
           <span>
             {`Rating: ${Math.round(seriesRating * 10) / 10}/5`}
             <Rating>{seriesRating}</Rating>
           </span>
         ) : (
-          <></>
+          <></>)}
+        {isLoggedIn && (
+          <FavoriteButton name={series.name} seriesId={series._id} />
         )}
       </div>
     </article>
