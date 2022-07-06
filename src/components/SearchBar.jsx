@@ -1,7 +1,4 @@
 import * as React from "react";
-// import TextField from "@mui/material/TextField";
-// import Stack from "@mui/material/Stack";
-// import Autocomplete from "@mui/material/Autocomplete";
 
 const SearchBar = ({ search, setSearch, seriesInfo }) => {
   console.log("seriesInfo :", seriesInfo);

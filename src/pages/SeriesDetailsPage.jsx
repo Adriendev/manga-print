@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
+import "./SeriesDetailsPage.css";
+import { API_URL } from "../utils/constants";
+
 import LoadingDisplay from "../components/LoadingDisplay";
 import SeriesDetails from "../components/SeriesDetails";
 import SeriesReviewsContainer from "../components/SeriesReviewsContainer";
-import { API_URL } from "../utils/constants";
 
 const SeriesDetailsPage = () => {
   const seriesId = useParams().id;
@@ -42,11 +45,15 @@ const SeriesDetailsPage = () => {
           seriesRating={seriesRating}
         />
       )}
+      <section className="reviews-section">
+        <h3>REVIEWS</h3>
+        <hr></hr>
 
-      <SeriesReviewsContainer
-        seriesId={seriesId}
-        setSeriesRating={setSeriesRating}
-      />
+        <SeriesReviewsContainer
+          seriesId={seriesId}
+          setSeriesRating={setSeriesRating}
+        />
+      </section>
     </main>
   );
 };

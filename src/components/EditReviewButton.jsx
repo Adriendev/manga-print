@@ -27,7 +27,7 @@ const EditReviewButton = ({ id }) => {
   };
   return (
     <div>
-      <button onClick={handleClick}>
+      <button className="btn" onClick={handleClick}>
         <PenToSquare />
       </button>
     </div>

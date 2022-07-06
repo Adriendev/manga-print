@@ -1,6 +1,6 @@
 .series-details-card {
   display: flex;
-  border: 0.3rem solid black;
+  border: 0.3rem solid var(--text-colour);
   padding: 1rem;
   justify-content: space-between;
   width: 60vw;
@@ -14,7 +14,7 @@
   padding: 2rem;
   width: fit-content;
   font-size: 1.5rem;
-  border: 0.2rem solid black;
+  border: 0.2rem solid var(--text-colour);
   margin-left: 1.5rem;
 }
 
@@ -43,7 +43,7 @@
   background-color: #ffc300;
   width: fit-content;
   padding: 1rem;
-  border: 0.2rem solid black;
+  border: 0.2rem solid var(--text-colour);
   display: flex;
   justify-content: center;
   align-items: center;
