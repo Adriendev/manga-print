@@ -1,0 +1,7 @@
+.add-review {
+    border: #ffc300 solid 3px;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 1rem;
+    width: 30vw;
+}

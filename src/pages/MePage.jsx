@@ -6,13 +6,15 @@ import { useContext, useEffect, useState } from "react";
 import UserProfile from "../components/MeProfile";
 import LoadingDisplay from "../components/LoadingDisplay";
 import { Navigate } from "react-router-dom";
+import UserReviewsContainer from "../components/UserReviewsContainer";
 
 const baseUrl = API_URL;
 
 const UserPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [userInfo, setUserInfo] = useState("");
-  const { getToken, isLoggedIn, user, authenticateUser } = useContext(AuthContext);
+  const { getToken, isLoggedIn, user, authenticateUser } =
+    useContext(AuthContext);
 
   useEffect(() => {
     const token = getToken();
@@ -24,8 +26,8 @@ const UserPage = () => {
       },
     };
 
-    if (!isLoggedIn){
-      return setIsLoading(true)
+    if (!isLoggedIn) {
+      return setIsLoading(true);
     }
 
     axios(config).then((response) => {
@@ -46,8 +48,11 @@ const UserPage = () => {
 
   return (
     <main>
-      <h1>Profile page:</h1>
-      <UserProfile userInfo={userInfo}  />
+      <UserProfile userInfo={userInfo} />
+      <hr />
+      <section id="rewiews-favorites">
+        <UserReviewsContainer />
+      </section>
     </main>
   );
 };

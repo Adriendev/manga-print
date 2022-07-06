@@ -9,7 +9,7 @@ const NsfwSwitch = () => {
   };
 
   return (
-    <div>
+    <div className="switch-container">
       <label className="nsfwSwitch">
         <input
           id="toggler"
@@ -17,7 +17,7 @@ const NsfwSwitch = () => {
           onChange={handleChangeNsfw}
           checked={isNsfw}
         />
-        <span className="nsfwSlider round"></span>
+        <div className="nsfwSlider round"></div>
       </label>
     </div>
   );
