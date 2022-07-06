@@ -26,8 +26,6 @@ const ReviewsContextWrapper = ({ children }) => {
       return;
     }
 
-    setIsLoading(true);
-
     const response = await axios({
       method: "get",
       baseURL: baseURL,
@@ -45,7 +43,6 @@ const ReviewsContextWrapper = ({ children }) => {
     console.log("yes, doing getReviews", reviews);
 
     setReviews(reviews);
-    setIsLoading(false);
   };
 
   useEffect(() => {
