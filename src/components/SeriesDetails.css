@@ -31,13 +31,7 @@
   padding-bottom: 1rem;
 }
 
-#series-details {
-  padding: 5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
+
 
 .img-frame {
   background-color: #ffc300;
