@@ -1,11 +1,7 @@
-import React, { useState, useContext, useEffect } from "react";
-import { ReviewsContext } from "../context/reviews.context";
 import CommentFrame from "./CommentFrame";
 import "./UserReviewsContainer.css";
 
-const UserReviewsContainer = () => {
-  const { reviews } = useContext(ReviewsContext);
-
+const UserReviewsContainer = ({ reviews }) => {
   return (
     <div>
       <h2>Your reviews</h2>
