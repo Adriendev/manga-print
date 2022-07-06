@@ -39,7 +39,7 @@ const FavoritesContextWrapper = ({ children }) => {
       return favorite;
     });
 
-    console.log("yes, doing getFavorites", response);
+    console.log("yes, doing getFavorites", newFavs);
 
     setFavorites(newFavs);
   };

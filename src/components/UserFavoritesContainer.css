@@ -1,0 +1,4 @@
+.user-favorites-section {
+    display: flex;
+    flex-wrap: wrap;
+}
