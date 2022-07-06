@@ -1,0 +1,13 @@
+.reviews-section {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+}
+
+#series-details {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
