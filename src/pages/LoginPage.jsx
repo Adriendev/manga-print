@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { API_URL } from "../utils/constants";
 
+import "./LoginPage.css";
+
 const baseURL = API_URL;
 console.log(API_URL);
 
@@ -43,10 +45,9 @@ function LoginPage(props) {
   };
 
   return (
-    <div className="LoginPage">
-      <h1>Login</h1>
-
-      <form onSubmit={handleLoginSubmit}>
+    <div className="login">
+      <form className="login-form" onSubmit={handleLoginSubmit}>
+        <h1>Login</h1>
         <label>Username:</label>
         <input
           type="text"
@@ -63,7 +64,7 @@ function LoginPage(props) {
           onChange={handlePassword}
         />
 
-        <button type="submit">Login</button>
+        <button className="login-button" type="submit">Login</button>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 

@@ -1,6 +1,7 @@
 import { SearchIcon } from "./Icon";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 import { AuthContext } from "../context/auth.context";
 import { SettingsContext } from "../context/settings.context";
@@ -19,11 +20,12 @@ const Navbar = () => {
 
   return (
     <nav>
-      <NsfwSwitch />
-      <LangButton />
-      <ThemeSwitch />
+      <Link to="/series">All Manga Series</Link>
       {/* <Link to="/">{i18n[lang].home}</Link> */}
-      <SearchIcon />
+      <div className="lang-button">       <LangButton /></div>
+
+      <ThemeSwitch />
+
       {isLoggedIn ? (
         <>
           <span>{user}</span>
