@@ -12,6 +12,13 @@ const SeriesCard = ({ name, image, id, size }) => {
       <Link to={`/series/${id}`} className="series-link">
         <article className="series-card">
           {/* <pre>{JSON.stringify({ name, image }, null, 2)}</pre> */}
+          {/* {image.includes("seven") ? (
+            <iframe is="x-frame-bypass" src={image} title={image}></iframe>
+          ) : (
+            <picture>
+              <img src={image} alt="cover" />
+            </picture>
+          )} */}
           <picture>
             <img src={image} alt="cover" />
           </picture>

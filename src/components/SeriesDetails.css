@@ -1,0 +1,50 @@
+.series-details-card {
+  display: flex;
+  border: 0.3rem solid black;
+  padding: 1rem;
+  justify-content: space-between;
+  width: 60vw;
+}
+
+.main-info {
+  display: flex;
+  flex-direction: column;
+
+  padding: 2rem;
+  width: fit-content;
+  font-size: 1.5rem;
+  border: 0.2rem solid black;
+  margin-left: 1.5rem;
+}
+
+.main-info > * {
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 3rem;
+}
+
+.synopsis {
+  font-size: 1.3rem;
+}
+
+#series-details {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.img-frame {
+  background-color: #ffc300;
+  width: fit-content;
+  padding: 1rem;
+  border: 0.2rem solid black;
+}
+
+.img-frame > img {
+  width: 100%;
+  border: 0.1rem solid black;
+}
