@@ -4,7 +4,6 @@ import "./UserReviewsContainer.css";
 const UserReviewsContainer = ({ reviews }) => {
   return (
     <div>
-      <h2>Your reviews</h2>
       <ul className="user-reviews-section">
         {reviews.map((review) => {
           console.log(review);

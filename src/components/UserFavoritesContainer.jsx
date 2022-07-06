@@ -5,11 +5,16 @@ import "./UserFavoritesContainer.css";
 const UserFavoritesContainer = ({ favorites }) => {
   return (
     <div>
-      <h2>Your favorites</h2>
-      <ul className="user-Favorites-section">
+      <ul className="user-favorites-section">
         {favorites.map((favorite) => {
-          console.log(favorite);
-          return <SeriesCard />;
+          return (
+            <SeriesCard
+              key={favorite.series._id}
+              name={favorite.series.name}
+              image={favorite.seriesPicture}
+              id={favorite.series._id}
+            />
+          );
         })}
       </ul>
     </div>

@@ -7,7 +7,7 @@ const FavoriteButton = ({ name, seriesId }) => {
   const { favorites, toggleFavorite } = useContext(FavoritesContext);
   const [favoriteId, setFavoriteId] = useState(null);
   const [isChecked, setIsChecked] = useState(
-    favorites.some((elem) => elem.series === seriesId)
+    favorites.some((elem) => elem.series._id === seriesId)
   );
 
   const handleChangeFavorite = (e) => {
@@ -16,7 +16,7 @@ const FavoriteButton = ({ name, seriesId }) => {
   };
 
   useEffect(() => {
-    const fav = favorites.find((elem) => elem.series === seriesId);
+    const fav = favorites.find((elem) => elem.series._id === seriesId);
     if (fav) {
       setFavoriteId(fav._id);
     }
@@ -30,7 +30,9 @@ const FavoriteButton = ({ name, seriesId }) => {
           id="toggler"
           type="checkbox"
           onChange={handleChangeFavorite}
-          checked={favorites.some((elem) => elem.series === seriesId)}
+          checked={favorites.some((elem) => {
+            return elem.series._id === seriesId;
+          })}
           className="checkbox"
         />
         <span className="checkmark"></span>
