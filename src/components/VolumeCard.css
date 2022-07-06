@@ -1,0 +1,53 @@
+.volume-card {
+  display: flex;
+  padding: 1rem;
+}
+
+.volume-card:hover {
+  opacity: calc(80%);
+}
+
+.volume-card {
+  width: fit-content;
+}
+.volume-card > picture > img {
+  width: 10rem;
+}
+
+.modal-card > picture {
+  width: fit-content;
+}
+
+.modal-card > picture > img {
+  width: 30rem;
+}
+
+.modal-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  /* background-color: var(--text-colour); */
+}
+
+.modal {
+  background-color: var(--background-colour);
+}
+.volume-info {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.fa-xmark {
+  font-size: 2.5rem;
+  color: var(--text-colour);
+}
+.fa-xmark:hover {
+  color: #ffc300;
+}
+
+.btn-close {
+  background-color: transparent;
+  border: none;
+}
