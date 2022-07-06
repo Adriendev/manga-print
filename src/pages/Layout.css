@@ -1,0 +1,7 @@
+.header {
+    z-index: 1;
+}
+
+.outlet {
+    z-index: 0;
+}

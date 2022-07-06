@@ -4,7 +4,7 @@
   flex-direction: row;
   justify-content: flex-start;
   /* align-items: center; */
-  width: 35vw;
+  width: 37vw;
   margin: 0 auto;
   padding: 2rem;
   margin-top: 3rem;
@@ -15,7 +15,8 @@
 
 .user-profile-container img {
   border-radius: 50%;
-  width: 25%;
+  width: 10rem;
+  height: 10rem;
   box-shadow: 6px 3px 3px black;
   border: 2px solid black;
 }
@@ -26,6 +27,7 @@
   justify-content: flex-start;
   align-items: baseline;
   padding-left: 6rem;
+  width: 25vw;
 }
 
 h2 {
@@ -48,4 +50,12 @@ h2 {
   background-color: #ffc300;
   color: black;
   box-shadow: 3px 3px 1px black;
+}
+
+.nsfw-button {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  gap: 1rem;
+  margin-top: 1rem;
 }

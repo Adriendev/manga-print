@@ -26,21 +26,23 @@ const ReviewsContextWrapper = ({ children }) => {
       return;
     }
 
-    setIsLoading(true);
-
     const response = await axios({
       method: "get",
       baseURL: baseURL,
-      url: `/user/me`,
+      url: `/review/user`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
 
-    console.log("yes, doing getReviews", response);
+    const reviews = response.data.foundReviews.map((review, i) => {
+      review.seriesPicture = response.data.allPromises[i];
+      return review;
+    });
 
-    setReviews(response.data.reviews);
-    setIsLoading(false);
+    console.log("yes, doing getReviews", reviews);
+
+    setReviews(reviews);
   };
 
   useEffect(() => {

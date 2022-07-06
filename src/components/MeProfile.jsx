@@ -2,6 +2,7 @@ import React from "react";
 import "./MeProfile.css";
 import EditMe from "./EditMe";
 import { useState } from "react";
+import NsfwSwitch from "./NsfwSwitch";
 
 const UserProfile = ({ userInfo }) => {
   const [editProfile, setEditProfile] = useState(false);
@@ -30,6 +31,10 @@ const UserProfile = ({ userInfo }) => {
             >
               Edit Profile
             </button>
+            <div className="nsfw-button">
+              <NsfwSwitch />
+              <p>I want to see NSFW content</p>
+            </div>
           </div>
         </article>
       )}

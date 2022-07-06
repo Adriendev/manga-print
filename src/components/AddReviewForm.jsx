@@ -4,6 +4,7 @@ import { AuthContext } from "../context/auth.context";
 import { ReviewsContext } from "../context/reviews.context";
 import { API_URL } from "../utils/constants";
 import axios from "axios";
+import "./AddReviewForm.css";
 
 const baseURL = API_URL;
 
@@ -41,8 +42,8 @@ const AddReviewForm = ({ seriesId }) => {
   };
 
   return (
-    <div>
-      AddReviewForm
+    <div className="add-review">
+      Post your own review !
       <form onSubmit={handlePostComment}>
         <label>Rating:</label>
         <input

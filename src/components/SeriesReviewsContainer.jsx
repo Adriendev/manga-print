@@ -5,6 +5,8 @@ import CommentFrame from "./CommentFrame";
 import AddReviewForm from "./AddReviewForm";
 import { API_URL } from "../utils/constants";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import "./SeriesReviewsContainer.css";
 
 const baseURL = API_URL;
 
@@ -14,11 +16,11 @@ const SeriesReviewsContainer = ({ seriesId }) => {
   const [seriesReviews, setSeriesReviews] = useState([]);
 
   const getSeriesReview = async () => {
+    console.log(seriesId);
     const response = await axios({
       method: "get",
       baseURL: baseURL,
-      url: `/review/series`,
-      data: { seriesId: seriesId },
+      url: `/mangaSeries/${seriesId}/reviews`,
     });
 
     console.log("Getting series reviews...", response);
@@ -32,9 +34,13 @@ const SeriesReviewsContainer = ({ seriesId }) => {
 
   return (
     <div>
-      {isLoggedIn && <AddReviewForm seriesId={seriesId} />}
-      <ul>
-        {reviews.map((review) => {
+      {isLoggedIn ? (
+        <AddReviewForm seriesId={seriesId} />
+      ) : (
+        <Link to="/login">Log in to post a review</Link>
+      )}
+      <ul className="reviews-section">
+        {seriesReviews.map((review) => {
           console.log(review);
           return (
             <CommentFrame
@@ -46,6 +52,7 @@ const SeriesReviewsContainer = ({ seriesId }) => {
               userId={review.user._id}
               username={review.user.username}
               userPicture={review.user.picture}
+              isSeriesPage={true}
             ></CommentFrame>
           );
         })}

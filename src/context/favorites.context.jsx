@@ -25,8 +25,6 @@ const FavoritesContextWrapper = ({ children }) => {
       return;
     }
 
-    setIsLoading(true);
-
     const response = await axios({
       method: "get",
       baseURL: baseURL,
@@ -39,7 +37,6 @@ const FavoritesContextWrapper = ({ children }) => {
     console.log("yes, doing getFavorites", response);
 
     setFavorites(response.data.favorites);
-    setIsLoading(false);
   };
 
   useEffect(() => {
