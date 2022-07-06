@@ -24,8 +24,11 @@ const HomePage = () => {
   }, [day]);
 
   useEffect(() => {
-    setRandom(Math.floor(Math.random() * 50) + 1);
+    const num = Math.floor(Math.random() * 50) + 1;
+    setRandom(num);
+  }, []);
 
+  useEffect(() => {
     const getCarrousel = async () => {
       setIsLoading(true);
       const latestSeries = await axios(
@@ -49,7 +52,7 @@ const HomePage = () => {
     };
 
     getCarrousel();
-  }, []);
+  }, [random]);
 
   if (isLoading) {
     return (
