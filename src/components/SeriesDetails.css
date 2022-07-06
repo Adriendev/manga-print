@@ -4,6 +4,7 @@
   padding: 1rem;
   justify-content: space-between;
   width: 60vw;
+  position: relative;
 }
 
 .main-info {
@@ -27,6 +28,7 @@
 
 .synopsis {
   font-size: 1.3rem;
+  padding-bottom: 1rem;
 }
 
 #series-details {
@@ -42,9 +44,28 @@
   width: fit-content;
   padding: 1rem;
   border: 0.2rem solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .img-frame > img {
   width: 100%;
   border: 0.1rem solid black;
+}
+
+.bar {
+  margin-bottom: 2rem;
+}
+
+.genres {
+  font-size: 1.1rem;
+}
+
+.genres > span {
+  padding-left: 0.5rem;
+}
+
+#series-details > .fa-star {
+  position: absolute;
 }
