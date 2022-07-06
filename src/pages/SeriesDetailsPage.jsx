@@ -32,8 +32,6 @@ const SeriesDetailsPage = () => {
 
   return (
     <main id="series-details">
-      <h2>SeriesDetailsPage</h2>
-
       {isLoading ? (
         <LoadingDisplay />
       ) : (
