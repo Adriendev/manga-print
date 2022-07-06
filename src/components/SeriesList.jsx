@@ -3,6 +3,7 @@ import SeriesCard from "./SeriesCard";
 import SearchBar from "../components/SearchBar";
 import { useState } from "react";
 import "./SeriesList.css";
+import GenreCheckboxes from "./GenreCheckboxes";
 
 const sanitiseSeries = (elem) => {
   let image = elem.cover;
@@ -20,33 +21,10 @@ const sanitiseSeries = (elem) => {
   };
 };
 
-const SeriesList = ({ seriesInfo, handleSeries, genres, setGenres }) => {
+const SeriesList = ({ seriesInfo, genres, setGenres }) => {
   const [search, setSearch] = useState("");
   const [seriesToDisplay, setSeriesToDisplay] = useState([]);
 
-  // console.log("no duplicates: ", genresWithoutDuplicate);
-
-  // const [checked, setChecked] = useState(
-  //   new Array(genresWithoutDuplicate.length).fill(false)
-  // );
-
-  const checkList = genres.map((elem, index) => {
-    return (
-      <li>
-        <input
-          type="checkbox"
-          id={index}
-          name={elem.name}
-          value={elem.name}
-          checked={elem.checked}
-          onChange={() => handleOnChange(index, elem)}
-        />
-        <span>{elem.name}</span>
-      </li>
-    );
-  });
-
-  // console.log("checklist", checkList);
   useEffect(() => {
     const allSeries = [...seriesInfo].map(sanitiseSeries);
 
@@ -79,10 +57,12 @@ const SeriesList = ({ seriesInfo, handleSeries, genres, setGenres }) => {
   return (
     <>
       <div className="search-bar">
-        <SearchBar search={search} setSearch={setSearch} />
+        <SearchBar search={search} setSearch={setSearch} seriesInfo={seriesInfo} />
       </div>
       <div className="checkList">
-        <ul className="genres">{checkList}</ul>
+        <ul className="genres">
+          <GenreCheckboxes genres={genres} handleOnChange={handleOnChange} />
+        </ul>
       </div>
       <ul className="grid">
         {seriesToDisplay.map((elem) => {
