@@ -11,6 +11,7 @@ const SeriesDetailsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [oneSeries, setOneSeries] = useState({});
   const [seriesVolumes, setSeriesVolumes] = useState([]);
+  const [seriesRating, setSeriesRating] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -35,10 +36,17 @@ const SeriesDetailsPage = () => {
       {isLoading ? (
         <LoadingDisplay />
       ) : (
-        <SeriesDetails series={oneSeries} volumes={seriesVolumes} />
+        <SeriesDetails
+          series={oneSeries}
+          volumes={seriesVolumes}
+          seriesRating={seriesRating}
+        />
       )}
 
-      <SeriesReviewsContainer seriesId={seriesId} />
+      <SeriesReviewsContainer
+        seriesId={seriesId}
+        setSeriesRating={setSeriesRating}
+      />
     </main>
   );
 };

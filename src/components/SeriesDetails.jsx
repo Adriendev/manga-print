@@ -1,10 +1,11 @@
+import Rating from "./Rating";
 import React, { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { FavoritesContext } from "../context/favorites.context";
 import FavoriteButton from "./FavoriteButton";
 import "./SeriesDetails.css";
 
-const SeriesDetails = ({ series, volumes }) => {
+const SeriesDetails = ({ series, volumes, seriesRating}) => {
   const { isLoggedIn } = useContext(AuthContext);
   const { favorites } = useContext(FavoritesContext);
 
@@ -37,6 +38,13 @@ const SeriesDetails = ({ series, volumes }) => {
             <span>{genre}</span>
           ))}
         </div>
+        {seriesRating ? (
+          <span>
+            {`Rating: ${Math.round(seriesRating * 10) / 10}/5`}
+            <Rating>{seriesRating}</Rating>
+          </span>
+        ) : (
+          <></>)}
         {isLoggedIn && (
           <FavoriteButton name={series.name} seriesId={series._id} />
         )}

@@ -34,9 +34,14 @@ const FavoritesContextWrapper = ({ children }) => {
       },
     });
 
+    const newFavs = response.data.favorites.map((favorite, i) => {
+      favorite.seriesPicture = response.data.favCovers[i];
+      return favorite;
+    });
+
     console.log("yes, doing getFavorites", response);
 
-    setFavorites(response.data.favorites);
+    setFavorites(newFavs);
   };
 
   useEffect(() => {

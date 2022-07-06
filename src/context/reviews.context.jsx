@@ -29,14 +29,14 @@ const ReviewsContextWrapper = ({ children }) => {
     const response = await axios({
       method: "get",
       baseURL: baseURL,
-      url: `/review/user`,
+      url: `/user/me`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
 
-    const reviews = response.data.foundReviews.map((review, i) => {
-      review.seriesPicture = response.data.allPromises[i];
+    const reviews = response.data.reviews.map((review, i) => {
+      review.seriesPicture = response.data.revCovers[i];
       return review;
     });
 

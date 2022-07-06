@@ -10,7 +10,7 @@ import "./SeriesReviewsContainer.css";
 
 const baseURL = API_URL;
 
-const SeriesReviewsContainer = ({ seriesId }) => {
+const SeriesReviewsContainer = ({ seriesId, setSeriesRating }) => {
   const { isLoggedIn } = useContext(AuthContext);
   const { reviews } = useContext(ReviewsContext);
   const [seriesReviews, setSeriesReviews] = useState([]);
@@ -23,8 +23,15 @@ const SeriesReviewsContainer = ({ seriesId }) => {
       url: `/mangaSeries/${seriesId}/reviews`,
     });
 
-    console.log("Getting series reviews...", response);
+    const newRating =
+      response.data.reduce((acc, value) => {
+        return acc + parseInt(value.rating);
+      }, 0) / response.data.length;
 
+    console.log("Getting series reviews...", response);
+    console.log("rating", newRating);
+
+    setSeriesRating(newRating);
     setSeriesReviews(response.data);
   };
 
@@ -41,7 +48,6 @@ const SeriesReviewsContainer = ({ seriesId }) => {
       )}
       <ul className="reviews-section">
         {seriesReviews.map((review) => {
-          console.log(review);
           return (
             <CommentFrame
               key={review._id}

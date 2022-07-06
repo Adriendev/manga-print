@@ -7,6 +7,7 @@ import UserProfile from "../components/MeProfile";
 import LoadingDisplay from "../components/LoadingDisplay";
 import { Navigate } from "react-router-dom";
 import UserReviewsContainer from "../components/UserReviewsContainer";
+import { ReviewsContext } from "../context/reviews.context";
 
 const baseUrl = API_URL;
 
@@ -15,6 +16,7 @@ const UserPage = () => {
   const [userInfo, setUserInfo] = useState("");
   const { getToken, isLoggedIn, user, authenticateUser } =
     useContext(AuthContext);
+  const { reviews } = useContext(ReviewsContext);
 
   useEffect(() => {
     const token = getToken();
@@ -51,7 +53,7 @@ const UserPage = () => {
       <UserProfile userInfo={userInfo} />
       <hr />
       <section id="rewiews-favorites">
-        <UserReviewsContainer />
+        <UserReviewsContainer reviews={reviews} />
       </section>
     </main>
   );
