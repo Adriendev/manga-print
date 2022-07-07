@@ -7,14 +7,32 @@ import { API_URL } from "../utils/constants";
 import SeriesList from "../components/SeriesList";
 
 import "./SeriesPage.css";
+import { useSearchParams } from "react-router-dom";
+
+const sanitiseSeries = (elem) => {
+  let image = elem.image;
+  // console.log(elem);
+  if (image?.includes("sevenseas")) {
+    image =
+      "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg";
+  }
+
+  return {
+    image: image,
+    name: elem.name,
+    id: elem._id,
+    genres: elem.genres,
+  };
+};
 
 const SeriesPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [allSeriesList, setAllSeriesList] = useState([]);
   const [checked, setChecked] = useState([]);
-  const [offset, setOffset] = useState(0);
   const [perPage] = useState(50);
   const [pageCount, setPageCount] = useState(1);
+
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const getGenresCheckboxes = async () => {
@@ -33,33 +51,45 @@ const SeriesPage = () => {
     getGenresCheckboxes();
   }, []);
 
-  const paginateSeries = async () => {
-    setIsLoading(true);
-    let config = {
-      method: "get",
-      url: `${API_URL}/mangaSeries/?limit=50&page=${offset + 1}`,
-    };
-    const { data } = await axios(config);
-    setIsLoading(false);
-
-    const series = data.mangaSeriesFilter.map((serie, i) => {
-      serie.cover = data.allPromises[i];
-      return serie;
-    });
-    setAllSeriesList(series);
-    setPageCount(Math.ceil(data.totalDocuments / perPage));
-  };
-
   useEffect(() => {
-    paginateSeries();
-  }, [offset]);
+    const params = Object.fromEntries(searchParams.entries());
+
+    async function getSeriesFromApi() {
+      const config = {
+        method: "get",
+        baseURL: API_URL,
+        url: `/mangaSeries/`,
+        params: {
+          ...params,
+          limit: 50
+        },
+      };
+
+      const { data } = await axios(config);
+
+      const series = await data.mangaSeriesFilter.map((serie, i) => {
+        serie.image = data.allPromises[i];
+        return serie;
+      });
+
+      // regroup manga volume #1 cover to manga series
+      const allSeries = await series.map(sanitiseSeries);
+
+      setAllSeriesList(allSeries);
+      setPageCount(Math.ceil(data.totalDocuments / perPage));
+      setIsLoading(false);
+    }
+    getSeriesFromApi();
+  }, [perPage, searchParams, setPageCount]);
 
   const handlePageClick = (e) => {
-    // console.log("clicked");
-    // console.log(e);
-    // console.log("selected: ", e.selected);
-    const selectedPage = e.selected;
-    setOffset(selectedPage);
+    console.log(e.selected);
+    const page = Number(e.selected) + 1;
+    console.log(page);
+
+    const params = Object.fromEntries(searchParams.entries());
+
+    setSearchParams({ ...params, page });
   };
 
   if (isLoading) {
@@ -77,6 +107,7 @@ const SeriesPage = () => {
         setGenres={setChecked}
         setPageCount={setPageCount}
         perPage={perPage}
+        handlePageClick={handlePageClick}
       />
       <ReactPaginate
         previousLabel={"prev"}
@@ -90,7 +121,10 @@ const SeriesPage = () => {
         containerClassName={"pagination"}
         subContainerClassName={"pages pagination"}
         activeClassName={"active"}
-        forcePage={offset}
+        forcePage={Number(searchParams.get("page")) - 1 || 0}
+        onClick={(...rest) => {
+          console.log(rest);
+        }}
       />
     </div>
   );

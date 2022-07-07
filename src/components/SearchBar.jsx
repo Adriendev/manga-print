@@ -1,11 +1,9 @@
 import * as React from "react";
-
-
 import LoadingDisplay from "../components/LoadingDisplay";
 import { API_URL } from "../utils/constants";
 import axios from "axios";
 import { useState } from "react";
-import { Navigate, useSearchParams } from "react-router-dom";
+import { createSearchParams, Navigate, useNavigate, useSearchParams } from "react-router-dom";
 import { SearchIcon } from "./Icon";
 
 import "./SearchBar.css";
@@ -32,34 +30,36 @@ const SearchBar = ({
   perPage,
   seriesInfo,
 }) => {
-  const [research, setResearch] = useState([]);
-  // const [searchParams, setSearchParams] = useSearchParams();
+  const [research, setResearch] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const navigate = useNavigate()
 
   const handleSearch = async (e) => {
     e.preventDefault();
+    navigate({
+      search: createSearchParams({
+        name: `${research}`
+      }).toString()
+    })
 
-    let config = {
-      method: "get",
-      url: `${API_URL}/mangaSeries/?name=${research}`,
-    };
+    const seriesName = seriesInfo.map((elem) => {
+      return elem.name
+    })
 
-    const { data } = await axios(config);
+    console.log('seriesName :', seriesName)
 
-    console.log(data);
+    const nameMatchesSearch = seriesName.name
+    .toLowerCase()
+    .includes(research.toLowerCase());
 
-    const series = data.mangaSeriesFilter.map((serie, i) => {
-      serie.image = data.allPromises[i];
-      return serie;
-    });
-    const allFiltered = series.map(sanitiseSeries);
-    console.log(allFiltered);
-    setSeriesToDisplay(allFiltered);
-    setPageCount(Math.ceil(data.totalDocuments / perPage));
+    console.log("SEARCH PARAMS", searchParams);
 
-    if (research === "") {
-      return setSeriesToDisplay(seriesInfo);
+    const params = Object.fromEntries(searchParams.entries());
+    // if names have changed, we should reset to page 1
+    setSearchParams({ ...params, name: nameMatchesSearch, page: 1 });
     }
-  };
+  
 
   
     return (
@@ -75,10 +75,9 @@ const SearchBar = ({
             />
             {/* <button className="search-button" type="submit">
 
-            <SearchIcon />
+            Search
           </button> */}
           </form>
-          {/* <button onClick={() => setSeriesToDisplay(seriesInfo)}>See all manga</button> */}
         </>
       </div>
     );

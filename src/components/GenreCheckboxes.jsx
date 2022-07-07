@@ -1,51 +1,14 @@
 import axios from "axios";
 import * as React from "react";
+import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
-import { API_URL } from "../utils/constants";
-
-const sanitiseSeries = (elem) => {
-  let image = elem.image;
-  image.includes("sevenseas")
-    ? (image =
-        "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg")
-    : (image = elem.image);
-
-  return {
-    image: image,
-    name: elem.name,
-    id: elem._id,
-    genres: elem.genres,
-  };
-};
 
 const GenreCheckboxes = ({
   genres,
-  setGenres,
   handleOnChange,
-  setSeriesToDisplay,
-  setPageCount,
-  perPage,
-  seriesInfo,
-  search,
 }) => {
-  console.log(genres);
-
-  // useEffect(() => {
-  //   const getGenresCheckboxes = async () => {
-  //     const { data } = await axios({
-  //       url: `/mangaSeries/genres`,
-  //       baseURL: API_URL,
-  //       method: "get",
-  //     });
-  //     console.log(data);
-  //     const checkboxes = data.genres.map((elem) => {
-  //       return { checked: false, name: elem };
-  //     });
-  //     setGenres(checkboxes);
-  //   };
-
-  //   getGenresCheckboxes();
-  // }, []);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleCheckbox = async (e) => {
     e.preventDefault();
@@ -54,42 +17,12 @@ const GenreCheckboxes = ({
     const genreName = checkedGenres.map((genre) => {
       return genre.name;
     });
-    console.log(genreName);
+    console.log("SEARCH PARAMS", searchParams);
 
-    let config = {
-      method: "get",
-      url: `${API_URL}/mangaSeries/?genres=${genreName}`,
-    };
-    console.log(config);
-
-    const { data } = await axios(config);
-    console.log(data);
-
-    const series = await data.mangaSeriesFilter.map((serie, i) => {
-      serie.image = data.allPromises[i];
-      return serie;
-    });
-
-    console.log("series: ", series);
-
-    const allSeries = await series.map(sanitiseSeries);
-    console.log("allSeries : ", allSeries);
-
-    setSeriesToDisplay(allSeries);
-    setPageCount(Math.ceil(data.totalDocuments / perPage));
-    console.log("setSeriesToDisplay :", allSeries);
-
-    if (genreName.length === 0) {
-      setSeriesToDisplay(seriesInfo);
-      setPageCount(seriesInfo.length / perPage);
-    }
+    const params = Object.fromEntries(searchParams.entries());
+    // if genres have changed, we should reset to page 1
+    setSearchParams({ ...params, genres: genreName, page: 1 });
   };
-  // useEffect(() => {
-  //   handleCheckbox();
-  // }, [handleOnChange]);
-
-
-  console.log("genres: ", genres);
   return (
     <>
       <h2>Filter By Genre:</h2>
