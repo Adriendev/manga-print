@@ -5,7 +5,7 @@ nav {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-right: 10rem;
+  margin-right: 2rem;
 
   /* transform: skew(); */
 }
