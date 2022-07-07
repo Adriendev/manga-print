@@ -1,7 +1,6 @@
 import * as React from "react";
 
 const SearchBar = ({ search, setSearch, seriesInfo }) => {
-  console.log("seriesInfo :", seriesInfo);
   return (
     <div>
       {/* <Stack spacing={2} sx={{ width: 300 }}>

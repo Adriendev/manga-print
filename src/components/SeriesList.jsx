@@ -42,7 +42,6 @@ const SeriesList = ({ seriesInfo, genres, setGenres }) => {
         nameMatchesSearch && (noGenresSelected || seriesMatchesAtLeastOneGenre)
       );
     });
-    console.log("filteredSeries: ", filteredSeries);
 
     setSeriesToDisplay(filteredSeries);
   }, [seriesInfo, search, genres]);
@@ -57,7 +56,11 @@ const SeriesList = ({ seriesInfo, genres, setGenres }) => {
   return (
     <>
       <div className="search-bar">
-        <SearchBar search={search} setSearch={setSearch} seriesInfo={seriesInfo} />
+        <SearchBar
+          search={search}
+          setSearch={setSearch}
+          seriesInfo={seriesInfo}
+        />
       </div>
       <div className="checkList">
         <ul className="genres">

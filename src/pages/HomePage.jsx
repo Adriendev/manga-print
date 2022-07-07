@@ -44,7 +44,7 @@ const HomePage = () => {
       setLatestSeries(allPromises[0].data);
 
       setDiscoverySeries(allPromises[1].data.mangaSeriesFilter);
-      console.log(`series from data`, allPromises[1].data.mangaSeriesFilter);
+      // console.log(`series from data`, allPromises[1].data.mangaSeriesFilter);
 
       setDiscoverySeriesCovers(allPromises[1].data.allPromises);
       // console.log(allPromises[1].data.allPromises);

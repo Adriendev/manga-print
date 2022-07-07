@@ -5,9 +5,6 @@ import { AuthContext } from "../context/auth.context";
 import { API_URL } from "../utils/constants";
 
 const baseURL = API_URL;
-console.log(API_URL);
-
-console.log(API_URL);
 
 function LoginPage(props) {
   const [username, setUsername] = useState("");
@@ -28,7 +25,7 @@ function LoginPage(props) {
     axios
       .post(`${baseURL}/auth/login`, requestBody)
       .then((response) => {
-        console.log("JWT token", response.data.authToken);
+        // console.log("JWT token", response.data.authToken);
 
         storeToken(response.data.authToken);
 

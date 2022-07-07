@@ -9,10 +9,8 @@ const Carrousel = ({ title, series, covers, week, type }) => {
   const { isDarkMode } = useContext(SettingsContext);
   const [isActive, setActive] = useState(false);
 
-  // console.log(isActive);
   let listAllSeries = [];
 
-  //if type === latest
   if (type === "latest") {
     const filterWeek = series.filter((elem) => elem.releaseDate < week);
 
@@ -52,7 +50,6 @@ const Carrousel = ({ title, series, covers, week, type }) => {
   }
 
   const handleToggle = () => {
-    console.log("click");
     setActive(!isActive);
   };
 
@@ -64,11 +61,7 @@ const Carrousel = ({ title, series, covers, week, type }) => {
       <h2>{title}</h2>
       <hr className="divider" />
       <div className="container">
-        <button
-          onClick={() => {
-            console.log(`clicked!`);
-          }}
-        >
+        <button onClick={() => {}}>
           <ArrowLeft className="arrow" mode={isDarkMode ? "dark" : "light"} />
         </button>
 

@@ -39,8 +39,6 @@ const FavoritesContextWrapper = ({ children }) => {
       return favorite;
     });
 
-    console.log("yes, doing getFavorites", newFavs);
-
     setFavorites(newFavs);
   };
 
@@ -63,7 +61,7 @@ const FavoritesContextWrapper = ({ children }) => {
         },
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           getFavorites();
         })
         .catch((error) => {
@@ -80,7 +78,7 @@ const FavoritesContextWrapper = ({ children }) => {
         },
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           getFavorites();
         })
         .catch((error) => {

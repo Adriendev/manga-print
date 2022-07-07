@@ -1,7 +1,6 @@
 import * as React from "react";
 
 const GenreCheckboxes = ({ genres, handleOnChange }) => {
-  console.log("genres: ", genres);
   return (
     <div>
       {" "}

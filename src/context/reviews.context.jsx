@@ -40,8 +40,6 @@ const ReviewsContextWrapper = ({ children }) => {
       return review;
     });
 
-    console.log("yes, doing getReviews", reviews);
-
     setReviews(reviews);
   };
 

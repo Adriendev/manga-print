@@ -9,7 +9,6 @@ import { AuthContext } from "../context/auth.context";
 import { FavoritesContext } from "../context/favorites.context";
 
 const Calendar = () => {
-  //   console.log(daysInMonth);
   const { DAY, DATE, YEAR, MONTH } = getDate();
   const options = { month: "long" };
   const [days, setDays] = useState([]);
@@ -57,14 +56,10 @@ const Calendar = () => {
   }, [month, year]);
 
   const handleClick = (e) => {
-    // console.log(e.target.className);
-
     switch (true) {
       case e.target.className === "btn left":
-        console.log(month);
         switch (true) {
           case month > 0:
-            console.log(`month -1`);
             setMonth(month - 1);
             break;
           case month <= 0:
@@ -82,7 +77,6 @@ const Calendar = () => {
             setMonth(month + 1);
             break;
           case month >= 11:
-            console.log(year);
             setYear(year + 1);
             setMonth(0);
             break;
