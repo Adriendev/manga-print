@@ -60,8 +60,8 @@ const SeriesList = ({
           />
         </div>
       </section>
-      <section className="genre">
-        <ul>
+      <section className="wrapper">
+        <ul className="genres">
           <GenreCheckboxes
             genres={genres}
             handleOnChange={handleOnChange}
@@ -73,21 +73,21 @@ const SeriesList = ({
             handePageClick={handlePageClick}
           />
         </ul>
+        <ul className="grid">
+          {seriesToDisplay.map((elem) => {
+            return (
+              <li key={elem.id}>
+                <SeriesCard
+                  key={elem.id}
+                  name={elem.name}
+                  image={elem.image}
+                  id={elem.id}
+                />
+              </li>
+            );
+          })}
+        </ul>
       </section>
-      <ul className="grid">
-        {seriesToDisplay.map((elem) => {
-          return (
-            <li key={elem.id}>
-              <SeriesCard
-                key={elem.id}
-                name={elem.name}
-                image={elem.image}
-                id={elem.id}
-              />
-            </li>
-          );
-        })}
-      </ul>
     </>
   );
 };

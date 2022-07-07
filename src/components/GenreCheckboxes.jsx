@@ -3,11 +3,7 @@ import * as React from "react";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-
-const GenreCheckboxes = ({
-  genres,
-  handleOnChange,
-}) => {
+const GenreCheckboxes = ({ genres, handleOnChange }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleCheckbox = async (e) => {
@@ -25,33 +21,30 @@ const GenreCheckboxes = ({
   };
   return (
     <>
+      <form className="checkboxe-genres" onSubmit={handleCheckbox}>
       <h2>Filter By Genre:</h2>
-      {/* <h3>Genre</h3>{" "} */}
-      <section className="genre-container">
-        <form className="checkboxe-genres" onSubmit={handleCheckbox}>
-          {genres.map((elem, index) => {
-            return (
-              <div className="genre-check">
-                <li key={index}>
-                  <input
-                    className="check-genre"
-                    type="checkbox"
-                    id={index}
-                    name={elem.name}
-                    value={elem.name}
-                    checked={elem.checked}
-                    onChange={() => handleOnChange(index, elem)}
-                  />
-                  <span>{elem.name}</span>{" "}
-                </li>
-              </div>
-            );
-          })}
-          <button className="checkbox-button" type="submit">
-            Apply filters
-          </button>
-        </form>
-      </section>
+        {genres.map((elem, index) => {
+          return (
+            <div className="genre-check">
+              <li key={index}>
+                <input
+                  className="check-genre"
+                  type="checkbox"
+                  id={index}
+                  name={elem.name}
+                  value={elem.name}
+                  checked={elem.checked}
+                  onChange={() => handleOnChange(index, elem)}
+                />
+                <span className="span-genre">{elem.name}</span>{" "}
+              </li>
+            </div>
+          );
+        })}
+        <button className="checkbox-button" type="submit">
+          Apply filters
+        </button>
+      </form>
     </>
   );
 };
