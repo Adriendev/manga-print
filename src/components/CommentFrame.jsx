@@ -4,7 +4,6 @@ import Rating from "./Rating";
 import "./CommentFrame.css";
 import DeleteReviewButton from "./DeleteReviewButton";
 import { AuthContext } from "../context/auth.context";
-import EditReviewButton from "./EditReviewButton";
 
 const CommentFrame = ({
   id,
