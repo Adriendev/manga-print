@@ -51,16 +51,6 @@ const AddReviewForm = ({ seriesId, closeModal }) => {
       <h3>{i18n[lang].postReview}</h3>
       <form onSubmit={handlePostComment} className="review-form">
         <RatingInput handleRating={handleRating} />
-        <label>{i18n[lang].rating}</label>
-        <input
-          type="number"
-          name="rating"
-          value={rating}
-          onChange={handleRating}
-          min={0}
-          max={5}
-          style={{ width: "5vw" }}
-        />
 
         <textarea
           name="comment"
