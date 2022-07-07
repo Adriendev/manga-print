@@ -50,9 +50,6 @@
   width: 25px;
 } */
 
-input:checked {
-  box-shadow: 0 0 0 3px yellow;
-}
 
 .checkbox {
   height: 25px;
