@@ -10,14 +10,24 @@ nav {
   /* transform: skew(); */
 }
 
-nav a {
+nav a,
+nav button {
   text-decoration: none;
   color: #ffc300;
+  border: none;
+  cursor: pointer;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
   /* transform: skew(-15deg); */
 }
 
-nav button {
-  border: none;
+nav a:hover {
+  color: white;
+}
+
+nav button:hover {
+  color: white;
 }
 
 nav > * {
@@ -35,4 +45,5 @@ nav > :last-child {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
 }
