@@ -61,6 +61,12 @@ const SeriesList = ({
     setGenres(updatedCheckedState);
   };
 
+  const testId = seriesToDisplay.map((elem) => {
+    return elem.id;
+  });
+
+  console.log(testId);
+
   return (
     <>
       <section className="search-container">
@@ -90,12 +96,12 @@ const SeriesList = ({
       <ul className="grid">
         {seriesToDisplay.map((elem) => {
           return (
-            <li key={elem._id}>
+            <li key={elem.id}>
               <SeriesCard
-                key={elem._id}
+                key={elem.id}
                 name={elem.name}
                 image={elem.image}
-                id={elem._id}
+                id={elem.id}
               />
             </li>
           );
