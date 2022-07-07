@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Modal from "react-modal";
 
@@ -12,8 +12,9 @@ import SeriesReviewsContainer from "../components/SeriesReviewsContainer";
 import VolumesContainer from "../components/VolumesContainer";
 import VolumeCard from "../components/VolumeCard";
 import { Cross } from "../components/Icon";
-import { faBlackboard } from "@fortawesome/free-solid-svg-icons";
-import { color } from "@mui/system";
+
+import { SettingsContext } from "../context/settings.context";
+import i18n from "../utils/dictionnary";
 
 Modal.setAppElement("#root");
 
@@ -37,6 +38,8 @@ const SeriesDetailsPage = () => {
   const [seriesVolumes, setSeriesVolumes] = useState([]);
   const [seriesRating, setSeriesRating] = useState(null);
   const [volumeInModal, setVolumeInModal] = useState({});
+
+  const { lang } = useContext(SettingsContext);
 
   function openModal(e) {
     // console.log(e.currentTarget);
@@ -81,42 +84,46 @@ const SeriesDetailsPage = () => {
           seriesRating={seriesRating}
         />
       )}
-      <section className="reviews-section">
-        <h3>REVIEWS</h3>
-        <hr></hr>
+      <div className="reviews-volumes">
+        <section className="reviews-section">
+          <div>
+            <h3>{i18n[lang].reviews}</h3>
+            <hr />
+          </div>
 
-        <SeriesReviewsContainer
-          seriesId={seriesId}
-          setSeriesRating={setSeriesRating}
-        />
-      </section>
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Volume"
-      >
-        <div className="modal">
-          <button className="btn-close" onClick={closeModal}>
-            <Cross />
-          </button>
-          <VolumeCard
-            title={volumeInModal.title}
-            image={volumeInModal.image}
-            isbn={volumeInModal.isbn}
-            date={volumeInModal.date}
-            modal="true"
+          <SeriesReviewsContainer
+            seriesId={seriesId}
+            setSeriesRating={setSeriesRating}
           />
-        </div>
-      </Modal>
-      <section className="volumes-container">
-        <VolumesContainer
-          openModal={openModal}
-          volumes={seriesVolumes}
-          setVolumeInModal={setVolumeInModal}
-        />
-      </section>
+        </section>
+        <Modal
+          isOpen={modalIsOpen}
+          onAfterOpen={afterOpenModal}
+          onRequestClose={closeModal}
+          style={customStyles}
+          contentLabel="Volume"
+        >
+          <div className="modal">
+            <button className="btn-close" onClick={closeModal}>
+              <Cross />
+            </button>
+            <VolumeCard
+              title={volumeInModal.title}
+              image={volumeInModal.image}
+              isbn={volumeInModal.isbn}
+              date={volumeInModal.date}
+              modal="true"
+            />
+          </div>
+        </Modal>
+        <section className="volumes-container">
+          <VolumesContainer
+            openModal={openModal}
+            volumes={seriesVolumes}
+            setVolumeInModal={setVolumeInModal}
+          />
+        </section>
+      </div>
     </main>
   );
 };

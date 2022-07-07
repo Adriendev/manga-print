@@ -6,6 +6,9 @@ import { API_URL } from "../utils/constants";
 import axios from "axios";
 import "./AddReviewForm.css";
 
+import { SettingsContext } from "../context/settings.context";
+import i18n from "../utils/dictionnary";
+
 const baseURL = API_URL;
 
 const AddReviewForm = ({ seriesId }) => {
@@ -14,6 +17,7 @@ const AddReviewForm = ({ seriesId }) => {
 
   const { getToken } = useContext(AuthContext);
   const { getReviews } = useContext(ReviewsContext);
+  const { lang } = useContext(SettingsContext);
 
   const handleRating = (e) => setRating(e.target.value);
   const handleTextContent = (e) => setTextContent(e.target.value);
@@ -42,9 +46,9 @@ const AddReviewForm = ({ seriesId }) => {
 
   return (
     <div className="add-review">
-      Post your own review !
-      <form onSubmit={handlePostComment}>
-        <label>Rating:</label>
+      <h3>{i18n[lang].postReview}</h3>
+      <form onSubmit={handlePostComment} className="review-form">
+        <label>{i18n[lang].rating}</label>
         <input
           type="number"
           name="rating"
@@ -52,16 +56,20 @@ const AddReviewForm = ({ seriesId }) => {
           onChange={handleRating}
           min={0}
           max={5}
+          style={{ width: "5vw" }}
         />
 
-        <label>Comment:</label>
         <textarea
           name="comment"
           onChange={handleTextContent}
           value={textContent}
+          placeholder={i18n[lang].comment}
+          style={{ width: "25vw" }}
         />
 
-        <button type="submit">Post</button>
+        <button type="submit" className="post-button">
+          {i18n[lang].post}
+        </button>
       </form>
     </div>
   );

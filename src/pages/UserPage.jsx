@@ -11,6 +11,8 @@ import { ReviewsContext } from "../context/reviews.context";
 import UserFavoritesContainer from "../components/UserFavoritesContainer";
 import { FavoritesContext } from "../context/favorites.context";
 import "./MePage.css";
+import { SettingsContext } from "../context/settings.context";
+import i18n from "../utils/dictionnary";
 
 const baseUrl = API_URL;
 
@@ -22,6 +24,8 @@ const UserPage = () => {
   const [userFavorites, setUserFavorites] = useState([]);
   const [userReviews, setUserReviews] = useState([]);
   const { userId } = useParams();
+
+  const { lang } = useContext(SettingsContext);
 
   useEffect(() => {
     let config = {
@@ -63,11 +67,19 @@ const UserPage = () => {
       <hr />
       <section className="reviews-favorites">
         <div className="reviews">
-          <h2>{`${userInfo.username}'s reviews`}</h2>
+          <h2>
+            {lang === "en"
+              ? `${userInfo.username}${i18n[lang].reviewsOf}`
+              : `${i18n[lang].reviewsOf}${userInfo.username}`}
+          </h2>
           <UserReviewsContainer reviews={userReviews} />
         </div>
         <div className="favorites">
-          <h2>{`${userInfo.username}'s favorites`}</h2>
+          <h2>
+            {lang === "en"
+              ? `${userInfo.username}${i18n[lang].favsOf}`
+              : `${i18n[lang].favsOf}${userInfo.username}`}
+          </h2>
           <UserFavoritesContainer favorites={userFavorites} />
         </div>
       </section>

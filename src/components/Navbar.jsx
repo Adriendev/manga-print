@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <nav>
-      <Link to="/series">ALL SERIES</Link>
+      <Link to="/series">{i18n[lang].allSeries}</Link>
 
       {/* <Link to="/">{i18n[lang].home}</Link> */}
 

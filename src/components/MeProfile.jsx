@@ -4,11 +4,15 @@ import EditMe from "./EditMe";
 import { useState } from "react";
 import NsfwSwitch from "./NsfwSwitch";
 import { AuthContext } from "../context/auth.context";
+import { SettingsContext } from "../context/settings.context";
+import i18n from "../utils/dictionnary";
 
 const UserProfile = ({ userInfo }) => {
   const [editProfile, setEditProfile] = useState(false);
   const { username, email, picture } = userInfo;
+
   const { user } = useContext(AuthContext);
+  const { lang } = useContext(SettingsContext);
 
   return (
     <section className="userContainer">
@@ -28,11 +32,11 @@ const UserProfile = ({ userInfo }) => {
                   className="user-button"
                   onClick={() => setEditProfile(true)}
                 >
-                  Edit Profile
+                  {i18n[lang].editProfile}
                 </button>
                 <div className="nsfw-button">
                   <NsfwSwitch />
-                  <p>I want to see NSFW content</p>
+                  <p>{i18n[lang].seeNsfw}</p>
                 </div>
               </>
             )}

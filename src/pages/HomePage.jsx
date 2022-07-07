@@ -1,9 +1,12 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./HomePage.css";
 import Carrousel from "../components/Carrousel";
 import LoadingDisplay from "../components/LoadingDisplay";
 import { API_URL, getDate } from "../utils/constants";
+
+import { SettingsContext } from "../context/settings.context";
+import i18n from "../utils/dictionnary";
 
 const HomePage = () => {
   const { DAY, DATE, YEAR, MONTH } = getDate();
@@ -15,6 +18,8 @@ const HomePage = () => {
   const [random, setRandom] = useState(1);
   const [nextWeek, setNextWeek] = useState();
   const [day, setDay] = useState(DAY);
+
+  const { lang } = useContext(SettingsContext);
 
   // console.log(API_URL);
 
@@ -65,13 +70,13 @@ const HomePage = () => {
   return (
     <main id="home">
       <Carrousel
-        title={"Upcoming releases"}
+        title={i18n[lang].release}
         series={latestSeries}
         type="latest"
         week={nextWeek}
       />
       <Carrousel
-        title={"Discover new Series"}
+        title={i18n[lang].discover}
         series={discoverySeries}
         covers={discoverySeriesCovers}
         type="discovery"

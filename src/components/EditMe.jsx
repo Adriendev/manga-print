@@ -3,6 +3,8 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { API_URL } from "../utils/constants";
 import { AuthContext } from "../context/auth.context";
+import { SettingsContext } from "../context/settings.context";
+import i18n from "../utils/dictionnary";
 
 import "./EditMe.css";
 
@@ -16,6 +18,7 @@ const EditMe = ({ editProfile, setEditProfile }) => {
 
   const { removeToken, storeToken, getToken, authenticateUser } =
     useContext(AuthContext);
+  const { lang } = useContext(SettingsContext);
 
   // dans le patch, ajouter le fait de créer un token et l'envoyer
   // comme c'est fait dans /login, mais uniquement si tu as reçu un username dans le req.body
@@ -58,8 +61,8 @@ const EditMe = ({ editProfile, setEditProfile }) => {
   return (
     <div className="edit">
       <form className="edit-form" onSubmit={handleEditMe}>
-        <h1>Edit profile</h1>
-        <label>Upload an image:</label>
+        <h1>{i18n[lang].editProfile.toUpperCase()}</h1>
+        <label>{i18n[lang].uploadIm}</label>
         <input
           type="file"
           name="picture"
@@ -69,7 +72,7 @@ const EditMe = ({ editProfile, setEditProfile }) => {
           }}
         />
 
-        <label>Username:</label>
+        <label>{i18n[lang].username}</label>
         <input
           type="text"
           name="username"
@@ -79,7 +82,7 @@ const EditMe = ({ editProfile, setEditProfile }) => {
           }}
         />
 
-        <label>Email:</label>
+        <label>{i18n[lang].email}</label>
         <input
           type="email"
           name="email"
@@ -89,7 +92,7 @@ const EditMe = ({ editProfile, setEditProfile }) => {
           }}
         />
 
-        <label>Password:</label>
+        <label>{i18n[lang].password}</label>
         <input
           type="password"
           name="password"
@@ -99,11 +102,11 @@ const EditMe = ({ editProfile, setEditProfile }) => {
           }}
         />
         <button className="edit-button" type="submit">
-          Edit
+          {i18n[lang].edit}
         </button>
       </form>
       <button className="edit-button" onClick={() => setEditProfile(false)}>
-        Return to Profile
+        {i18n[lang].retProf}
       </button>
     </div>
   );

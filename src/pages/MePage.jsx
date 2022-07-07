@@ -11,6 +11,8 @@ import { ReviewsContext } from "../context/reviews.context";
 import UserFavoritesContainer from "../components/UserFavoritesContainer";
 import { FavoritesContext } from "../context/favorites.context";
 import "./MePage.css";
+import { SettingsContext } from "../context/settings.context";
+import i18n from "../utils/dictionnary";
 
 const baseUrl = API_URL;
 
@@ -19,8 +21,10 @@ const MePage = () => {
   const [userInfo, setUserInfo] = useState("");
   const { getToken, isLoggedIn, user, authenticateUser } =
     useContext(AuthContext);
+
   const { reviews } = useContext(ReviewsContext);
   const { favorites } = useContext(FavoritesContext);
+  const { lang } = useContext(SettingsContext);
 
   useEffect(() => {
     const token = getToken();
@@ -58,11 +62,11 @@ const MePage = () => {
       <hr />
       <section className="reviews-favorites">
         <div className="reviews">
-          <h2>Your reviews</h2>
+          <h2>{i18n[lang].yourReviews}</h2>
           <UserReviewsContainer reviews={reviews} />
         </div>
         <div className="favorites">
-          <h2>Your favorites</h2>
+          <h2>{i18n[lang].yourFavorites}</h2>
           <UserFavoritesContainer favorites={favorites} />
         </div>
       </section>
