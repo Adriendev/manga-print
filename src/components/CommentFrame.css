@@ -1,35 +1,69 @@
 .review-frame {
-    width: 25vw;
-    display: flex;
-    flex-direction: column;
+  /* width: 25vw; */
+  /* display: flex;
+  flex-direction: column; */
+  /* border: #ffc300 solid 3px; */
+  /* border-radius: 5px; */
+  /* padding: 5px; */
+
+  border: solid 2px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* align-items: center; */
+  width: 25vw;
+
+  padding: 1rem;
+
+  background-color: #ffc300;
+  box-shadow: 3px 3px 3px black;
 }
 
 .review-info {
-    display: flex;
-    width: 20vw;
-    justify-content: space-between;
+  display: flex;
+  width: 20vw;
+  justify-content: space-between;
 }
 
 .user-link {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .user-profile-pic {
-    border-radius: 50%;
-    height: 3rem;
+  border-radius: 50%;
+  height: 3rem;
+
+  box-shadow: 2px 2px 2px black;
+  border: 2px solid black;
+}
+
+.series-pic {
+  height: 3rem;
 }
 
 .rating {
-    color: #ffc300;
+  color: black;
 }
 
 .review-text {
-    margin-left: 4rem;
+  padding: 1rem;
 }
 
 .buttons-container {
-    display: flex;
-    align-self: flex-end;
+  display: flex;
+  align-self: flex-end;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+}
+
+
+
+.fa-trash-can,
+.fa-pen-to-square {
+  font-size: 1.3rem;
 }

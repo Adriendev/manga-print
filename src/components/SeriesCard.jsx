@@ -11,7 +11,6 @@ const SeriesCard = ({ name, image, id, size }) => {
     <article className={"card-container " + size}>
       <Link to={`/series/${id}`} className="series-link">
         <article className="series-card">
-          {/* <pre>{JSON.stringify({ name, image }, null, 2)}</pre> */}
           <picture>
             <img src={image} alt="cover" />
           </picture>

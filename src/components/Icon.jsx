@@ -7,9 +7,7 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
-import { fa1 } from "@fortawesome/free-solid-svg-icons";
-import { fa2 } from "@fortawesome/free-solid-svg-icons";
-import { fa3 } from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 
@@ -19,8 +17,9 @@ const ArrowRight = () => <FontAwesomeIcon icon={faAngleRight} />;
 const ArrowLeft = () => <FontAwesomeIcon icon={faAngleLeft} />;
 const FullStar = () => <FontAwesomeIcon icon={faStar} />;
 const EmptyStar = () => <FontAwesomeIcon icon={faStarRegular} />;
-const NumOne = () => <FontAwesomeIcon icon={fa1} />;
-const NumTwo = () => <FontAwesomeIcon icon={fa2} />;
+
+const Cross = () => <FontAwesomeIcon icon={faXmark} />;
+
 const TrashCan = () => <FontAwesomeIcon icon={faTrashCan} />;
 const PenToSquare = () => <FontAwesomeIcon icon={faPenToSquare} />;
 
@@ -31,8 +30,7 @@ export {
   ArrowLeft,
   FullStar,
   EmptyStar,
-  NumOne,
-  NumTwo,
   TrashCan,
   PenToSquare,
+  Cross,
 };

@@ -1,7 +1,5 @@
 import * as React from "react";
-import TextField from "@mui/material/TextField";
-import Stack from "@mui/material/Stack";
-import Autocomplete from "@mui/material/Autocomplete";
+
 import LoadingDisplay from "../components/LoadingDisplay";
 import { API_URL } from "../utils/constants";
 import axios from "axios";
@@ -56,6 +54,11 @@ const SearchBar = ({ setSeriesToDisplay, setPageCount, perPage, seriesInfo }) =>
       return setSeriesToDisplay(seriesInfo)
     }
   };
+
+
+const SearchBar = ({ search, setSearch, seriesInfo }) => {
+  console.log("seriesInfo :", seriesInfo);
+
   return (
     <div>
       <>

@@ -27,7 +27,7 @@ const DeleteReviewButton = ({ id }) => {
   };
   return (
     <div>
-      <button onClick={handleClick}>
+      <button className="btn" onClick={handleClick}>
         <TrashCan />
       </button>
     </div>

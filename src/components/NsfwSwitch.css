@@ -1,3 +1,8 @@
+.switch-container {
+    width: 55px;
+    height: 28px;
+}
+
 .nsfwSwitch {
     position: relative;
     display: inline-block;

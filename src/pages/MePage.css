@@ -1,0 +1,13 @@
+.reviews-favorites {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.reviews {
+    text-align: center;
+}
+
+.favorites {
+    text-align: center;
+}

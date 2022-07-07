@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as React from "react";
+
 import { API_URL } from "../utils/constants";
 import { useEffect, useState } from "react";
 
@@ -88,6 +89,7 @@ const GenreCheckboxes = ({
   // useEffect(() => {
   //   handleCheckbox();
   // }, [handleOnChange]);
+
 
   console.log("genres: ", genres);
   return (

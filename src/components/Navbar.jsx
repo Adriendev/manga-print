@@ -11,7 +11,6 @@ import ThemeSwitch from "./ThemeSwitch";
 import LangButton from "./LangButton";
 
 import i18n from "../utils/dictionnary";
-import NsfwSwitch from "./NsfwSwitch";
 
 const Navbar = () => {
   const { lang } = useContext(SettingsContext);
@@ -20,7 +19,10 @@ const Navbar = () => {
 
   return (
     <nav>
+
       <Link to="/series">All Manga Series</Link>
+
+
       {/* <Link to="/">{i18n[lang].home}</Link> */}
       <div className="lang-button">       <LangButton /></div>
 
