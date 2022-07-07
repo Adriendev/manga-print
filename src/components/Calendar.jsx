@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight } from "./Icon";
 
 import "./Calendar.css";

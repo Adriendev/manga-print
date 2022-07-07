@@ -2,11 +2,9 @@ import axios from "axios";
 import * as React from "react";
 
 import { API_URL } from "../utils/constants";
-import { useEffect, useState } from "react";
 
 const sanitiseSeries = (elem) => {
   let image = elem.image;
-  // console.log(elem);
   image.includes("sevenseas")
     ? (image =
         "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg")
