@@ -4,22 +4,9 @@ import SearchBar from "../components/SearchBar";
 import { useState } from "react";
 import "./SeriesList.css";
 import GenreCheckboxes from "./GenreCheckboxes";
-
-const sanitiseSeries = (elem) => {
-  let image = elem.cover;
-  // console.log(elem);
-  image.includes("sevenseas")
-    ? (image =
-        "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg")
-    : (image = elem.cover);
-
-  return {
-    image: image,
-    name: elem.name,
-    id: elem._id,
-    genres: elem.genres,
-  };
-};
+import { API_URL } from "../utils/constants";
+import { useSearchParams } from "react-router-dom";
+import axios from "axios";
 
 const SeriesList = ({
   seriesInfo,
@@ -27,16 +14,16 @@ const SeriesList = ({
   setGenres,
   setPageCount,
   perPage,
+  handlePageClick,
 }) => {
   const [search, setSearch] = useState("");
   const [seriesToDisplay, setSeriesToDisplay] = useState([]);
 
   useEffect(() => {
-    const allSeries = [...seriesInfo].map(sanitiseSeries);
-
-    const filteredSeries = allSeries.filter((serie) => {
+    const filteredSeries = [...seriesInfo].filter((serie) => {
       const checkedGenres = genres.filter((x) => x.checked);
       const noGenresSelected = checkedGenres.length === 0;
+      const noSearchSelected = search === "";
       const seriesMatchesAtLeastOneGenre = genres.some((genre) =>
         serie.genres.includes(genre.name)
       );
@@ -45,13 +32,13 @@ const SeriesList = ({
         .includes(search.toLowerCase());
 
       return (
-        nameMatchesSearch && (noGenresSelected || seriesMatchesAtLeastOneGenre)
+        (nameMatchesSearch || noSearchSelected) &&
+        (noGenresSelected || seriesMatchesAtLeastOneGenre)
       );
     });
 
     setSeriesToDisplay(filteredSeries);
-
-    // console.log("setSeriesToDisplay :", filteredSeries);
+    console.log(filteredSeries);
   }, [seriesInfo, search, genres]);
 
   const handleOnChange = (position) => {
@@ -61,15 +48,8 @@ const SeriesList = ({
     setGenres(updatedCheckedState);
   };
 
-  const testId = seriesToDisplay.map((elem) => {
-    return elem.id;
-  });
-
-  console.log(testId);
-
   return (
     <>
-
       <section className="search-container">
         <div className="search-bar">
           <SearchBar
@@ -90,9 +70,8 @@ const SeriesList = ({
             setPageCount={setPageCount}
             perPage={perPage}
             seriesInfo={seriesInfo}
-            search={search}
+            handePageClick={handlePageClick}
           />
-
         </ul>
       </section>
       <ul className="grid">
