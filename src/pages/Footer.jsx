@@ -16,13 +16,19 @@ const Footer = () => {
           <ul>
             <label>Find more about us:</label>
             <li>
-              <a href="https://github.com/begoczb">Begonia Calzado</a>
+              <a className="link-gh" href="https://github.com/begoczb">
+                Begonia Calzado
+              </a>
             </li>
             <li>
-              <a href="https://github.com/Adriendev">Adrien Deveaux</a>
+              <a className="link-gh" href="https://github.com/Adriendev">
+                Adrien Deveaux
+              </a>
             </li>
             <li>
-              <a href="https://github.com/Val-be">Valérian Belin</a>
+              <a className="link-gh" href="https://github.com/Val-be">
+                Valérian Belin
+              </a>
             </li>
           </ul>
         </div>
