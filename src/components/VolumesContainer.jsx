@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import VolumeCard from "./VolumeCard";
 import "./VolumesContainer.css";
 
+import { SettingsContext } from "../context/settings.context";
+import i18n from "../utils/dictionnary";
+
 const VolumesContainer = ({ volumes, openModal, setVolumeInModal }) => {
+  const { lang } = useContext(SettingsContext);
   return (
     <section className="all-volumes">
-      <h3>ALL VOLUMES</h3>
+      <h3>{i18n[lang].allVolumes}</h3>
       <hr />
       <div>
         {volumes.map((volume) => (

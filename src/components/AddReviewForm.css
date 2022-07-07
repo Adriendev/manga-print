@@ -5,3 +5,20 @@
     margin-bottom: 1rem;
     width: 30vw;
 }
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px
+}
+
+.post-button {
+    color: black;
+    background-color: #ffc300;
+    width: 5vw;
+    border: none;
+    align-self: flex-end;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}

@@ -1,15 +1,19 @@
 .reviews-section {
   display: flex;
   flex-direction: column;
-  padding-top: 2rem;
+  padding: 1rem;
 }
 
-
-
 #series-details {
-  padding: 5rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+.reviews-volumes {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }

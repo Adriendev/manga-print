@@ -4,6 +4,7 @@ import { ReviewsContext } from "../context/reviews.context";
 import { API_URL } from "../utils/constants";
 import axios from "axios";
 import { TrashCan } from "./Icon";
+import { hover } from "@testing-library/user-event/dist/hover";
 
 const baseURL = API_URL;
 
@@ -26,7 +27,11 @@ const DeleteReviewButton = ({ id }) => {
   };
   return (
     <div>
-      <button className="btn" onClick={handleClick}>
+      <button
+        className="btn"
+        onClick={handleClick}
+        style={{ cursor: "pointer" }}
+      >
         <TrashCan />
       </button>
     </div>
