@@ -11,7 +11,7 @@ import i18n from "../utils/dictionnary";
 
 const baseURL = API_URL;
 
-const AddReviewForm = ({ seriesId }) => {
+const AddReviewForm = ({ seriesId, closeModal }) => {
   const [rating, setRating] = useState(0);
   const [textContent, setTextContent] = useState("");
 
@@ -41,6 +41,7 @@ const AddReviewForm = ({ seriesId }) => {
       getReviews();
       setRating(0);
       setTextContent("");
+      closeModal();
     });
   };
 
@@ -64,7 +65,7 @@ const AddReviewForm = ({ seriesId }) => {
           onChange={handleTextContent}
           value={textContent}
           placeholder={i18n[lang].comment}
-          style={{ width: "25vw" }}
+          style={{ width: "95%", height: "30vh" }}
         />
 
         <button type="submit" className="post-button">
