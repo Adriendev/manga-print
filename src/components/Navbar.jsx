@@ -24,9 +24,9 @@ const Navbar = () => {
 
       {isLoggedIn ? (
         <>
-          <button onClick={logOutUser}>{i18n[lang].logout}</button>
           <Link to="/calendar">{i18n[lang].calendar}</Link>
           <Link to="/user/me">{i18n[lang].profile}</Link>
+          <button onClick={logOutUser}>{i18n[lang].logout}</button>
         </>
       ) : (
         <>
@@ -38,6 +38,7 @@ const Navbar = () => {
         <ThemeSwitch />
         <LangButton />
       </div>
+      <div className="dot"></div>
     </nav>
   );
 };
