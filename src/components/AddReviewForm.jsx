@@ -8,6 +8,7 @@ import "./AddReviewForm.css";
 
 import { SettingsContext } from "../context/settings.context";
 import i18n from "../utils/dictionnary";
+import RatingInput from "./RatingInput";
 
 const baseURL = API_URL;
 
@@ -48,6 +49,7 @@ const AddReviewForm = ({ seriesId }) => {
     <div className="add-review">
       <h3>{i18n[lang].postReview}</h3>
       <form onSubmit={handlePostComment} className="review-form">
+        <RatingInput handleRating={handleRating} />
         <label>{i18n[lang].rating}</label>
         <input
           type="number"
