@@ -5,12 +5,14 @@ nav {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  margin-right: 10rem;
+
   /* transform: skew(); */
 }
 
 nav a {
   text-decoration: none;
-  color: black;
+  color: #ffc300;
   /* transform: skew(-15deg); */
 }
 
@@ -19,11 +21,18 @@ nav button {
 }
 
 nav > * {
-  background-color: #ffc300;
+  /* background-color: #ffc300; */
   padding: 1rem;
   margin-right: 1rem;
 }
 
 nav > :last-child {
   margin-right: 0;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

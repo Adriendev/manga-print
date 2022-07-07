@@ -18,13 +18,12 @@ const Navbar = () => {
 
   return (
     <nav>
-      <LangButton />
-      <ThemeSwitch />
+      <Link to="/series">ALL SERIES</Link>
+
       {/* <Link to="/">{i18n[lang].home}</Link> */}
-      <SearchIcon />
+
       {isLoggedIn ? (
         <>
-          <span>{user}</span>
           <button onClick={logOutUser}>{i18n[lang].logout}</button>
           <Link to="/calendar">{i18n[lang].calendar}</Link>
           <Link to="/user/me">{i18n[lang].profile}</Link>
@@ -35,6 +34,10 @@ const Navbar = () => {
           <Link to="/signup">{i18n[lang].signUp}</Link>
         </>
       )}
+      <div className="settings">
+        <ThemeSwitch />
+        <LangButton />
+      </div>
     </nav>
   );
 };

@@ -16,7 +16,24 @@ const SeriesPage = () => {
   const [perPage] = useState(50);
   const [pageCount, setPageCount] = useState(1);
 
-  const getAllSeries = async () => {
+  useEffect(() => {
+    const getGenresCheckboxes = async () => {
+      const { data } = await axios({
+        url: `/mangaSeries/genres`,
+        baseURL: API_URL,
+        method: "get",
+      });
+      console.log(data);
+      const checkboxes = data.genres.map((elem) => {
+        return { checked: false, name: elem };
+      });
+      setChecked(checkboxes);
+    };
+
+    getGenresCheckboxes();
+  }, []);
+
+  const paginateSeries = async () => {
     setIsLoading(true);
     let config = {
       method: "get",
@@ -31,25 +48,10 @@ const SeriesPage = () => {
     });
     setAllSeriesList(series);
     setPageCount(Math.ceil(data.totalDocuments / perPage));
-
-    const checkbox = series.map((elem) => {
-      return elem.genres;
-    });
-    let allGenres = [];
-    for (let i = 0; i < checkbox.length; i++) {
-      for (let j = 0; j < checkbox[i].length; j++) {
-        allGenres.push(checkbox[i][j]);
-      }
-    }
-    const genresWithoutDuplicate = [...new Set(allGenres)];
-    const checkboxes = genresWithoutDuplicate.map((elem) => {
-      return { checked: false, name: elem };
-    });
-    setChecked(checkboxes);
   };
 
   useEffect(() => {
-    getAllSeries();
+    paginateSeries();
   }, [offset]);
 
   const handlePageClick = (e) => {
@@ -59,7 +61,7 @@ const SeriesPage = () => {
     const selectedPage = e.selected;
     setOffset(selectedPage);
   };
-  // console.log("offset: ", offset);
+
   if (isLoading) {
     return (
       <main id="home">
@@ -73,6 +75,8 @@ const SeriesPage = () => {
         seriesInfo={allSeriesList}
         genres={checked}
         setGenres={setChecked}
+        setPageCount={setPageCount}
+        perPage={perPage}
       />
       <ReactPaginate
         previousLabel={"prev"}
@@ -80,7 +84,7 @@ const SeriesPage = () => {
         breakLabel={"..."}
         breakClassName={"break-me"}
         pageCount={pageCount}
-        // marginPagesDisplayed={2}
+        marginPagesDisplayed={3}
         pageRangeDisplayed={5}
         onPageChange={handlePageClick}
         containerClassName={"pagination"}

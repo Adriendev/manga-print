@@ -1,6 +1,63 @@
 .genres{
     list-style: none;
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     flex-direction: row;
+    width: 100;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+}
+
+.container-series {
+    display: flex;
+   flex-direction: row; 
+}
+
+.grid {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    /* align-items: center;
+    margin: 0 auto; */
+    margin-left: 3rem;
+}
+
+.genre {
+    margin-left: 4rem;
+    margin-right: 6rem;
+    margin-bottom: 2rem;
+    box-sizing: border-box;
+}
+
+.check-genre input[type="checkbox"] + label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 20px;
+    font: 14px/20px;
+    cursor: pointer;
+}
+
+.checkboxe-genres {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.checkboxe-genres li {
+    padding: 3px;
+}
+
+.checkboxe-genres span {
+    margin-left: 3px;
+}
+
+.checkbox-button {
+    display: block;
 }

@@ -21,7 +21,13 @@ const sanitiseSeries = (elem) => {
   };
 };
 
-const SeriesList = ({ seriesInfo, genres, setGenres }) => {
+const SeriesList = ({
+  seriesInfo,
+  genres,
+  setGenres,
+  setPageCount,
+  perPage,
+}) => {
   const [search, setSearch] = useState("");
   const [seriesToDisplay, setSeriesToDisplay] = useState([]);
 
@@ -31,7 +37,7 @@ const SeriesList = ({ seriesInfo, genres, setGenres }) => {
     const filteredSeries = allSeries.filter((serie) => {
       const checkedGenres = genres.filter((x) => x.checked);
       const noGenresSelected = checkedGenres.length === 0;
-      const seriesMatchesAtLeastOneGenre = checkedGenres.some((genre) =>
+      const seriesMatchesAtLeastOneGenre = genres.some((genre) =>
         serie.genres.includes(genre.name)
       );
       const nameMatchesSearch = serie.name
@@ -44,6 +50,8 @@ const SeriesList = ({ seriesInfo, genres, setGenres }) => {
     });
 
     setSeriesToDisplay(filteredSeries);
+
+    // console.log("setSeriesToDisplay :", filteredSeries);
   }, [seriesInfo, search, genres]);
 
   const handleOnChange = (position) => {
@@ -55,18 +63,32 @@ const SeriesList = ({ seriesInfo, genres, setGenres }) => {
 
   return (
     <>
-      <div className="search-bar">
-        <SearchBar
-          search={search}
-          setSearch={setSearch}
-          seriesInfo={seriesInfo}
-        />
-      </div>
-      <div className="checkList">
-        <ul className="genres">
-          <GenreCheckboxes genres={genres} handleOnChange={handleOnChange} />
+
+      <section className="search-container">
+        <div className="search-bar">
+          <SearchBar
+            setSeriesToDisplay={setSeriesToDisplay}
+            setPageCount={setPageCount}
+            perPage={perPage}
+            seriesInfo={seriesInfo}
+          />
+        </div>
+      </section>
+      <section className="genre">
+        <ul>
+          <GenreCheckboxes
+            genres={genres}
+            handleOnChange={handleOnChange}
+            setGenres={setGenres}
+            setSeriesToDisplay={setSeriesToDisplay}
+            setPageCount={setPageCount}
+            perPage={perPage}
+            seriesInfo={seriesInfo}
+            search={search}
+          />
+
         </ul>
-      </div>
+      </section>
       <ul className="grid">
         {seriesToDisplay.map((elem) => {
           return (

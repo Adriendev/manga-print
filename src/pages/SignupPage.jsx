@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../utils/constants";
 
+import './SignupPage.css'
+
 const baseURL = API_URL;
 
 function SignupPage(props) {
@@ -41,10 +43,10 @@ function SignupPage(props) {
   };
 
   return (
-    <div className="SignupPage">
-      <h1>Sign Up</h1>
+    <div className="signup">
 
-      <form onSubmit={handleSignupSubmit}>
+      <form className="signup-form" onSubmit={handleSignupSubmit}>
+      <h1>Sign Up</h1>
         <label>Email:</label>
         <input type="email" name="email" value={email} onChange={handleEmail} />
 
@@ -64,7 +66,7 @@ function SignupPage(props) {
           onChange={handleName}
         />
 
-        <button type="submit">Sign Up</button>
+        <button className="signup-button" type="submit">Sign Up</button>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 

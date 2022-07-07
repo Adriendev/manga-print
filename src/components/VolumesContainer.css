@@ -1,0 +1,10 @@
+.all-volumes {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+.all-volumes > div {
+  display: flex;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
