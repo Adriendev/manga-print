@@ -7,7 +7,7 @@ import { useState } from "react";
 import { Navigate, useSearchParams } from "react-router-dom";
 import { SearchIcon } from "./Icon";
 
-import './SearchBar.css'
+import "./SearchBar.css";
 
 const sanitiseSeries = (elem) => {
   let image = elem.image;
@@ -25,7 +25,12 @@ const sanitiseSeries = (elem) => {
   };
 };
 
-const SearchBar = ({ setSeriesToDisplay, setPageCount, perPage, seriesInfo }) => {
+const SearchBar = ({
+  setSeriesToDisplay,
+  setPageCount,
+  perPage,
+  seriesInfo,
+}) => {
   const [research, setResearch] = useState([]);
   // const [searchParams, setSearchParams] = useSearchParams();
 
@@ -50,20 +55,17 @@ const SearchBar = ({ setSeriesToDisplay, setPageCount, perPage, seriesInfo }) =>
     setSeriesToDisplay(allFiltered);
     setPageCount(Math.ceil(data.totalDocuments / perPage));
 
-    if(research === ''){
-      return setSeriesToDisplay(seriesInfo)
+    if (research === "") {
+      return setSeriesToDisplay(seriesInfo);
     }
   };
-
-
-const SearchBar = ({ search, setSearch, seriesInfo }) => {
-  console.log("seriesInfo :", seriesInfo);
 
   return (
     <div>
       <>
         <form className="searching-bar" onSubmit={handleSearch}>
-          <input className="searchbar"
+          <input
+            className="searchbar"
             value={research}
             type="text"
             onChange={(e) => setResearch(e.target.value)}
