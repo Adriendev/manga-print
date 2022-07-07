@@ -63,3 +63,7 @@
 #series-details > .fa-star {
   position: absolute;
 }
+
+.series-rating {
+  color: #ffc300;
+}

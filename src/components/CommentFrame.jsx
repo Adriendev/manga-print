@@ -37,7 +37,7 @@ const CommentFrame = ({
           </Link>
         )}
 
-        <Rating className="rating">{rating}</Rating>
+        <Rating color={"black"}>{rating}</Rating>
       </div>
       <p className="review-text">{textContent}</p>
       {user === username && (

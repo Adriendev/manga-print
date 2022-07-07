@@ -5,7 +5,7 @@ import { FavoritesContext } from "../context/favorites.context";
 import FavoriteButton from "./FavoriteButton";
 import "./SeriesDetails.css";
 
-const SeriesDetails = ({ series, volumes, seriesRating}) => {
+const SeriesDetails = ({ series, volumes, seriesRating }) => {
   const { isLoggedIn } = useContext(AuthContext);
   const { favorites } = useContext(FavoritesContext);
 
@@ -41,10 +41,11 @@ const SeriesDetails = ({ series, volumes, seriesRating}) => {
         {seriesRating ? (
           <span>
             {`Rating: ${Math.round(seriesRating * 10) / 10}/5`}
-            <Rating>{seriesRating}</Rating>
+            <Rating color={"#ffc300"}>{seriesRating}</Rating>
           </span>
         ) : (
-          <></>)}
+          <></>
+        )}
         {isLoggedIn && (
           <FavoriteButton name={series.name} seriesId={series._id} />
         )}
