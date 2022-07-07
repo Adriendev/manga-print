@@ -11,15 +11,15 @@ const VolumeCard = ({
   openModal,
   setVolumeInModal,
 }) => {
-  const handleClick = (e) => {
+  const handleClick = () => {
     setVolumeInModal({ title, image, isbn, date });
-    openModal(e);
+    openModal("volume");
   };
 
   return (
     <>
       {modal ? (
-        <article className="modal-card">
+        <article key={isbn} className="modal-card">
           <picture>
             <img
               src={
@@ -37,7 +37,7 @@ const VolumeCard = ({
           </div>
         </article>
       ) : (
-        <article onClick={handleClick} className="volume-card">
+        <article key={isbn} onClick={handleClick} className="volume-card">
           <picture>
             <img src={image} alt={image} />
           </picture>
