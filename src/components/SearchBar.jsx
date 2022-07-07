@@ -60,25 +60,27 @@ const SearchBar = ({
     }
   };
 
-  return (
-    <div>
-      <>
-        <form className="searching-bar" onSubmit={handleSearch}>
-          <input
-            className="searchbar"
-            value={research}
-            type="text"
-            onChange={(e) => setResearch(e.target.value)}
-            placeholder="Search a manga title..."
-          />
-          {/* <button className="search-button" type="submit">
+  
+    return (
+      <div>
+        <>
+          <form className="searching-bar" onSubmit={handleSearch}>
+            <input
+              className="searchbar"
+              value={research}
+              type="text"
+              onChange={(e) => setResearch(e.target.value)}
+              placeholder="Search a manga title..."
+            />
+            {/* <button className="search-button" type="submit">
+
             <SearchIcon />
           </button> */}
-        </form>
-        {/* <button onClick={() => setSeriesToDisplay(seriesInfo)}>See all manga</button> */}
-      </>
-    </div>
-  );
-};
+          </form>
+          {/* <button onClick={() => setSeriesToDisplay(seriesInfo)}>See all manga</button> */}
+        </>
+      </div>
+    );
+  };
 
 export default SearchBar;
