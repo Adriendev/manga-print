@@ -19,10 +19,18 @@
 .day .series-card {
   /* border: 1px solid black; */
   background-color: #ffc300;
+  color: black;
 }
 
 .days {
   display: flex;
+  width: 108rem;
+}
+
+.day {
+  overflow-y: scroll;
+  height: 19.5rem;
+  /* padding: 0 1rem 0 1rem; */
 }
 
 .body {
@@ -38,7 +46,7 @@
 }
 
 .empty {
-  width: 13rem;
+  width: 12.5rem;
   height: 18rem;
 }
 
@@ -78,4 +86,9 @@
 .fa-angle-right,
 .fa-angle-left {
   pointer-events: none;
+}
+
+.week {
+  padding: 1rem;
+  width: fit-content;
 }

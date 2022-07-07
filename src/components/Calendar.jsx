@@ -110,26 +110,28 @@ const Calendar = () => {
     }
 
     return day < 8 ? (
-      <div key={`Day ${day}`} className="day">
-        {volume.length !== 0 ? (
-          volume.map((x) => (
-            <SeriesCard
-              key={x._id}
-              name={x.title}
-              image={
-                x.cover.includes("seven")
-                  ? "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg"
-                  : x.cover
-              }
-              id={x.series}
-              size="calendar-s"
-            />
-          ))
-        ) : (
-          <article className="empty"></article>
-        )}
+      <>
         <span className="number">{day}</span>
-      </div>
+        <div key={`Day ${day}`} className="day">
+          {volume.length !== 0 ? (
+            volume.map((x) => (
+              <SeriesCard
+                key={x._id}
+                name={x.title}
+                image={
+                  x.cover.includes("seven")
+                    ? "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg"
+                    : x.cover
+                }
+                id={x.series}
+                size="calendar-s"
+              />
+            ))
+          ) : (
+            <article className="empty"></article>
+          )}
+        </div>
+      </>
     ) : null;
   });
 
@@ -140,26 +142,28 @@ const Calendar = () => {
     }
 
     return day >= 8 && day < 15 ? (
-      <div key={`Day ${day}`} className="day">
-        {volume.length !== 0 ? (
-          volume.map((x) => (
-            <SeriesCard
-              key={x._id}
-              name={x.title}
-              image={
-                x.cover.includes("seven")
-                  ? "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg"
-                  : x.cover
-              }
-              id={x.series}
-              size="calendar-s"
-            />
-          ))
-        ) : (
-          <article className="empty"></article>
-        )}
+      <>
         <span className="number">{day}</span>
-      </div>
+        <div key={`Day ${day}`} className="day">
+          {volume.length !== 0 ? (
+            volume.map((x) => (
+              <SeriesCard
+                key={x._id}
+                name={x.title}
+                image={
+                  x.cover.includes("seven")
+                    ? "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg"
+                    : x.cover
+                }
+                id={x.series}
+                size="calendar-s"
+              />
+            ))
+          ) : (
+            <article className="empty"></article>
+          )}
+        </div>
+      </>
     ) : null;
   });
 
@@ -169,26 +173,28 @@ const Calendar = () => {
       volume = getVolumeForDay(day, month);
     }
     return day >= 15 && day < 22 ? (
-      <div key={`Day ${day}`} className="day">
-        {volume.length !== 0 ? (
-          volume.map((x) => (
-            <SeriesCard
-              key={x._id}
-              name={x.title}
-              image={
-                x.cover.includes("seven")
-                  ? "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg"
-                  : x.cover
-              }
-              id={x.series}
-              size="calendar-s"
-            />
-          ))
-        ) : (
-          <article className="empty"></article>
-        )}
+      <>
         <span className="number">{day}</span>
-      </div>
+        <div key={`Day ${day}`} className="day">
+          {volume.length !== 0 ? (
+            volume.map((x) => (
+              <SeriesCard
+                key={x._id}
+                name={x.title}
+                image={
+                  x.cover.includes("seven")
+                    ? "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg"
+                    : x.cover
+                }
+                id={x.series}
+                size="calendar-s"
+              />
+            ))
+          ) : (
+            <article className="empty"></article>
+          )}
+        </div>
+      </>
     ) : null;
   });
 
@@ -198,26 +204,28 @@ const Calendar = () => {
       volume = getVolumeForDay(day, month);
     }
     return day >= 22 && day < 29 ? (
-      <div key={`Day ${day}`} className="day">
-        {volume.length !== 0 ? (
-          volume.map((x) => (
-            <SeriesCard
-              key={x._id}
-              name={x.title}
-              image={
-                x.cover.includes("seven")
-                  ? "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg"
-                  : x.cover
-              }
-              id={x.series}
-              size="calendar-s"
-            />
-          ))
-        ) : (
-          <article className="empty"></article>
-        )}
+      <>
         <span className="number">{day}</span>
-      </div>
+        <div key={`Day ${day}`} className="day">
+          {volume.length !== 0 ? (
+            volume.map((x) => (
+              <SeriesCard
+                key={x._id}
+                name={x.title}
+                image={
+                  x.cover.includes("seven")
+                    ? "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg"
+                    : x.cover
+                }
+                id={x.series}
+                size="calendar-s"
+              />
+            ))
+          ) : (
+            <article className="empty"></article>
+          )}
+        </div>
+      </>
     ) : null;
   });
 
@@ -227,26 +235,28 @@ const Calendar = () => {
       volume = getVolumeForDay(day, month);
     }
     return day >= 29 ? (
-      <div key={`Day ${day}`} className="day">
-        {volume.length !== 0 ? (
-          volume.map((x) => (
-            <SeriesCard
-              key={x._id}
-              name={x.title}
-              image={
-                x.cover.includes("seven")
-                  ? "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg"
-                  : x.cover
-              }
-              id={x.series}
-              size="calendar-s"
-            />
-          ))
-        ) : (
-          <article className="empty"></article>
-        )}
+      <>
         <span className="number">{day}</span>
-      </div>
+        <div key={`Day ${day}`} className="day">
+          {volume.length !== 0 ? (
+            volume.map((x) => (
+              <SeriesCard
+                key={x._id}
+                name={x.title}
+                image={
+                  x.cover.includes("seven")
+                    ? "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg"
+                    : x.cover
+                }
+                id={x.series}
+                size="calendar-s"
+              />
+            ))
+          ) : (
+            <article className="empty"></article>
+          )}
+        </div>
+      </>
     ) : null;
   });
 
@@ -263,29 +273,24 @@ const Calendar = () => {
           </button>
         </div>
         <div className="body">
+          <hr />
           <div className="week">
-            <h4>Week 01-07</h4>
-            <hr />
             <div className="days">{firstRow}</div>
           </div>
+          <hr />
           <div className="week">
-            <h4>Week 08-14</h4>
-            <hr />
             <div className="days">{secondRow}</div>
           </div>
+          <hr />
           <div className="week">
-            <h4>Week 15-22</h4>
-            <hr />
             <div className="days">{thirdRow}</div>
           </div>
+          <hr />
           <div className="week">
-            <h4>Week 22-29</h4>
-            <hr />
             <div className="days">{fourthRow}</div>
           </div>
+          <hr />
           <div className="week">
-            <h4>Week 22-29</h4>
-            <hr />
             <div className="days">{fifthRow}</div>
           </div>
         </div>
