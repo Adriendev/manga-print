@@ -5,7 +5,7 @@ import { AuthContext } from "../context/auth.context";
 import { useContext, useEffect, useState } from "react";
 import UserProfile from "../components/MeProfile";
 import LoadingDisplay from "../components/LoadingDisplay";
-import { Navigate } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import UserReviewsContainer from "../components/UserReviewsContainer";
 import { ReviewsContext } from "../context/reviews.context";
 import UserFavoritesContainer from "../components/UserFavoritesContainer";
@@ -14,35 +14,40 @@ import "./MePage.css";
 
 const baseUrl = API_URL;
 
-const MePage = () => {
+const UserPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [userInfo, setUserInfo] = useState("");
   const { getToken, isLoggedIn, user, authenticateUser } =
     useContext(AuthContext);
-  const { reviews } = useContext(ReviewsContext);
-  const { favorites } = useContext(FavoritesContext);
+  const [userFavorites, setUserFavorites] = useState([]);
+  const [userReviews, setUserReviews] = useState([]);
+  const { userId } = useParams();
 
   useEffect(() => {
-    const token = getToken();
     let config = {
       method: "get",
-      url: `${baseUrl}/user/me`,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      url: `${baseUrl}/user/profile/${userId}`,
     };
-
-    if (!isLoggedIn) {
-      return setIsLoading(true);
-    }
+    setIsLoading(true);
 
     axios(config).then((response) => {
-      setIsLoading(true);
       setUserInfo(response.data);
-      // console.log(setUserInfo);
+
+      const newFavorites = response.data.favorites.map((favorite, i) => {
+        favorite.seriesPicture = response.data.favCovers[i];
+        return favorite;
+      });
+      const newReviews = response.data.reviews.map((review, i) => {
+        review.seriesPicture = response.data.revCovers[i];
+        return review;
+      });
+      setUserFavorites(newFavorites);
+      setUserReviews(newReviews);
       setIsLoading(false);
     });
-  }, [isLoggedIn, user]);
+  }, []);
+
+  //   console.log(userInfo);
 
   if (isLoading) {
     return (
@@ -58,16 +63,16 @@ const MePage = () => {
       <hr />
       <section className="reviews-favorites">
         <div className="reviews">
-          <h2>Your reviews</h2>
-          <UserReviewsContainer reviews={reviews} />
+          <h2>{`${userInfo.username}'s reviews`}</h2>
+          <UserReviewsContainer reviews={userReviews} />
         </div>
         <div className="favorites">
-          <h2>Your favorites</h2>
-          <UserFavoritesContainer favorites={favorites} />
+          <h2>{`${userInfo.username}'s favorites`}</h2>
+          <UserFavoritesContainer favorites={userFavorites} />
         </div>
       </section>
     </main>
   );
 };
 
-export default MePage;
+export default UserPage;

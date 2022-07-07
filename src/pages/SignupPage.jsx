@@ -33,7 +33,7 @@ function SignupPage(props) {
       },
     })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         navigate("/login");
       })
       .catch((error) => {

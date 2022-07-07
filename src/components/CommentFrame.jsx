@@ -44,7 +44,6 @@ const CommentFrame = ({
       {user === username && (
         <div className="buttons-container">
           <DeleteReviewButton id={id} />
-          <EditReviewButton />
         </div>
       )}
     </div>

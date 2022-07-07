@@ -6,7 +6,6 @@ const UserReviewsContainer = ({ reviews }) => {
     <div>
       <ul className="user-reviews-section">
         {reviews.map((review) => {
-          console.log(review);
           return (
             <CommentFrame
               key={review._id}

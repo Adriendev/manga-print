@@ -42,8 +42,6 @@ const SettingsContextWrapper = ({ children }) => {
         },
       });
 
-      console.log(response);
-
       setIsDarkMode(response.data.settings.mode === "light" ? false : true);
       setLang(response.data.settings.lang);
       setIsNsfw(response.data.settings.nsfw);
@@ -71,7 +69,7 @@ const SettingsContextWrapper = ({ children }) => {
           },
         })
           .then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
           })
           .catch((error) => {
             const errorDescription = error.response.data.message;
@@ -100,9 +98,7 @@ const SettingsContextWrapper = ({ children }) => {
             Authorization: `Bearer ${token}`,
           },
         })
-          .then((response) => {
-            console.log(response.data);
-          })
+          .then((response) => {})
           .catch((error) => {
             const errorDescription = error.response.data.message;
             console.log(errorDescription);
@@ -130,9 +126,7 @@ const SettingsContextWrapper = ({ children }) => {
             Authorization: `Bearer ${token}`,
           },
         })
-          .then((response) => {
-            console.log(response.data);
-          })
+          .then((response) => {})
           .catch((error) => {
             const errorDescription = error.response.data.message;
             console.log(errorDescription);
@@ -141,10 +135,6 @@ const SettingsContextWrapper = ({ children }) => {
     },
     [isLoggedIn, user]
   );
-
-  console.log("lang", lang);
-  console.log("isDarkMode", isDarkMode);
-  console.log("isNsfw", isNsfw);
 
   return (
     <SettingsContext.Provider

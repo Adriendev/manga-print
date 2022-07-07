@@ -69,6 +69,7 @@ const SeriesList = ({
 
   return (
     <>
+
       <section className="search-container">
         <div className="search-bar">
           <SearchBar
@@ -91,6 +92,7 @@ const SeriesList = ({
             seriesInfo={seriesInfo}
             search={search}
           />
+
         </ul>
       </section>
       <ul className="grid">

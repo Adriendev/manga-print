@@ -55,9 +55,9 @@ const SeriesPage = () => {
   }, [offset]);
 
   const handlePageClick = (e) => {
-    console.log("clicked");
-    console.log(e);
-    console.log("selected: ", e.selected);
+    // console.log("clicked");
+    // console.log(e);
+    // console.log("selected: ", e.selected);
     const selectedPage = e.selected;
     setOffset(selectedPage);
   };

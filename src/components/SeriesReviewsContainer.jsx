@@ -16,7 +16,6 @@ const SeriesReviewsContainer = ({ seriesId, setSeriesRating }) => {
   const [seriesReviews, setSeriesReviews] = useState([]);
 
   const getSeriesReview = async () => {
-    console.log(seriesId);
     const response = await axios({
       method: "get",
       baseURL: baseURL,
@@ -27,9 +26,6 @@ const SeriesReviewsContainer = ({ seriesId, setSeriesRating }) => {
       response.data.reduce((acc, value) => {
         return acc + parseInt(value.rating);
       }, 0) / response.data.length;
-
-    console.log("Getting series reviews...", response);
-    console.log("rating", newRating);
 
     setSeriesRating(newRating);
     setSeriesReviews(response.data);

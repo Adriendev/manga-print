@@ -45,12 +45,8 @@ const EditMe = ({ editProfile, setEditProfile }) => {
       },
     });
 
-    console.log(username);
-    console.log(fd);
-
     if (username) {
       const newToken = response.data.authToken;
-      console.log(newToken);
       await removeToken();
       await storeToken(newToken);
       await authenticateUser();

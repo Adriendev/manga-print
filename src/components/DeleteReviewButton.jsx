@@ -21,7 +21,6 @@ const DeleteReviewButton = ({ id }) => {
         Authorization: `Bearer ${token}`,
       },
     }).then((response) => {
-      console.log(response.data);
       getReviews();
     });
   };

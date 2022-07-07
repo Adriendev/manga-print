@@ -34,7 +34,6 @@ const AddReviewForm = ({ seriesId }) => {
         Authorization: `Bearer ${token}`,
       },
     }).then((response) => {
-      console.log(response.data);
       getReviews();
       setRating(0);
       setTextContent("");

@@ -14,6 +14,7 @@ import IsPrivate from "./components/IsPrivate";
 
 import { SettingsContext } from "./context/settings.context";
 import { useContext } from "react";
+import UserPage from "./pages/UserPage";
 
 function App() {
   const { isDarkMode } = useContext(SettingsContext);
@@ -57,6 +58,7 @@ function App() {
               </IsPrivate>
             }
           />
+          <Route path="/user/:userId" element={<UserPage />}></Route>
         </Route>
       </Routes>
     </div>
