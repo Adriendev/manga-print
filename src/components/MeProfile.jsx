@@ -20,7 +20,7 @@ const UserProfile = ({ userInfo }) => {
         <article className="user-profile-container">
           <img src={picture} alt="user profile"></img>
           <div className="userInfo">
-            <h2>{username}</h2>
+            <h2 className={username === user ? "" : "big-title"}>{username}</h2>
             <h3>{email}</h3>
             {username === user && (
               <>
