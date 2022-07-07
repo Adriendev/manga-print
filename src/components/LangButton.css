@@ -2,6 +2,8 @@
   border: none;
   background-color: transparent;
   font-size: 1.5rem;
+  color: #ffc300;
+  padding: 0.5rem;
 }
 
 #lang option {

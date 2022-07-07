@@ -59,6 +59,7 @@ const SearchBar = ({
       return setSeriesToDisplay(seriesInfo);
     }
   };
+
   
     return (
       <div>
@@ -72,6 +73,7 @@ const SearchBar = ({
               placeholder="Search a manga title..."
             />
             {/* <button className="search-button" type="submit">
+
             <SearchIcon />
           </button> */}
           </form>

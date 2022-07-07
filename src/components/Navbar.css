@@ -12,7 +12,7 @@ nav {
 
 nav a {
   text-decoration: none;
-  color: #ffc300
+  color: #ffc300;
   /* transform: skew(-15deg); */
 }
 
@@ -24,10 +24,15 @@ nav > * {
   /* background-color: #ffc300; */
   padding: 1rem;
   margin-right: 1rem;
-
 }
 
 nav > :last-child {
   margin-right: 0;
 }
 
+.settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
