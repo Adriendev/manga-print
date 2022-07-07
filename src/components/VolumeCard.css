@@ -45,7 +45,7 @@
   color: var(--text-colour);
 }
 .fa-xmark:hover {
-  color: #ffc300;
+  transform: scale(105%);
 }
 
 .btn-close {

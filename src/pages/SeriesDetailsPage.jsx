@@ -15,6 +15,7 @@ import { Cross } from "../components/Icon";
 
 import { SettingsContext } from "../context/settings.context";
 import i18n from "../utils/dictionnary";
+import AddReviewForm from "../components/AddReviewForm";
 
 Modal.setAppElement("#root");
 
@@ -31,7 +32,8 @@ const customStyles = {
 };
 
 const SeriesDetailsPage = () => {
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalType, setModalType] = useState("");
   const seriesId = useParams().id;
   const [isLoading, setIsLoading] = useState(true);
   const [oneSeries, setOneSeries] = useState({});
@@ -41,9 +43,10 @@ const SeriesDetailsPage = () => {
 
   const { lang } = useContext(SettingsContext);
 
-  function openModal(e) {
+  function openModal(val) {
     // console.log(e.currentTarget);
     // console.log(`opened modal`);
+    setModalType(val);
     setIsOpen(true);
   }
 
@@ -92,6 +95,7 @@ const SeriesDetailsPage = () => {
           </div>
 
           <SeriesReviewsContainer
+            openModal={openModal}
             seriesId={seriesId}
             setSeriesRating={setSeriesRating}
           />
@@ -101,19 +105,24 @@ const SeriesDetailsPage = () => {
           onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={customStyles}
-          contentLabel="Volume"
+          contentLabel="Modal"
         >
           <div className="modal">
             <button className="btn-close" onClick={closeModal}>
               <Cross />
             </button>
-            <VolumeCard
-              title={volumeInModal.title}
-              image={volumeInModal.image}
-              isbn={volumeInModal.isbn}
-              date={volumeInModal.date}
-              modal="true"
-            />
+            {modalType === "volume" && (
+              <VolumeCard
+                title={volumeInModal.title}
+                image={volumeInModal.image}
+                isbn={volumeInModal.isbn}
+                date={volumeInModal.date}
+                modal="true"
+              />
+            )}
+            {modalType === "review" && (
+              <AddReviewForm closeModal={closeModal} seriesId={seriesId} />
+            )}
           </div>
         </Modal>
         <section className="volumes-container">

@@ -1,24 +1,37 @@
-.add-review {
+/* .add-review {
     border: #ffc300 solid 3px;
     border-radius: 5px;
     padding: 5px;
     margin-bottom: 1rem;
     width: 30vw;
+} */
+
+.add-review {
+  color: black;
+  border: solid 2px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 25vw;
+  padding: 1rem;
+  background-color: #ffc300;
+  box-shadow: 3px 3px 3px black;
+  font-size: 1rem;
 }
 
 .review-form {
-    display: flex;
-    flex-direction: column;
-    gap: 5px
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .post-button {
-    color: black;
-    background-color: #ffc300;
-    width: 5vw;
-    border: none;
-    align-self: flex-end;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 1.2rem;
+  color: black;
+  background-color: #ffc300;
+  width: 5vw;
+  border: none;
+  align-self: flex-end;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1.2rem;
 }

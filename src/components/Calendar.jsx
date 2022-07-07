@@ -99,7 +99,7 @@ const Calendar = () => {
         }`
       )
     );
-
+    console.log(foundRel);
     return foundRel;
   };
 
@@ -114,19 +114,21 @@ const Calendar = () => {
         <span className="number">{day}</span>
         <div key={`Day ${day}`} className="day">
           {volume.length !== 0 ? (
-            volume.map((x) => (
-              <SeriesCard
-                key={x._id}
-                name={x.title}
-                image={
-                  x.cover.includes("seven")
-                    ? "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg"
-                    : x.cover
-                }
-                id={x.series}
-                size="calendar-s"
-              />
-            ))
+            volume.map((x, i) => {
+              return (
+                <SeriesCard
+                  key={`${x._id}${i}`}
+                  name={x.title}
+                  image={
+                    x.cover.includes("seven")
+                      ? "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg"
+                      : x.cover
+                  }
+                  id={x.series}
+                  size="calendar-s"
+                />
+              );
+            })
           ) : (
             <article className="empty"></article>
           )}
@@ -146,9 +148,9 @@ const Calendar = () => {
         <span className="number">{day}</span>
         <div key={`Day ${day}`} className="day">
           {volume.length !== 0 ? (
-            volume.map((x) => (
+            volume.map((x, i) => (
               <SeriesCard
-                key={x._id}
+                key={`${x._id}${i}`}
                 name={x.title}
                 image={
                   x.cover.includes("seven")
@@ -177,9 +179,9 @@ const Calendar = () => {
         <span className="number">{day}</span>
         <div key={`Day ${day}`} className="day">
           {volume.length !== 0 ? (
-            volume.map((x) => (
+            volume.map((x, i) => (
               <SeriesCard
-                key={x._id}
+                key={`${x._id}${i}`}
                 name={x.title}
                 image={
                   x.cover.includes("seven")
@@ -208,9 +210,9 @@ const Calendar = () => {
         <span className="number">{day}</span>
         <div key={`Day ${day}`} className="day">
           {volume.length !== 0 ? (
-            volume.map((x) => (
+            volume.map((x, i) => (
               <SeriesCard
-                key={x._id}
+                key={`${x._id}${i}`}
                 name={x.title}
                 image={
                   x.cover.includes("seven")
@@ -239,9 +241,9 @@ const Calendar = () => {
         <span className="number">{day}</span>
         <div key={`Day ${day}`} className="day">
           {volume.length !== 0 ? (
-            volume.map((x) => (
+            volume.map((x, i) => (
               <SeriesCard
-                key={x._id}
+                key={`${x._id}${i}`}
                 name={x.title}
                 image={
                   x.cover.includes("seven")

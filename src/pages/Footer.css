@@ -1,0 +1,39 @@
+footer {
+    color: #ffc300;
+    background-color: black;
+    padding: 1rem 2rem 5px 2rem;
+}
+
+#links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.git {
+    display: flex;
+    align-items: center;
+}
+
+.github-logo {
+    height: 2rem;
+    background-color: white;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+footer p {
+    margin-right: 1rem;
+}
+
+footer a {
+    margin-top: 10px;
+}
+
+.copyright {
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+}

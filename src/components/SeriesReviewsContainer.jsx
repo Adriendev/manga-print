@@ -10,7 +10,7 @@ import "./SeriesReviewsContainer.css";
 
 const baseURL = API_URL;
 
-const SeriesReviewsContainer = ({ seriesId, setSeriesRating }) => {
+const SeriesReviewsContainer = ({ seriesId, setSeriesRating, openModal }) => {
   const { isLoggedIn } = useContext(AuthContext);
   const { reviews } = useContext(ReviewsContext);
   const [seriesReviews, setSeriesReviews] = useState([]);
@@ -35,12 +35,23 @@ const SeriesReviewsContainer = ({ seriesId, setSeriesRating }) => {
     getSeriesReview();
   }, [reviews]);
 
+  const handleClick = () => {
+    openModal("review");
+  };
+
   return (
-    <div>
+    <div className="container-rev">
       {isLoggedIn ? (
-        <AddReviewForm seriesId={seriesId} />
+        <>
+          <button className="add-button" onClick={handleClick}>
+            Post your own review!
+          </button>
+          {/* <AddReviewForm seriesId={seriesId} /> */}
+        </>
       ) : (
-        <Link to="/login">Log in to post a review</Link>
+        <Link className="form-login" to="/login">
+          Log in to post a review
+        </Link>
       )}
       <ul className="reviews-section">
         {seriesReviews.map((review) => {

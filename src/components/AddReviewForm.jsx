@@ -8,10 +8,11 @@ import "./AddReviewForm.css";
 
 import { SettingsContext } from "../context/settings.context";
 import i18n from "../utils/dictionnary";
+import RatingInput from "./RatingInput";
 
 const baseURL = API_URL;
 
-const AddReviewForm = ({ seriesId }) => {
+const AddReviewForm = ({ seriesId, closeModal }) => {
   const [rating, setRating] = useState(0);
   const [textContent, setTextContent] = useState("");
 
@@ -41,6 +42,7 @@ const AddReviewForm = ({ seriesId }) => {
       getReviews();
       setRating(0);
       setTextContent("");
+      closeModal();
     });
   };
 
@@ -48,23 +50,14 @@ const AddReviewForm = ({ seriesId }) => {
     <div className="add-review">
       <h3>{i18n[lang].postReview}</h3>
       <form onSubmit={handlePostComment} className="review-form">
-        <label>{i18n[lang].rating}</label>
-        <input
-          type="number"
-          name="rating"
-          value={rating}
-          onChange={handleRating}
-          min={0}
-          max={5}
-          style={{ width: "5vw" }}
-        />
+        <RatingInput handleRating={handleRating} />
 
         <textarea
           name="comment"
           onChange={handleTextContent}
           value={textContent}
           placeholder={i18n[lang].comment}
-          style={{ width: "25vw" }}
+          style={{ width: "95%", height: "30vh" }}
         />
 
         <button type="submit" className="post-button">
