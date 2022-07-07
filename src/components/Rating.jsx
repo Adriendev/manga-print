@@ -6,7 +6,7 @@ const Rating = (props) => {
   for (let i = 0; i < rating; i++) {
     stars += "★";
   }
-  return <div className="rating">{stars.padEnd(5, "☆")}</div>;
+  return <div style={{ color: props.color }}>{stars.padEnd(5, "☆")}</div>;
 };
 
 export default Rating;
