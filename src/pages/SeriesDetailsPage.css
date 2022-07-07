@@ -17,3 +17,29 @@
   justify-content: space-between;
   align-items: flex-start;
 }
+
+/* .ReactModal__Overlay {
+  transform: scaleY(0%);
+  transition: transform 1000ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  transform: scaleY(100%);
+}
+
+.ReactModal__Overlay--before-close {
+  transform: scaleY(0%);
+} */
+
+.ReactModal__Content {
+  transform: scaleY(0%);
+  transition: transform 1000ms ease-in-out;
+}
+
+.ReactModal__Content--after-open {
+  transform: scaleY(100%);
+}
+
+.ReactModal__Content--before-close {
+  transform: scaleY(0%);
+}
