@@ -29,7 +29,7 @@ const HomePage = () => {
   }, [day]);
 
   useEffect(() => {
-    const num = Math.floor(Math.random() * 50) + 1;
+    const num = Math.floor(Math.random() * 20) + 1;
     setRandom(num);
   }, []);
 
