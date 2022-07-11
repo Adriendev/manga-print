@@ -45,6 +45,7 @@ const SeriesPage = () => {
       const checkboxes = data.genres.map((elem) => {
         return { checked: false, name: elem };
       });
+
       setChecked(checkboxes);
     };
 
@@ -61,7 +62,8 @@ const SeriesPage = () => {
         url: `/mangaSeries/`,
         params: {
           ...params,
-          limit: 50
+          limit: 50,
+          publisher:'KODANSHA'
         },
       };
 
