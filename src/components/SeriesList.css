@@ -48,8 +48,8 @@
   margin-bottom: 0.5rem;
 }
 
-.genres input[type='checkbox']:checked {
-    background-color: #ffc300;
+.genres input[type="checkbox"]:checked {
+  background-color: #ffc300;
 }
 
 .checkboxe-genres > h2 {
@@ -68,9 +68,6 @@
   box-shadow: 7px 5px 5px black;
   color: black;
   width: 100%;
-
-  justify-content: center;
-  /* align-items: center; */
 }
 
 .grid .series-card {
