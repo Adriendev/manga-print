@@ -12,7 +12,9 @@ const Carrousel = ({ title, series, covers, week, type }) => {
   let listAllSeries = [];
 
   if (type === "latest") {
-    const filterWeek = series.filter((elem) => elem.releaseDate < week);
+    const filterWeek = series.filter(
+      (elem) => elem.releaseDate < week && elem.cover.includes("kodansha")
+    );
 
     listAllSeries = filterWeek.map((elem) => {
       let image = elem.cover;
@@ -31,7 +33,8 @@ const Carrousel = ({ title, series, covers, week, type }) => {
       );
     });
   } else {
-    listAllSeries = series.map((elem, i) => {
+    const filterSeries = series.filter((elem) => elem.publisher === "KODANSHA");
+    listAllSeries = filterSeries.map((elem, i) => {
       let image = covers[i];
 
       image.includes("sevenseas")
