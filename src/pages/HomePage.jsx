@@ -67,6 +67,8 @@ const HomePage = () => {
     );
   }
 
+  // console.log(nextWeek);
+
   return (
     <main id="home">
       <Carrousel
@@ -74,6 +76,7 @@ const HomePage = () => {
         series={latestSeries}
         type="latest"
         week={nextWeek}
+        date={DATE}
       />
       <Carrousel
         title={i18n[lang].discover}

@@ -5,15 +5,20 @@ import { ArrowLeft, ArrowRight } from "./Icon";
 import { useContext, useState } from "react";
 import { SettingsContext } from "../context/settings.context";
 
-const Carrousel = ({ title, series, covers, week, type }) => {
+const Carrousel = ({ title, series, covers, week, type, date }) => {
   const { isDarkMode } = useContext(SettingsContext);
   const [isActive, setActive] = useState(false);
 
   let listAllSeries = [];
 
   if (type === "latest") {
+    const today = new Date(date.setDate(date.getDate())).toISOString();
+    // console.log(today);
     const filterWeek = series.filter(
-      (elem) => elem.releaseDate < week && elem.cover.includes("kodansha")
+      (elem) =>
+        elem.releaseDate < week &&
+        elem.cover.includes("kodansha") &&
+        elem.releaseDate > today
     );
 
     listAllSeries = filterWeek.map((elem) => {
