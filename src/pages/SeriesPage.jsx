@@ -41,7 +41,7 @@ const SeriesPage = () => {
         baseURL: API_URL,
         method: "get",
       });
-      console.log(data);
+      // console.log(data);
       const checkboxes = data.genres.map((elem) => {
         return { checked: false, name: elem };
       });
@@ -63,7 +63,7 @@ const SeriesPage = () => {
         params: {
           ...params,
           limit: 50,
-          publisher:'KODANSHA'
+          publisher: "KODANSHA",
         },
       };
 
@@ -85,9 +85,9 @@ const SeriesPage = () => {
   }, [perPage, searchParams, setPageCount]);
 
   const handlePageClick = (e) => {
-    console.log(e.selected);
+    // console.log(e.selected);
     const page = Number(e.selected) + 1;
-    console.log(page);
+    // console.log(page);
 
     const params = Object.fromEntries(searchParams.entries());
 
@@ -125,7 +125,7 @@ const SeriesPage = () => {
         activeClassName={"active"}
         forcePage={Number(searchParams.get("page")) - 1 || 0}
         onClick={(...rest) => {
-          console.log(rest);
+          // console.log(rest);
         }}
       />
     </div>
