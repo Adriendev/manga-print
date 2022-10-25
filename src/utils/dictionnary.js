@@ -24,7 +24,7 @@ const i18n = {
     retProf: "Return to Profile",
     reviewsOf: "'S REVIEWS",
     favsOf: "'S FAVORITES",
-    release: "UPCOMING RELEASES",
+    release: "RECENT RELEASES",
     discover: "DISCOVER NEW SERIES",
   },
   fr: {

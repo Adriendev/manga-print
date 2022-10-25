@@ -4,21 +4,34 @@ import SeriesCard from "./SeriesCard";
 import { ArrowLeft, ArrowRight } from "./Icon";
 import { useContext, useState } from "react";
 import { SettingsContext } from "../context/settings.context";
+import { useEffect } from "react";
 
-const Carrousel = ({ title, series, covers, week, type, date }) => {
+let listAllSeries = [];
+
+const Carrousel = ({
+  title,
+  series,
+  covers,
+  week,
+  prevMonth,
+  type,
+  date,
+  show,
+}) => {
   const { isDarkMode } = useContext(SettingsContext);
   const [isActive, setActive] = useState(false);
-
-  let listAllSeries = [];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [length, setLength] = useState(0);
 
   if (type === "latest") {
     const today = new Date(date.setDate(date.getDate())).toISOString();
     // console.log(today);
+    // console.log(prevMonth);
     const filterWeek = series.filter(
       (elem) =>
         elem.releaseDate < week &&
         elem.cover.includes("kodansha") &&
-        elem.releaseDate > today
+        elem.releaseDate > prevMonth
     );
 
     listAllSeries = filterWeek.map((elem) => {
@@ -28,6 +41,7 @@ const Carrousel = ({ title, series, covers, week, type, date }) => {
         ? (image =
             "https://filetandvine.com/wp-content/uploads/2015/10/pix-vertical-placeholder.jpg")
         : (image = elem.cover);
+
       return (
         <SeriesCard
           key={elem.series._id}
@@ -61,6 +75,21 @@ const Carrousel = ({ title, series, covers, week, type, date }) => {
     setActive(!isActive);
   };
 
+  useEffect(() => {
+    setLength(listAllSeries.length);
+  }, [listAllSeries]);
+
+  const next = () => {
+    if (currentIndex < length - 1) {
+      setCurrentIndex((prevState) => prevState + 1);
+    }
+  };
+
+  const prev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex((prevState) => prevState - 1);
+    }
+  };
   /////if type === discovery
   //shuffle 10
   // + isActive ? `moving` : null} key={title}
@@ -69,14 +98,17 @@ const Carrousel = ({ title, series, covers, week, type, date }) => {
       <h2>{title}</h2>
       <hr className="divider" />
       <div className="container">
-        <button onClick={() => {}}>
+        <button className="left-arrow" onClick={prev}>
           <ArrowLeft className="arrow" mode={isDarkMode ? "dark" : "light"} />
         </button>
 
-        <div className={`cards ` + (isActive ? "moving-left" : null)}>
+        <div
+          className={`cards show-${show}`}
+          style={{ transform: `translateX(-${(currentIndex * 100) / show}%)` }}
+        >
           {listAllSeries}
         </div>
-        <button onClick={handleToggle}>
+        <button className="right-arrow" onClick={next}>
           <ArrowRight className="arrow" />
         </button>
       </div>

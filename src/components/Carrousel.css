@@ -9,6 +9,9 @@
 
 .container {
   display: flex;
+  width: 100;
+  position: relative;
+  overflow: hidden;
 }
 
 .cards {
@@ -43,11 +46,11 @@
   width: 100%;
 }
 
-.moving-left {
+/* .moving-left {
   animation: 3s infinite 1 slidein;
-}
+} */
 
-@keyframes slidein {
+/* @keyframes slidein {
   from {
     overflow-x: hidden;
   }
@@ -57,4 +60,8 @@
     scroll-behavior: smooth;
     overflow-x: scroll;
   }
+} */
+
+.card.show-7 > * {
+  width: calc(100% / 20);
 }

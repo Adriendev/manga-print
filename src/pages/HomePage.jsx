@@ -17,6 +17,7 @@ const HomePage = () => {
   const [discoverySeriesCovers, setDiscoverySeriesCovers] = useState([]);
   const [random, setRandom] = useState(1);
   const [nextWeek, setNextWeek] = useState();
+  const [previousMonth, setPreviousMonth] = useState();
   const [day, setDay] = useState(DAY);
 
   const { lang } = useContext(SettingsContext);
@@ -26,6 +27,9 @@ const HomePage = () => {
   useEffect(() => {
     setDay(DAY);
     setNextWeek(new Date(DATE.setDate(DATE.getDate() + 7)).toISOString());
+    setPreviousMonth(
+      new Date(DATE.setMonth(DATE.getMonth() - 1)).toISOString()
+    );
   }, [day]);
 
   useEffect(() => {
@@ -67,6 +71,7 @@ const HomePage = () => {
     );
   }
 
+  // console.log(`prev month:`, previousMonth);
   // console.log(nextWeek);
 
   return (
@@ -76,13 +81,16 @@ const HomePage = () => {
         series={latestSeries}
         type="latest"
         week={nextWeek}
+        prevMonth={previousMonth}
         date={DATE}
+        show={7}
       />
       <Carrousel
         title={i18n[lang].discover}
         series={discoverySeries}
         covers={discoverySeriesCovers}
         type="discovery"
+        show={7}
       />
     </main>
   );
